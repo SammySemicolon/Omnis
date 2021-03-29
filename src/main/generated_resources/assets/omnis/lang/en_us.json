@@ -1,0 +1,18 @@
+{
+  "block.omnis.haunted_steel_block": "Haunted Steel Block",
+  "block.omnis.vexwart": "Vexwart",
+  "block.omnis.vexwart_block": "Vexwart Block",
+  "item.omnis.haunted_spell_blade": "Haunted Spell Blade",
+  "item.omnis.haunted_steel_ingot": "Haunted Steel Ingot",
+  "item.omnis.haunted_vindicator_axe": "Haunted Vindicator Axe",
+  "item.omnis.spell_blade": "Spell Blade",
+  "item.omnis.tear_of_vex": "Tear Of Vex",
+  "item.omnis.vindicator_axe": "Vindicator Axe",
+  "itemGroup.omnis": "Omnis ",
+  "omnis.subtitle.haunted_steel_break": "Haunted Steel Break",
+  "omnis.subtitle.haunted_steel_hit": "Haunted Steel Hit",
+  "omnis.subtitle.haunted_steel_place": "Haunted Steel Place",
+  "omnis.subtitle.haunted_steel_step": "Haunted Steel Step",
+  "omnis.subtitle.holy_equip": "Holy Equip",
+  "omnis.subtitle.sinister_equip": "Sinister Equip"
+}

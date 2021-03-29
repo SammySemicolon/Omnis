@@ -1,0 +1,9 @@
+{
+  "haunted_steel_break": { "sounds":["omnis:haunted_steel/break1","omnis:haunted_steel/break2","omnis:haunted_steel/break3","omnis:haunted_steel/break4"], "subtitle": "omnis.subtitle.haunted_steel_break" },
+  "haunted_steel_step": { "sounds":["omnis:haunted_steel/hit1","omnis:haunted_steel/hit2","omnis:haunted_steel/hit3","omnis:haunted_steel/hit4", "block/netherite/step1","block/netherite/step2","block/netherite/step3","block/netherite/step4","block/netherite/step5","block/netherite/step6"], "subtitle": "omnis.subtitle.haunted_steel_step" },
+  "haunted_steel_place": { "sounds":["omnis:haunted_steel/break1","omnis:haunted_steel/break2","omnis:haunted_steel/break3","omnis:haunted_steel/break4"], "subtitle": "omnis.subtitle.haunted_steel_place" },
+  "haunted_steel_hit": { "sounds":["omnis:haunted_steel/hit1","omnis:haunted_steel/hit2","omnis:haunted_steel/hit3","omnis:haunted_steel/hit4", "block/netherite/step1","block/netherite/step2","block/netherite/step3","block/netherite/step4","block/netherite/step5","block/netherite/step6"], "subtitle": "omnis.subtitle.haunted_steel_hit" },
+
+  "holy_equip": { "sounds":["omnis:equip_holy"], "subtitle": "omnis.subtitle.holy_equip" },
+  "sinister_equip": { "sounds":["omnis:equip_sinister"], "subtitle": "omnis.subtitle.sinister_equip" }
+}

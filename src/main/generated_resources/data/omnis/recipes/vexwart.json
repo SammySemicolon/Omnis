@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "vexwart",
+  "ingredients": [
+    {
+      "item": "omnis:tear_of_vex"
+    },
+    {
+      "item": "minecraft:nether_wart"
+    },
+    {
+      "item": "minecraft:nether_wart"
+    }
+  ],
+  "result": {
+    "item": "omnis:vexwart",
+    "count": 2
+  }
+}

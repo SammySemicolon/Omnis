@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "vexwart",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "omnis:vexwart"
+    }
+  },
+  "result": {
+    "item": "omnis:vexwart_block"
+  }
+}

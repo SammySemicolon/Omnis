@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "omnis:vindicator_axe"
+  },
+  "addition": {
+    "item": "omnis:haunted_steel_ingot"
+  },
+  "result": {
+    "item": "omnis:haunted_vindicator_axe"
+  }
+}

@@ -1,6 +1,6 @@
 package com.sammy.omnis.common.items;
 
-import com.sammy.omnis.init.OmnisItems;
+import com.sammy.omnis.core.init.OmnisItems;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.Ingredient;
@@ -21,7 +21,7 @@ public class OmnisItemTiers
         private final int harvestLevel;
         private final int enchantability;
         private final Supplier<Item> repairItem;
-        
+
         ItemTierEnum(int maxUses, float efficiency, float attackDamage, int harvestLevel, int enchantability, Supplier<Item> repairItem)
         {
             this.maxUses = maxUses;
@@ -31,37 +31,37 @@ public class OmnisItemTiers
             this.enchantability = enchantability;
             this.repairItem = repairItem;
         }
-        
+
         @Override
         public int getMaxUses()
         {
             return maxUses;
         }
-        
+
         @Override
         public float getEfficiency()
         {
             return efficiency;
         }
-        
+
         @Override
         public float getAttackDamage()
         {
             return attackDamage;
         }
-        
+
         @Override
         public int getHarvestLevel()
         {
             return harvestLevel;
         }
-        
+
         @Override
         public int getEnchantability()
         {
             return enchantability;
         }
-        
+
         @Override
         public Ingredient getRepairMaterial()
         {

@@ -6,12 +6,70 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "omnis:vexwart",
+              "properties": {
+                "age": "0"
+              }
+            }
+          ],
+          "name": "omnis:vexwart"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "omnis:vexwart",
+              "properties": {
+                "age": "1"
+              }
+            }
+          ],
+          "name": "omnis:vexwart"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "omnis:vexwart",
+              "properties": {
+                "age": "2"
+              }
+            }
+          ],
+          "name": "omnis:vexwart"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "omnis:vexwart",
+              "properties": {
+                "age": "3"
+              }
+            }
+          ],
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2.0,
+                "max": 4.0,
+                "type": "minecraft:uniform"
+              }
+            }
+          ],
           "name": "omnis:vexwart"
         }
       ],
-      "conditions": [
+      "functions": [
         {
-          "condition": "minecraft:survives_explosion"
+          "function": "minecraft:explosion_decay"
         }
       ]
     }

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "vexwart",
+  "ingredients": [
+    {
+      "item": "omnis:vexwart_block"
+    }
+  ],
+  "result": {
+    "item": "omnis:vexwart",
+    "count": 9
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "haunted_steel",
+  "ingredients": [
+    {
+      "item": "omnis:haunted_steel_block"
+    }
+  ],
+  "result": {
+    "item": "omnis:haunted_steel_ingot",
+    "count": 9
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "haunted_steel",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "omnis:haunted_steel_ingot"
+    }
+  },
+  "result": {
+    "item": "omnis:haunted_steel_block"
+  }
+}

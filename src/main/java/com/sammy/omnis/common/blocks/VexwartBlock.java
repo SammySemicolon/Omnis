@@ -1,6 +1,6 @@
 package com.sammy.omnis.common.blocks;
 
-import com.sammy.omnis.init.OmnisItems;
+import com.sammy.omnis.core.init.OmnisItems;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.NetherWartBlock;
 import net.minecraft.item.ItemStack;

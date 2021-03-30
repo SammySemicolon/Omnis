@@ -26,6 +26,13 @@ public class CurioEvokerCharm extends Item implements ICurio
             public void playRightClickEquipSound(LivingEntity livingEntity)
             {
                 livingEntity.world.playSound(null, livingEntity.getPosition(), OmnisSounds.SINISTER_EQUIP, SoundCategory.NEUTRAL, 1.0f, 1.0f);
+
+            }
+
+            @Override
+            public boolean canRightClickEquip()
+            {
+                return true;
             }
         });
     }

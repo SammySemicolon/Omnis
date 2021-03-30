@@ -2,8 +2,7 @@ package com.sammy.omnis.network;
 
 import com.sammy.omnis.OmnisHelper;
 import com.sammy.omnis.OmnisMod;
-import com.sammy.omnis.network.packets.SpellBladeParticlePacket;
-import net.minecraft.util.ResourceLocation;
+import com.sammy.omnis.network.packets.ParticlePacket;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -22,7 +21,7 @@ public class NetworkManager
     public static void registerNetworkStuff(FMLCommonSetupEvent event)
     {
         int index = 0;
-        INSTANCE.registerMessage(index++, SpellBladeParticlePacket.class, SpellBladeParticlePacket::encode, SpellBladeParticlePacket::decode, SpellBladeParticlePacket::whenThisPacketIsReceived);
+        INSTANCE.registerMessage(index++, ParticlePacket.class, ParticlePacket::encode, ParticlePacket::decode, ParticlePacket::whenThisPacketIsReceived);
 
     }
 }

@@ -22,8 +22,6 @@ public class Registries
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITIES, MODID);
     public static final DeferredRegister<GlobalLootModifierSerializer<?>> GLM = DeferredRegister.create(ForgeRegistries.LOOT_MODIFIER_SERIALIZERS, MODID);
 
-    static
-    {
-        GLM.register("tear_of_vex", OmnisLootModifier.Serializer::new);
-    }
+    public static final RegistryObject<OmnisLootModifier.Serializer> TEAR_OF_VEX = GLM.register("tear_of_vex", OmnisLootModifier.Serializer::new);
+    public static final RegistryObject<OmnisLootModifier.Serializer> EVOKER_CHARM = GLM.register("evoker_charm", OmnisLootModifier.Serializer::new);
 }

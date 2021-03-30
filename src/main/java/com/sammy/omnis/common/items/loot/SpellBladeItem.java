@@ -1,7 +1,7 @@
 package com.sammy.omnis.common.items.loot;
 
 import com.sammy.omnis.common.items.ModSwordItem;
-import com.sammy.omnis.network.packets.SpellBladeParticlePacket;
+import com.sammy.omnis.network.packets.ParticlePacket;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
@@ -17,15 +17,5 @@ public class SpellBladeItem extends ModSwordItem
     {
         super(material, attackDamage, attackSpeed, properties);
         this.effectStrength = effectStrength;
-    }
-
-    @Override
-    public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
-    {
-        if (attacker.world instanceof ServerWorld)
-        {
-            INSTANCE.send(PacketDistributor.TRACKING_ENTITY.with(() -> target), new SpellBladeParticlePacket(effectStrength, target.getPosX(), target.getPosY() + target.getHeight() / 2, target.getPosZ()));
-        }
-        return super.hitEntity(stack, target, attacker);
     }
 }

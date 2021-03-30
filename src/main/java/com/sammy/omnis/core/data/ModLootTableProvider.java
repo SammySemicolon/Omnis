@@ -75,29 +75,6 @@ public class ModLootTableProvider extends LootTableProvider
         takeAll(blocks, b -> b.get() instanceof DoorBlock).forEach(b -> registerLootTable(b.get(),droppingDoor(b.get())));
         takeAll(blocks, b -> true).forEach(b -> registerLootTable(b.get(), dropping(b.get().asItem())));
 
-
-
-        addTable(prefix("entities/vex"), LootTable.builder().addLootPool(
-                LootPool.builder()
-                        .name("main")
-                        .rolls(ConstantRange.of(1))
-                        .acceptCondition(RandomChance.builder(0.2f))
-                        .acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 2)))
-                        .addEntry(itemEntry(OmnisItems.TEAR_OF_VEX.get(), 1)
-                        )
-                ),
-                LootParameterSets.ENTITY
-        );
-        addTable(prefix("entities/evoker"), LootTable.builder().addLootPool(
-                LootPool.builder()
-                        .name("main")
-                        .acceptCondition(RandomChance.builder(0.25F))
-
-                        .addEntry(itemEntry(OmnisItems.EVOKER_CHARM.get(), 1)
-                        )
-                ),
-                LootParameterSets.ENTITY
-        );
         return tables;
     }
     

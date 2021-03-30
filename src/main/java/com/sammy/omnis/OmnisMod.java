@@ -5,6 +5,7 @@ import com.sammy.omnis.core.init.effects.OmnisEffects;
 import com.sammy.omnis.core.init.effects.OmnisPotions;
 import com.sammy.omnis.core.particles.ParticleRendering;
 import net.minecraft.data.BlockTagsProvider;
+import net.minecraft.data.LootTableProvider;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -38,6 +39,7 @@ public class OmnisMod
         ITEMS.register(modBus);
         TILE_ENTITIES.register(modBus);
         ENTITY_TYPES.register(modBus);
+        GLM.register(modBus);
         POTIONS.register(modBus);
         EFFECTS.register(modBus);
         PARTICLES.register(modBus);

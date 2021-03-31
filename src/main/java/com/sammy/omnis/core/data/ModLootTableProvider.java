@@ -130,8 +130,10 @@ public class ModLootTableProvider extends LootTableProvider
                         .acceptCondition(BlockStateProperty.builder(vexWart).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(VexwartBlock.AGE, 2))))
                 .addEntry(ItemLootEntry.builder(item).acceptFunction(SetCount.builder(RandomValueRange.of(2, 4)))
                         .acceptCondition(BlockStateProperty.builder(vexWart).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(VexwartBlock.AGE, 3))))
+                .addEntry(ItemLootEntry.builder(OmnisItems.TEAR_OF_VEX.get()).acceptFunction(SetCount.builder(RandomValueRange.of(1,2))
+                        .acceptCondition(BlockStateProperty.builder(vexWart).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(VexwartBlock.AGE, 3))))
 
-        ));
+        )));
     }
     protected static LootTable.Builder droppingRandomly(IItemProvider item, IRandomRange range)
     {

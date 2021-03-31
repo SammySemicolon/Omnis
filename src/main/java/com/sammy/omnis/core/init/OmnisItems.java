@@ -2,7 +2,7 @@ package com.sammy.omnis.core.init;
 
 import com.sammy.omnis.common.items.loot.CurioEvokerCharm;
 import com.sammy.omnis.common.items.loot.SpellBladeItem;
-import com.sammy.omnis.common.items.loot.VindidatorAxeItem;
+import com.sammy.omnis.common.items.loot.VindicatorAxeItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemTier;
@@ -29,8 +29,8 @@ public class OmnisItems
     public static final RegistryObject<Item> VEXWART_BLOCK = ITEMS.register("vexwart_block", () -> new BlockItem(OmnisBlocks.VEXWART_BLOCK.get(), DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> HAUNTED_STEEL_INGOT = ITEMS.register("haunted_steel_ingot", () -> new Item(DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> HAUNTED_STEEL_BLOCK = ITEMS.register("haunted_steel_block", () -> new BlockItem(OmnisBlocks.HAUNTED_STEEL_BLOCK.get(), DEFAULT_PROPERTIES()));
-    public static final RegistryObject<Item> VINDICATOR_AXE = ITEMS.register("vindicator_axe", () -> new VindidatorAxeItem(ItemTier.IRON, 2, -0.2f, GEAR_PROPERTIES(), 80));
-    public static final RegistryObject<Item> HAUNTED_VINDICATOR_AXE = ITEMS.register("haunted_vindicator_axe", () -> new VindidatorAxeItem(HAUNTED_STEEL_ITEM, 2, -0.2f, GEAR_PROPERTIES(), 40));
+    public static final RegistryObject<Item> VINDICATOR_AXE = ITEMS.register("vindicator_axe", () -> new VindicatorAxeItem(ItemTier.IRON, 2, -0.2f, GEAR_PROPERTIES(), 80));
+    public static final RegistryObject<Item> HAUNTED_VINDICATOR_AXE = ITEMS.register("haunted_vindicator_axe", () -> new VindicatorAxeItem(HAUNTED_STEEL_ITEM, 2, -0.2f, GEAR_PROPERTIES(), 40));
     public static final RegistryObject<Item> SPELL_BLADE = ITEMS.register("spell_blade", () -> new SpellBladeItem(ItemTier.DIAMOND, -1, 0.1f, GEAR_PROPERTIES(), 0.25f));
     public static final RegistryObject<Item> HAUNTED_SPELL_BLADE = ITEMS.register("haunted_spell_blade", () -> new SpellBladeItem(HAUNTED_STEEL_ITEM, -2, 0.1f, GEAR_PROPERTIES(), 0.5f));
     public static final RegistryObject<Item> EVOKER_CHARM = ITEMS.register("evoker_charm", () -> new CurioEvokerCharm(GEAR_PROPERTIES()));

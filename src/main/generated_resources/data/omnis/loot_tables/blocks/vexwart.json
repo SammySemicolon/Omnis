@@ -65,6 +65,29 @@
             }
           ],
           "name": "omnis:vexwart"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "omnis:vexwart",
+                  "properties": {
+                    "age": "3"
+                  }
+                }
+              ],
+              "count": {
+                "min": 1.0,
+                "max": 2.0,
+                "type": "minecraft:uniform"
+              }
+            }
+          ],
+          "name": "omnis:tear_of_vex"
         }
       ],
       "functions": [

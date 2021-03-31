@@ -3,8 +3,9 @@ loaderVersion="[33,)"
 license="All rights reserved"
 [[mods]]
 modId="omnis"
-version="${file.jarVersion}"
+version="1.16.5-1.0"
 displayName="Omnis"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/omnis"
 logoFile="omnis.png"
 credits='''The Minecraft Modding Discord and everyone there.
 It's an amazing place full of a ton of amazing people, this mod wouldn't be possible without them.
@@ -12,7 +13,10 @@ It's an amazing place full of a ton of amazing people, this mod wouldn't be poss
 '''
 authors="Sammy; and Queso"
 description='''
-Omnis adds cool loot!;
+"Omnis" - All.
+Omnis is a mod that aims to add content to all corners to the game.
+The main goal of the mod is to add more 'trident-alike' items to seek out; powerful loot with unique gimmicks
+
 '''
 [[dependencies.omnis]]
 modId="forge"

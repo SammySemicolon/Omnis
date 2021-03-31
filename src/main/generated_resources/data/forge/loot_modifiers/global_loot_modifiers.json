@@ -1,6 +1,7 @@
 {
   "replace": false,
   "entries": [
+    "omnis:evoker_charm",
     "omnis:tear_of_vex"
   ]
 }

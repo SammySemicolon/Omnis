@@ -4,6 +4,7 @@ import com.sammy.omnis.OmnisHelper;
 import com.sammy.omnis.core.init.OmnisBlocks;
 import com.sammy.omnis.core.init.OmnisItems;
 import com.sammy.omnis.core.init.effects.OmnisEffects;
+import com.sammy.omnis.core.init.effects.OmnisPotions;
 import net.minecraft.block.Block;
 import net.minecraft.block.WallTorchBlock;
 import net.minecraft.data.DataGenerator;
@@ -11,6 +12,8 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Effect;
+import net.minecraft.potion.Potion;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.fml.RegistryObject;
@@ -21,6 +24,8 @@ import java.util.Set;
 import static com.sammy.omnis.core.init.OmnisSounds.SOUNDS;
 import static com.sammy.omnis.core.init.Registries.*;
 import static com.sammy.omnis.OmnisMod.MODID;
+import static com.sammy.omnis.core.init.effects.OmnisEffects.EFFECTS;
+import static com.sammy.omnis.core.init.effects.OmnisPotions.POTIONS;
 
 
 public class ModLangProvider extends LanguageProvider
@@ -37,7 +42,7 @@ public class ModLangProvider extends LanguageProvider
         Set<RegistryObject<Item>> items = new HashSet<>(OmnisItems.ITEMS.getEntries());
         Set<RegistryObject<SoundEvent>> sounds = new HashSet<>(SOUNDS.getEntries());
         Set<RegistryObject<Enchantment>> enchantments = new HashSet<>(ENCHANTMENTS.getEntries());
-        Set<RegistryObject<Effect>> effects = new HashSet<>(OmnisEffects.EFFECTS.getEntries());
+        Set<RegistryObject<Effect>> effects = new HashSet<>(EFFECTS.getEntries());
         OmnisHelper.takeAll(items, i -> i.get() instanceof BlockItem);
         OmnisHelper.takeAll(blocks, i -> i.get() instanceof WallTorchBlock);
         blocks.forEach(b -> {
@@ -63,15 +68,29 @@ public class ModLangProvider extends LanguageProvider
             String name = OmnisHelper.toTitleCase(e.getId().getPath(), "_");
             add(e.get().getName(), name);
         });
-        
         effects.forEach(e -> {
             String name = OmnisHelper.toTitleCase(e.getId().getPath(), "_");
             add("effect." + MODID + "." + e.get().getRegistryName().getPath(), name);
         });
-        
+
+        add("item.minecraft.potion.effect.magic_proficiency", "Potion of Magic Proficiency");
+        add("item.minecraft.potion.effect.long_magic_proficiency", "Potion of Magic Proficiency");
+        add("item.minecraft.potion.effect.strong_magic_proficiency", "Potion of Magic Proficiency");
+
+        add("item.minecraft.splash_potion.effect.magic_proficiency", "Splash Potion of Magic Proficiency");
+        add("item.minecraft.splash_potion.effect.long_magic_proficiency", "Splash Potion of Magic Proficiency");
+        add("item.minecraft.splash_potion.effect.strong_magic_proficiency", "Splash Potion of Magic Proficiency");
+
+        add("item.minecraft.lingering_potion.effect.magic_proficiency", "Lingering Potion of Magic Proficiency");
+        add("item.minecraft.lingering_potion.effect.long_magic_proficiency", "Lingering Potion of Magic Proficiency");
+        add("item.minecraft.lingering_potion.effect.strong_magic_proficiency", "Lingering Potion of Magic Proficiency");
+
+        add("item.minecraft.tipped_arrow.effect.magic_proficiency", "Arrow of Magic Proficiency");
+        add("item.minecraft.tipped_arrow.effect.long_magic_proficiency", "Arrow of Magic Proficiency");
+        add("item.minecraft.tipped_arrow.effect.strong_magic_proficiency", "Arrow of Magic Proficiency");
         add("itemGroup." + MODID, "Omnis ");
     }
-    
+
     @Override
     public String getName()
     {

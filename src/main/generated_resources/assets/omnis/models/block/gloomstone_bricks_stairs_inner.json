@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "side": "omnis:block/gloomstone_bricks",
+    "bottom": "omnis:block/gloomstone_bricks",
+    "top": "omnis:block/gloomstone_bricks"
+  }
+}

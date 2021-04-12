@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "side": "omnis:block/ravagestone_bricks",
+    "bottom": "omnis:block/ravagestone_bricks",
+    "top": "omnis:block/ravagestone_bricks"
+  }
+}

@@ -76,7 +76,6 @@ public class ParticlePacket
                 }
                 case 1 :
                 {
-
                     Color color = new Color(40, 72, 165);
                     ParticleManager.create(OmnisParticles.WISP_PARTICLE).setAlpha(0.2f, 0.1f).setLifetime(12).setSpin(0.8f).setScale(0.4f, 0).setColor(color,color.darker()).randomOffset(0.1f).enableNoClip().randomVelocity(0.075f, 0.075f).addVelocity(0,-0.05f,0).repeat(world, posX,posY,posZ, 20);
                     ParticleManager.create(OmnisParticles.WISP_PARTICLE).setAlpha(0.6f, 0.1f).setLifetime(18).setSpin(0.8f).setScale(0.08f, 0).setColor(color,color.brighter()).randomOffset(0.2f).enableGravity().randomVelocity(0.1f, 0.1f).addVelocity(0,-0.1f,0).repeat(world, posX,posY,posZ, 10);

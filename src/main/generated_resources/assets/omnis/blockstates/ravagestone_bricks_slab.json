@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "omnis:block/ravagestone_bricks_slab_top"
+    },
+    "type=bottom": {
+      "model": "omnis:block/ravagestone_bricks_slab"
+    },
+    "type=double": {
+      "model": "omnis:block/ravagestone_bricks"
+    }
+  }
+}

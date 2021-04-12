@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "side": "omnis:block/polished_ravagestone",
+    "bottom": "omnis:block/polished_ravagestone",
+    "top": "omnis:block/polished_ravagestone"
+  }
+}

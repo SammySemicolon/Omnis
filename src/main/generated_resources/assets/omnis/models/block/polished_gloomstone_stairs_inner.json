@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "side": "omnis:block/polished_gloomstone",
+    "bottom": "omnis:block/polished_gloomstone",
+    "top": "omnis:block/polished_gloomstone"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "omnis:block/gloomstone_slab_top"
+    },
+    "type=bottom": {
+      "model": "omnis:block/gloomstone_slab"
+    },
+    "type=double": {
+      "model": "omnis:block/gloomstone"
+    }
+  }
+}

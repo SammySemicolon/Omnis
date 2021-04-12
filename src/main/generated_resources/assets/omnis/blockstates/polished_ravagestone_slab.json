@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "omnis:block/polished_ravagestone_slab_top"
+    },
+    "type=bottom": {
+      "model": "omnis:block/polished_ravagestone_slab"
+    },
+    "type=double": {
+      "model": "omnis:block/polished_ravagestone"
+    }
+  }
+}

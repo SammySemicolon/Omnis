@@ -14,8 +14,8 @@ public class OmnisItemTiers
     public enum ItemTierEnum implements IItemTier
     {
 
-        HAUNTED_ITEM(1951, 9f, 5f, 4, 22, OmnisItems.HAUNTED_STEEL_INGOT),
-        RAVAGED_ITEM(1243, 8f, 4.5f, 3, 14, OmnisItems.HAUNTED_STEEL_INGOT);
+        HAUNTED_ITEM(1951, 9f, 3.5f, 4, 22, OmnisItems.HAUNTED_STEEL_INGOT),
+        RAVAGED_ITEM(1243, 8f, 2.5f, 3, 14, OmnisItems.HAUNTED_STEEL_INGOT);
         private final int maxUses;
         private final float efficiency;
         private final float attackDamage;

@@ -1,9 +1,13 @@
 package com.sammy.omnis.core.init;
 
 import com.sammy.omnis.common.items.*;
+import com.sammy.omnis.common.items.equipment.armor.HauntedSteelArmorItem;
+import com.sammy.omnis.common.items.equipment.armor.RavagedMetalArmorItem;
+import com.sammy.omnis.common.items.gear.*;
 import com.sammy.omnis.common.items.loot.CurioEvokerCharm;
 import com.sammy.omnis.common.items.loot.SpellBladeItem;
 import com.sammy.omnis.common.items.loot.VindicatorAxeItem;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemTier;
@@ -35,20 +39,30 @@ public class OmnisItems
     public static final RegistryObject<Item> HAUNTED_STEEL_INGOT = ITEMS.register("haunted_steel_ingot", () -> new Item(DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> HAUNTED_STEEL_BLOCK = ITEMS.register("haunted_steel_block", () -> new BlockItem(OmnisBlocks.HAUNTED_STEEL_BLOCK.get(), DEFAULT_PROPERTIES()));
 
-    public static final RegistryObject<Item> RAVAGED_BROADSWORD = ITEMS.register("ravaged_broadsword", () -> new ModSwordItem(RAVAGED_ITEM, 0, 0, GEAR_PROPERTIES()));
-    public static final RegistryObject<Item> RAVAGED_HAMMER = ITEMS.register("ravaged_hammer", () -> new ModPickaxeItem(RAVAGED_ITEM, 0, 0, GEAR_PROPERTIES()));
-    public static final RegistryObject<Item> RAVAGED_BATTLE_AXE = ITEMS.register("ravaged_battle_axe", () -> new ModAxeItem(RAVAGED_ITEM, 0, 0, GEAR_PROPERTIES()));
-    public static final RegistryObject<Item> RAVAGED_SPEAR = ITEMS.register("ravaged_spear", () -> new ModShovelItem(RAVAGED_ITEM, 0, 0, GEAR_PROPERTIES()));
-    public static final RegistryObject<Item> RAVAGED_SCYTHE = ITEMS.register("ravaged_scythe", () -> new ModHoeItem(RAVAGED_ITEM, 0, 0, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> RAVAGED_BROADSWORD = ITEMS.register("ravaged_broadsword", () -> new ModBroadswordItem(RAVAGED_ITEM, 0, 0, 1.5f, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> RAVAGED_HAMMER = ITEMS.register("ravaged_hammer", () -> new ModHammerItem(RAVAGED_ITEM, 0, 0, 0, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> RAVAGED_BATTLE_AXE = ITEMS.register("ravaged_battle_axe", () -> new ModGreataxeItem(RAVAGED_ITEM, 0, 0, 0, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> RAVAGED_SPEAR = ITEMS.register("ravaged_spear", () -> new ModSpearItem(RAVAGED_ITEM, 0, 1, 0, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> RAVAGED_SCYTHE = ITEMS.register("ravaged_scythe", () -> new ModScytheItem(RAVAGED_ITEM, 0, 0, 0.25f, GEAR_PROPERTIES()));
+
+    public static final RegistryObject<Item> RAVAGED_HELMET = ITEMS.register("ravaged_helmet", () -> new RavagedMetalArmorItem(EquipmentSlotType.HEAD, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> RAVAGED_CHESTPLATE = ITEMS.register("ravaged_chestplate", () -> new RavagedMetalArmorItem(EquipmentSlotType.CHEST, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> RAVAGED_LEGGINGS = ITEMS.register("ravaged_leggings", () -> new RavagedMetalArmorItem(EquipmentSlotType.LEGS, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> RAVAGED_BOOTS = ITEMS.register("ravaged_boots", () -> new RavagedMetalArmorItem(EquipmentSlotType.FEET, GEAR_PROPERTIES()));
 
     public static final RegistryObject<Item> VINDICATOR_AXE = ITEMS.register("vindicator_axe", () -> new VindicatorAxeItem(ItemTier.IRON, 2, -0.2f, GEAR_PROPERTIES(), 80));
     public static final RegistryObject<Item> SPELL_BLADE = ITEMS.register("spell_blade", () -> new SpellBladeItem(ItemTier.DIAMOND, -1, 0.1f, GEAR_PROPERTIES(), 0.25f));
 
-    public static final RegistryObject<Item> HAUNTED_BROADSWORD = ITEMS.register("haunted_broadsword", () -> new ModSwordItem(HAUNTED_ITEM, 0, 0, GEAR_PROPERTIES()));
-    public static final RegistryObject<Item> HAUNTED_HAMMER = ITEMS.register("haunted_hammer", () -> new ModPickaxeItem(HAUNTED_ITEM, 0, 0, GEAR_PROPERTIES()));
-    public static final RegistryObject<Item> HAUNTED_BATTLE_AXE = ITEMS.register("haunted_battle_axe", () -> new ModAxeItem(HAUNTED_ITEM, 0, 0, GEAR_PROPERTIES()));
-    public static final RegistryObject<Item> HAUNTED_SPEAR = ITEMS.register("haunted_spear", () -> new ModShovelItem(HAUNTED_ITEM, 0, 0, GEAR_PROPERTIES()));
-    public static final RegistryObject<Item> HAUNTED_SCYTHE = ITEMS.register("haunted_scythe", () -> new ModHoeItem(HAUNTED_ITEM, 0, 0, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> HAUNTED_BROADSWORD = ITEMS.register("haunted_broadsword", () -> new ModBroadswordItem(HAUNTED_ITEM, 0, 0, 2.5f, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> HAUNTED_HAMMER = ITEMS.register("haunted_hammer", () -> new ModHammerItem(HAUNTED_ITEM, 0, 0, 1, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> HAUNTED_BATTLE_AXE = ITEMS.register("haunted_battle_axe", () -> new ModGreataxeItem(HAUNTED_ITEM, 0, 0, 1, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> HAUNTED_SPEAR = ITEMS.register("haunted_spear", () -> new ModSpearItem(HAUNTED_ITEM, 0, 0, 2, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> HAUNTED_SCYTHE = ITEMS.register("haunted_scythe", () -> new ModScytheItem(HAUNTED_ITEM, 0, 0, 0.5f, GEAR_PROPERTIES()));
+
+    public static final RegistryObject<Item> HAUNTED_HELMET = ITEMS.register("haunted_helmet", () -> new HauntedSteelArmorItem(EquipmentSlotType.HEAD, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> HAUNTED_CHESTPLATE = ITEMS.register("haunted_chestplate", () -> new HauntedSteelArmorItem(EquipmentSlotType.CHEST, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> HAUNTED_LEGGINGS = ITEMS.register("haunted_leggings", () -> new HauntedSteelArmorItem(EquipmentSlotType.LEGS, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> HAUNTED_BOOTS = ITEMS.register("haunted_boots", () -> new HauntedSteelArmorItem(EquipmentSlotType.FEET, GEAR_PROPERTIES()));
 
     public static final RegistryObject<Item> HAUNTED_VINDICATOR_AXE = ITEMS.register("haunted_vindicator_axe", () -> new VindicatorAxeItem(HAUNTED_ITEM, 2, -0.2f, GEAR_PROPERTIES(), 40));
     public static final RegistryObject<Item> HAUNTED_SPELL_BLADE = ITEMS.register("haunted_spell_blade", () -> new SpellBladeItem(HAUNTED_ITEM, -2, 0.1f, GEAR_PROPERTIES(), 0.5f));

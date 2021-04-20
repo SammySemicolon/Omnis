@@ -24,7 +24,7 @@ public class OmnisSounds
     public static final SoundType HAUNTED_STEEL = new SoundType(1.0F, 1.0F, HAUNTED_STEEL_BREAK, HAUNTED_STEEL_STEP, HAUNTED_STEEL_PLACE, HAUNTED_STEEL_HIT, SoundEvents.BLOCK_NETHERITE_BLOCK_FALL);
     public static SoundEvent register(SoundEvent soundEvent)
     {
-        SOUNDS.register(soundEvent.getName().getPath(), ()->soundEvent);
+        SOUNDS.register(soundEvent.name.getPath(), ()->soundEvent);
         return soundEvent;
     }
 }

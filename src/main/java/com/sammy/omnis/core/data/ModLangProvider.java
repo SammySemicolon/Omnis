@@ -73,6 +73,8 @@ public class ModLangProvider extends LanguageProvider
             add("effect." + MODID + "." + e.get().getRegistryName().getPath(), name);
         });
 
+        addTooltip("haunted_armor", "+1 Magic Resistance");
+
         add("item.minecraft.potion.effect.magic_proficiency", "Potion of Magic Proficiency");
         add("item.minecraft.potion.effect.long_magic_proficiency", "Potion of Magic Proficiency");
         add("item.minecraft.potion.effect.strong_magic_proficiency", "Potion of Magic Proficiency");
@@ -99,7 +101,7 @@ public class ModLangProvider extends LanguageProvider
     
     public void addTooltip(String identifier, String tooltip)
     {
-        add("modname.tooltip." + identifier, tooltip);
+        add("omnis.tooltip." + identifier, tooltip);
     }
     public String specialBlockNameChanges(String name)
     {

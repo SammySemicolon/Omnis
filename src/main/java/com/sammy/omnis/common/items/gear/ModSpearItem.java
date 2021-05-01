@@ -2,13 +2,10 @@ package com.sammy.omnis.common.items.gear;
 
 import com.sammy.omnis.common.items.ITooltipItem;
 import com.sammy.omnis.common.items.ModCombatItem;
-import com.sammy.omnis.common.items.basic.ModShovelItem;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.SwordItem;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;

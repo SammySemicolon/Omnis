@@ -24,4 +24,7 @@ public class Registries
 
     public static final RegistryObject<OmnisLootModifier.Serializer> TEAR_OF_VEX = GLM.register("tear_of_vex", OmnisLootModifier.Serializer::new);
     public static final RegistryObject<OmnisLootModifier.Serializer> EVOKER_CHARM = GLM.register("evoker_charm", OmnisLootModifier.Serializer::new);
+    public static final RegistryObject<OmnisLootModifier.Serializer> RAVAGED_SCRAP_RAVAGER = GLM.register("ravaged_scrap_ravager", OmnisLootModifier.Serializer::new);
+    public static final RegistryObject<OmnisLootModifier.Serializer> RAVAGED_SCRAP_ILLAGER = GLM.register("ravaged_scrap_illager", OmnisLootModifier.Serializer::new);
+    public static final RegistryObject<OmnisLootModifier.Serializer> RAVAGED_SCRAP_VINDICATOR = GLM.register("ravaged_scrap_vindicator", OmnisLootModifier.Serializer::new);
 }

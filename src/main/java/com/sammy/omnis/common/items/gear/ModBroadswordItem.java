@@ -14,7 +14,7 @@ public class ModBroadswordItem extends ModSwordItem implements ITooltipItem
     public final float extraDamage;
     public ModBroadswordItem(IItemTier material, int attackDamage, float attackSpeed, float extraDamage, Properties properties)
     {
-        super(material, attackDamage, attackSpeed, properties);
+        super(material, attackDamage+1, attackSpeed-0.2f, properties);
         this.extraDamage = extraDamage;
     }
 

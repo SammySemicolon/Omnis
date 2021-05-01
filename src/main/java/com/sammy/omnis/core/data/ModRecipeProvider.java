@@ -12,6 +12,7 @@ import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.registry.Registry;
+import net.minecraftforge.common.Tags;
 
 import java.util.function.Consumer;
 
@@ -42,9 +43,35 @@ public class ModRecipeProvider extends RecipeProvider
         ShapelessRecipeBuilder.shapelessRecipe(OmnisItems.VEXWART.get(), 9).addIngredient(OmnisItems.VEXWART_BLOCK.get()).setGroup("vexwart").addCriterion("has_tear_of_vex", hasItem(OmnisItems.TEAR_OF_VEX.get())).build(consumer, "vexwart_alt");
         ShapelessRecipeBuilder.shapelessRecipe(OmnisItems.VEXWART.get(), 2).addIngredient(OmnisItems.TEAR_OF_VEX.get()).addIngredient(Items.NETHER_WART, 2).setGroup("vexwart").addCriterion("has_tear_of_vex", hasItem(OmnisItems.TEAR_OF_VEX.get())).build(consumer);
 
-
         smithingReinforce(consumer, OmnisItems.SPELL_BLADE.get(), OmnisItems.HAUNTED_SPELL_BLADE.get(), OmnisItems.HAUNTED_STEEL_INGOT.get());
         smithingReinforce(consumer, OmnisItems.VINDICATOR_AXE.get(), OmnisItems.HAUNTED_VINDICATOR_AXE.get(), OmnisItems.HAUNTED_STEEL_INGOT.get());
+
+        ShapelessRecipeBuilder.shapelessRecipe(OmnisItems.RAVAGED_METAL.get()).addIngredient(OmnisItems.RAVAGED_SCRAP.get(), 4).addIngredient(Tags.Items.INGOTS_IRON).setGroup("ravaged_metal").addCriterion("has_ravaged_scrap", hasItem(OmnisItems.RAVAGED_SCRAP.get())).build(consumer);
+        ShapedRecipeBuilder.shapedRecipe(OmnisItems.RAVAGED_BATTLE_AXE.get()).key('#', Items.STICK).key('X', OmnisItems.RAVAGED_METAL.get()).patternLine("X X").patternLine("X#X").patternLine(" # ").addCriterion("has_ravaged_metal", hasItem(OmnisItems.RAVAGED_METAL.get())).build(consumer);
+        ShapedRecipeBuilder.shapedRecipe(OmnisItems.RAVAGED_SCYTHE.get()).key('#', Items.STICK).key('X', OmnisItems.RAVAGED_METAL.get()).patternLine("XX ").patternLine(" #X").patternLine("#  ").addCriterion("has_ravaged_metal", hasItem(OmnisItems.RAVAGED_METAL.get())).build(consumer);
+        ShapedRecipeBuilder.shapedRecipe(OmnisItems.RAVAGED_HAMMER.get()).key('#', Items.STICK).key('X', OmnisItems.RAVAGED_METAL.get()).patternLine("XXX").patternLine("X# ").patternLine(" # ").addCriterion("has_ravaged_metal", hasItem(OmnisItems.RAVAGED_METAL.get())).build(consumer);
+        ShapedRecipeBuilder.shapedRecipe(OmnisItems.RAVAGED_SPEAR.get()).key('#', Items.STICK).key('X', OmnisItems.RAVAGED_METAL.get()).patternLine("X").patternLine("#").patternLine("#").addCriterion("has_ravaged_metal", hasItem(OmnisItems.RAVAGED_METAL.get())).build(consumer);
+        ShapedRecipeBuilder.shapedRecipe(OmnisItems.RAVAGED_BROADSWORD.get()).key('#', Items.STICK).key('X', OmnisItems.RAVAGED_METAL.get()).patternLine("X").patternLine("X").patternLine("#").addCriterion("has_ravaged_metal", hasItem(OmnisItems.RAVAGED_METAL.get())).build(consumer);
+
+        ShapedRecipeBuilder.shapedRecipe(OmnisItems.RAVAGED_HELMET.get()).key('X', OmnisItems.RAVAGED_METAL.get()).patternLine("XXX").patternLine("X X").addCriterion("has_ravaged_metal", hasItem(OmnisItems.RAVAGED_METAL.get())).build(consumer);
+        ShapedRecipeBuilder.shapedRecipe(OmnisItems.RAVAGED_CHESTPLATE.get()).key('X', OmnisItems.RAVAGED_METAL.get()).patternLine("X X").patternLine("XXX").patternLine("XXX").addCriterion("has_ravaged_metal", hasItem(OmnisItems.RAVAGED_METAL.get())).build(consumer);
+        ShapedRecipeBuilder.shapedRecipe(OmnisItems.RAVAGED_LEGGINGS.get()).key('X', OmnisItems.RAVAGED_METAL.get()).patternLine("XXX").patternLine("X X").patternLine("X X").addCriterion("has_ravaged_metal", hasItem(OmnisItems.RAVAGED_METAL.get())).build(consumer);
+        ShapedRecipeBuilder.shapedRecipe(OmnisItems.RAVAGED_BOOTS.get()).key('X', OmnisItems.RAVAGED_METAL.get()).patternLine("X X").patternLine("X X").addCriterion("has_ravaged_metal", hasItem(OmnisItems.RAVAGED_METAL.get())).build(consumer);
+
+        smithingReinforce(consumer, OmnisItems.RAVAGED_BATTLE_AXE.get(), OmnisItems.HAUNTED_BATTLE_AXE.get(), OmnisItems.HAUNTED_STEEL_INGOT.get());
+        smithingReinforce(consumer, OmnisItems.RAVAGED_HAMMER.get(), OmnisItems.HAUNTED_HAMMER.get(), OmnisItems.HAUNTED_STEEL_INGOT.get());
+        smithingReinforce(consumer, OmnisItems.RAVAGED_SPEAR.get(), OmnisItems.HAUNTED_SPEAR.get(), OmnisItems.HAUNTED_STEEL_INGOT.get());
+        smithingReinforce(consumer, OmnisItems.RAVAGED_SCYTHE.get(), OmnisItems.HAUNTED_SCYTHE.get(), OmnisItems.HAUNTED_STEEL_INGOT.get());
+        smithingReinforce(consumer, OmnisItems.RAVAGED_BROADSWORD.get(), OmnisItems.HAUNTED_BROADSWORD.get(), OmnisItems.HAUNTED_STEEL_INGOT.get());
+
+        smithingReinforce(consumer, OmnisItems.RAVAGED_HELMET.get(), OmnisItems.HAUNTED_HELMET.get(), OmnisItems.HAUNTED_STEEL_INGOT.get());
+        smithingReinforce(consumer, OmnisItems.RAVAGED_CHESTPLATE.get(), OmnisItems.HAUNTED_CHESTPLATE.get(), OmnisItems.HAUNTED_STEEL_INGOT.get());
+        smithingReinforce(consumer, OmnisItems.RAVAGED_LEGGINGS.get(), OmnisItems.HAUNTED_LEGGINGS.get(), OmnisItems.HAUNTED_STEEL_INGOT.get());
+        smithingReinforce(consumer, OmnisItems.RAVAGED_BOOTS.get(), OmnisItems.HAUNTED_BOOTS.get(), OmnisItems.HAUNTED_STEEL_INGOT.get());
+
+        ShapelessRecipeBuilder.shapelessRecipe(OmnisItems.GLOOMSTONE.get()).addIngredient(OmnisItems.TEAR_OF_VEX.get()).addIngredient(Ingredient.fromTag(Tags.Items.STONE), 8).addCriterion("has_tear_of_vex", hasItem(OmnisItems.TEAR_OF_VEX.get())).build(consumer);
+        ShapelessRecipeBuilder.shapelessRecipe(OmnisItems.RAVAGESTONE.get()).addIngredient(OmnisItems.RAVAGED_SCRAP.get()).addIngredient(Ingredient.fromTag(Tags.Items.STONE), 8).setGroup("ravaged_metal").addCriterion("has_ravaged_scrap", hasItem(OmnisItems.RAVAGED_SCRAP.get())).build(consumer);
+
     }
     private static void smithingReinforce(Consumer<IFinishedRecipe> recipeConsumer, Item itemToReinforce, Item output, Item reinforcement)
     {

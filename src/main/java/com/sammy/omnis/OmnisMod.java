@@ -32,7 +32,6 @@ public class OmnisMod
     public static final Logger LOGGER = LogManager.getLogger();
 
     public OmnisMod() {
-
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
         ENCHANTMENTS.register(modBus);
         BLOCKS.register(modBus);

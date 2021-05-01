@@ -32,5 +32,14 @@ public class ModLootProvider extends GlobalLootModifierProvider
         add("evoker_charm", EVOKER_CHARM.get(), new OmnisLootModifier(
                 new ILootCondition[] { LootTableIdCondition.builder(new ResourceLocation("entities/evoker")).build() }, 0.25f,1,0, OmnisItems.EVOKER_CHARM.get()
         ));
+        add("ravaged_scrap_ravager", Registries.RAVAGED_SCRAP_RAVAGER.get(), new OmnisLootModifier(
+                new ILootCondition[] { LootTableIdCondition.builder(new ResourceLocation("entities/ravager")).build() }, 1,2,8, OmnisItems.RAVAGED_SCRAP.get()
+        ));
+        add("ravaged_scrap_illager", Registries.RAVAGED_SCRAP_ILLAGER.get(), new OmnisLootModifier(
+                new ILootCondition[] { LootTableIdCondition.builder(new ResourceLocation("entities/illager")).build() }, 0.25f,1,2, OmnisItems.RAVAGED_SCRAP.get()
+        ));
+        add("ravaged_scrap_vindicator", Registries.RAVAGED_SCRAP_VINDICATOR.get(), new OmnisLootModifier(
+                new ILootCondition[] { LootTableIdCondition.builder(new ResourceLocation("entities/vindicator")).build() }, 0.5f,1,3, OmnisItems.RAVAGED_SCRAP.get()
+        ));
     }
 }

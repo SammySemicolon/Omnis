@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "omnis:gloomstone"
+    ]
+  },
+  "criteria": {
+    "has_tear_of_vex": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "omnis:tear_of_vex"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "omnis:gloomstone"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_tear_of_vex",
+      "has_the_recipe"
+    ]
+  ]
+}

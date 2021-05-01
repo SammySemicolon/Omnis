@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "omnis:ravaged_battle_axe"
+  },
+  "addition": {
+    "item": "omnis:haunted_steel_ingot"
+  },
+  "result": {
+    "item": "omnis:haunted_battle_axe"
+  }
+}

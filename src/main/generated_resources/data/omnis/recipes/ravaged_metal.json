@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "ravaged_metal",
+  "ingredients": [
+    {
+      "item": "omnis:ravaged_scrap"
+    },
+    {
+      "item": "omnis:ravaged_scrap"
+    },
+    {
+      "item": "omnis:ravaged_scrap"
+    },
+    {
+      "item": "omnis:ravaged_scrap"
+    },
+    {
+      "tag": "forge:ingots/iron"
+    }
+  ],
+  "result": {
+    "item": "omnis:ravaged_metal"
+  }
+}

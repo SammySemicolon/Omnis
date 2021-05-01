@@ -1,39 +1,32 @@
 package com.sammy.omnis.common.items.gear;
 
-import com.sammy.omnis.common.items.IComboItem;
-import com.sammy.omnis.common.items.ModPickaxeItem;
-import com.sammy.omnis.core.init.effects.OmnisEffects;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
+import com.sammy.omnis.common.items.ITooltipItem;
+import com.sammy.omnis.common.items.ModCombatItem;
 import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.EffectInstance;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 
-public class ModHammerItem extends ModPickaxeItem implements IComboItem
+import java.util.List;
+
+public class ModHammerItem extends ModCombatItem implements ITooltipItem
 {
     public final int staggeredAmplifier;
-    public ModHammerItem(IItemTier material, int damage, float speed, int staggeredAmplifier, Properties properties)
+    public ModHammerItem(IItemTier material, float damage, float speed, int staggeredAmplifier, Properties properties)
     {
-        super(material, damage, speed, properties);
+        super(material, damage + 6, speed - 3.2f, properties);
         this.staggeredAmplifier = staggeredAmplifier;
     }
 
     @Override
-    public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
+    public void detailedTooltip(List<ITextComponent> tooltip)
     {
-        increaseCombo(attacker, target);
-        return super.hitEntity(stack, target, attacker);
+        tooltip.add(new TranslationTextComponent("omnis.tooltip.staggering_detailed").mergeStyle(TextFormatting.BLUE));
     }
 
     @Override
-    public int maxCombo(LivingEntity attacker, LivingEntity target)
+    public void tooltip(List<ITextComponent> tooltip)
     {
-        return 3;
-    }
-
-    @Override
-    public void triggerCombo(LivingEntity attacker, LivingEntity target)
-    {
-        target.addPotionEffect(new EffectInstance(OmnisEffects.STAGGERED.get(), 100, staggeredAmplifier));
+        tooltip.add(new TranslationTextComponent("omnis.tooltip.staggering").mergeStyle(TextFormatting.BLUE));
     }
 }

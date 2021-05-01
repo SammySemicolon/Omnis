@@ -1,14 +1,7 @@
 package com.sammy.omnis.common.items.loot;
 
-import com.sammy.omnis.common.items.ModSwordItem;
-import com.sammy.omnis.network.packets.ParticlePacket;
-import net.minecraft.entity.LivingEntity;
+import com.sammy.omnis.common.items.basic.ModSwordItem;
 import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.fml.network.PacketDistributor;
-
-import static com.sammy.omnis.network.NetworkManager.INSTANCE;
 
 public class SpellBladeItem extends ModSwordItem
 {

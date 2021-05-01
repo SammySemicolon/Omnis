@@ -29,6 +29,8 @@
   "block.omnis.vexwart": "Vexwart",
   "block.omnis.vexwart_block": "Vexwart Block",
   "effect.omnis.magic_proficiency": "Magic Proficiency",
+  "effect.omnis.staggered": "Staggered",
+  "effect.omnis.stunned": "Stunned",
   "item.minecraft.lingering_potion.effect.long_magic_proficiency": "Lingering Potion of Magic Proficiency",
   "item.minecraft.lingering_potion.effect.magic_proficiency": "Lingering Potion of Magic Proficiency",
   "item.minecraft.lingering_potion.effect.strong_magic_proficiency": "Lingering Potion of Magic Proficiency",
@@ -75,5 +77,15 @@
   "omnis.subtitle.haunted_steel_step": "Haunted Steel Step",
   "omnis.subtitle.holy_equip": "Holy Equip",
   "omnis.subtitle.sinister_equip": "Sinister Equip",
-  "omnis.tooltip.haunted_armor": "+1 Magic Resistance"
+  "omnis.tooltip.crushing": "Crushing",
+  "omnis.tooltip.crushing_detailed": "This weapon deals more damage on the first attack",
+  "omnis.tooltip.haunted_armor": "+1 Magic Resistance",
+  "omnis.tooltip.outlying": "Outlying",
+  "omnis.tooltip.outlying_detailed": "Deals more damage to faraway enemies",
+  "omnis.tooltip.staggering": "Staggering",
+  "omnis.tooltip.staggering_detailed": "This weapon staggers enemies on the first attack\nStaggered enemies deal less damage and have decreased armor",
+  "omnis.tooltip.stunning": "Stunning",
+  "omnis.tooltip.stunning_detailed": "This weapon stuns enemies on the first attack\nStunned enemies move slower and have decreased range",
+  "omnis.tooltip.sweeping": "Sweeping",
+  "omnis.tooltip.sweeping_detailed": "Every attack from this weapon causes a strong sweep attack"
 }

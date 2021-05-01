@@ -42,7 +42,7 @@ public class OmnisItems
     public static final RegistryObject<Item> RAVAGED_BROADSWORD = ITEMS.register("ravaged_broadsword", () -> new ModBroadswordItem(RAVAGED_ITEM, 0, 0, 1.5f, GEAR_PROPERTIES()));
     public static final RegistryObject<Item> RAVAGED_HAMMER = ITEMS.register("ravaged_hammer", () -> new ModHammerItem(RAVAGED_ITEM, 0, 0, 0, GEAR_PROPERTIES()));
     public static final RegistryObject<Item> RAVAGED_BATTLE_AXE = ITEMS.register("ravaged_battle_axe", () -> new ModGreataxeItem(RAVAGED_ITEM, 0, 0, 0, GEAR_PROPERTIES()));
-    public static final RegistryObject<Item> RAVAGED_SPEAR = ITEMS.register("ravaged_spear", () -> new ModSpearItem(RAVAGED_ITEM, 0, 1, 0, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> RAVAGED_SPEAR = ITEMS.register("ravaged_spear", () -> new ModSpearItem(RAVAGED_ITEM, 0, 0, 1, GEAR_PROPERTIES()));
     public static final RegistryObject<Item> RAVAGED_SCYTHE = ITEMS.register("ravaged_scythe", () -> new ModScytheItem(RAVAGED_ITEM, 0, 0, 0.25f, GEAR_PROPERTIES()));
 
     public static final RegistryObject<Item> RAVAGED_HELMET = ITEMS.register("ravaged_helmet", () -> new RavagedMetalArmorItem(EquipmentSlotType.HEAD, GEAR_PROPERTIES()));

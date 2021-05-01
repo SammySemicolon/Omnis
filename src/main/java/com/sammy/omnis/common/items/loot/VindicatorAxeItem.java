@@ -1,6 +1,6 @@
 package com.sammy.omnis.common.items.loot;
 
-import com.sammy.omnis.common.items.ModAxeItem;
+import com.sammy.omnis.common.items.basic.ModAxeItem;
 import net.minecraft.item.IItemTier;
 
 public class VindicatorAxeItem extends ModAxeItem

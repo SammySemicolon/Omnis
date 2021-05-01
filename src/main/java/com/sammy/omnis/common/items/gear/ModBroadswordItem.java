@@ -1,13 +1,15 @@
 package com.sammy.omnis.common.items.gear;
 
-import com.sammy.omnis.common.items.IComboItem;
-import com.sammy.omnis.common.items.ModSwordItem;
-import net.minecraft.entity.LivingEntity;
+import com.sammy.omnis.common.items.ITooltipItem;
+import com.sammy.omnis.common.items.basic.ModSwordItem;
 import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.DamageSource;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 
-public class ModBroadswordItem extends ModSwordItem implements IComboItem
+import java.util.List;
+
+public class ModBroadswordItem extends ModSwordItem implements ITooltipItem
 {
     public final float extraDamage;
     public ModBroadswordItem(IItemTier material, int attackDamage, float attackSpeed, float extraDamage, Properties properties)
@@ -17,22 +19,14 @@ public class ModBroadswordItem extends ModSwordItem implements IComboItem
     }
 
     @Override
-    public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
+    public void detailedTooltip(List<ITextComponent> tooltip)
     {
-        increaseCombo(attacker, target);
-        return super.hitEntity(stack, target, attacker);
+        tooltip.add(new TranslationTextComponent("omnis.tooltip.crushing_detailed").mergeStyle(TextFormatting.BLUE));
     }
 
     @Override
-    public int maxCombo(LivingEntity attacker, LivingEntity target)
+    public void tooltip(List<ITextComponent> tooltip)
     {
-        return 2;
-    }
-
-    @Override
-    public void triggerCombo(LivingEntity attacker, LivingEntity target)
-    {
-        target.hurtResistantTime = 0;
-        target.attackEntityFrom(DamageSource.causeMobDamage(attacker), extraDamage);
+        tooltip.add(new TranslationTextComponent("omnis.tooltip.crushing").mergeStyle(TextFormatting.BLUE));
     }
 }

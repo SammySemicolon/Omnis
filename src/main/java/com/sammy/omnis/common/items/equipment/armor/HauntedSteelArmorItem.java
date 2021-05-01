@@ -1,6 +1,7 @@
 package com.sammy.omnis.common.items.equipment.armor;
 
 import com.sammy.omnis.client.model.ModelRavagedMetalArmor;
+import com.sammy.omnis.common.items.ITooltipItem;
 import net.minecraft.client.renderer.entity.model.BipedModel;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -27,7 +28,7 @@ import static com.sammy.omnis.common.items.OmnisArmorTiers.ArmorTierEnum.HAUNTED
 import static com.sammy.omnis.common.items.OmnisArmorTiers.ArmorTierEnum.RAVAGED_ARMOR;
 
 
-public class HauntedSteelArmorItem extends ArmorItem
+public class HauntedSteelArmorItem extends ArmorItem implements ITooltipItem
 {
     private LazyValue<Object> model;
     public HauntedSteelArmorItem(EquipmentSlotType slot, Properties builder)
@@ -55,9 +56,14 @@ public class HauntedSteelArmorItem extends ArmorItem
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+    public boolean noDetailed()
     {
-        tooltip.add(1,new TranslationTextComponent("omnis.tooltip.haunted_armor").mergeStyle(TextFormatting.BLUE));
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+        return true;
+    }
+
+    @Override
+    public void tooltip(List<ITextComponent> tooltip)
+    {
+        tooltip.add(new TranslationTextComponent("omnis.tooltip.haunted_armor").mergeStyle(TextFormatting.BLUE));
     }
 }

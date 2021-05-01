@@ -1,14 +1,15 @@
 package com.sammy.omnis.common.items.gear;
 
-import com.sammy.omnis.common.items.IComboItem;
-import com.sammy.omnis.common.items.ModAxeItem;
-import com.sammy.omnis.core.init.effects.OmnisEffects;
-import net.minecraft.entity.LivingEntity;
+import com.sammy.omnis.common.items.ITooltipItem;
+import com.sammy.omnis.common.items.basic.ModAxeItem;
 import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.EffectInstance;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 
-public class ModGreataxeItem extends ModAxeItem implements IComboItem
+import java.util.List;
+
+public class ModGreataxeItem extends ModAxeItem implements ITooltipItem
 {
     public final int stunnedAmplifier;
     public ModGreataxeItem(IItemTier material, int damage, float speed, int stunnedAmplifier, Properties properties)
@@ -18,21 +19,14 @@ public class ModGreataxeItem extends ModAxeItem implements IComboItem
     }
 
     @Override
-    public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
+    public void detailedTooltip(List<ITextComponent> tooltip)
     {
-        increaseCombo(attacker, target);
-        return super.hitEntity(stack, target, attacker);
+        tooltip.add(new TranslationTextComponent("omnis.tooltip.stunning_detailed").mergeStyle(TextFormatting.BLUE));
     }
 
     @Override
-    public int maxCombo(LivingEntity attacker, LivingEntity target)
+    public void tooltip(List<ITextComponent> tooltip)
     {
-        return 5;
-    }
-
-    @Override
-    public void triggerCombo(LivingEntity attacker, LivingEntity target)
-    {
-        target.addPotionEffect(new EffectInstance(OmnisEffects.STUNNED.get(), 100, stunnedAmplifier));
+        tooltip.add(new TranslationTextComponent("omnis.tooltip.stunning").mergeStyle(TextFormatting.BLUE));
     }
 }

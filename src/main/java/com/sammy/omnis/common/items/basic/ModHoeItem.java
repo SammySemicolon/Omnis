@@ -1,4 +1,4 @@
-package com.sammy.omnis.common.items;
+package com.sammy.omnis.common.items.basic;
 
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.IItemTier;

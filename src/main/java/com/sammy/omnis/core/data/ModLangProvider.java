@@ -75,6 +75,23 @@ public class ModLangProvider extends LanguageProvider
 
         addTooltip("haunted_armor", "+1 Magic Resistance");
 
+        addTooltip("staggering", "Staggering");
+        addTooltip("staggering_detailed", "This weapon staggers enemies on the first attack\n" +
+                "Staggered enemies deal less damage and have decreased armor");
+
+        addTooltip("stunning", "Stunning");
+        addTooltip("stunning_detailed", "This weapon stuns enemies on the first attack\n" +
+                "Stunned enemies move slower and have decreased range");
+
+        addTooltip("crushing", "Crushing");
+        addTooltip("crushing_detailed", "This weapon deals more damage on the first attack");
+
+        addTooltip("sweeping", "Sweeping");
+        addTooltip("sweeping_detailed", "Every attack from this weapon causes a strong sweep attack");
+
+        addTooltip("outlying", "Outlying");
+        addTooltip("outlying_detailed", "Deals more damage to faraway enemies");
+
         add("item.minecraft.potion.effect.magic_proficiency", "Potion of Magic Proficiency");
         add("item.minecraft.potion.effect.long_magic_proficiency", "Potion of Magic Proficiency");
         add("item.minecraft.potion.effect.strong_magic_proficiency", "Potion of Magic Proficiency");

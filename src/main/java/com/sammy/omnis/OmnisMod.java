@@ -51,14 +51,14 @@ public class OmnisMod
     }
     public void gatherData(GatherDataEvent evt)
     {
-//        BlockTagsProvider provider = new ModBlockTagProvider(evt.getGenerator());
+        BlockTagsProvider provider = new ModBlockTagProvider(evt.getGenerator(), evt.getExistingFileHelper());
         evt.getGenerator().addProvider(new ModBlockStateProvider(evt.getGenerator(), evt.getExistingFileHelper()));
         evt.getGenerator().addProvider(new ModItemModelProvider(evt.getGenerator(), evt.getExistingFileHelper()));
         evt.getGenerator().addProvider(new ModLangProvider(evt.getGenerator()));
-//        evt.getGenerator().addProvider(provider);
+        evt.getGenerator().addProvider(provider);
         evt.getGenerator().addProvider(new ModLootTableProvider(evt.getGenerator()));
         evt.getGenerator().addProvider(new ModLootProvider(evt.getGenerator()));
-//        evt.getGenerator().addProvider(new ModItemTagProvider(evt.getGenerator(),provider));
+        evt.getGenerator().addProvider(new ModItemTagProvider(evt.getGenerator(),provider, evt.getExistingFileHelper()));
         evt.getGenerator().addProvider(new ModRecipeProvider(evt.getGenerator()));
     }
 }

@@ -6,6 +6,8 @@ import net.minecraft.item.IItemTier;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.List;
 
@@ -18,12 +20,14 @@ public class ModBroadswordItem extends ModSwordItem implements ITooltipItem
         this.extraDamage = extraDamage;
     }
 
+    @OnlyIn(Dist.CLIENT)
     @Override
     public void detailedTooltip(List<ITextComponent> tooltip)
     {
         tooltip.add(new TranslationTextComponent("omnis.tooltip.crushing_detailed").mergeStyle(TextFormatting.BLUE));
     }
 
+    @OnlyIn(Dist.CLIENT)
     @Override
     public void tooltip(List<ITextComponent> tooltip)
     {

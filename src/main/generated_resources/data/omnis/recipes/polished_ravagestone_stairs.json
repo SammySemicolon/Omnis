@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "omnis:polished_ravagestone"
+    }
+  },
+  "result": {
+    "item": "omnis:polished_ravagestone_stairs",
+    "count": 4
+  }
+}

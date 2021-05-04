@@ -17,6 +17,8 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.List;
 
@@ -50,12 +52,14 @@ public class ModScytheItem extends ModCombatItem implements ITooltipItem
 
         return super.hitEntity(stack, target, attacker);
     }
+    @OnlyIn(Dist.CLIENT)
     @Override
     public void detailedTooltip(List<ITextComponent> tooltip)
     {
         tooltip.add(new TranslationTextComponent("omnis.tooltip.sweeping_detailed").mergeStyle(TextFormatting.BLUE));
     }
 
+    @OnlyIn(Dist.CLIENT)
     @Override
     public void tooltip(List<ITextComponent> tooltip)
     {

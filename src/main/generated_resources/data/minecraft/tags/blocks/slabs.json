@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "omnis:ravagestone_slab",
+    "omnis:polished_ravagestone_slab",
+    "omnis:ravagestone_bricks_slab",
+    "omnis:ravagestone_tiles_slab",
+    "omnis:gloomstone_slab",
+    "omnis:polished_gloomstone_slab",
+    "omnis:gloomstone_bricks_slab",
+    "omnis:gloomstone_tiles_slab"
+  ]
+}

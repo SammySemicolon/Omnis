@@ -1,9 +1,11 @@
 package com.sammy.omnis.core.data;
 
+import com.sammy.omnis.OmnisMod;
 import net.minecraft.block.*;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.tags.BlockTags;
+import net.minecraftforge.common.data.ExistingFileHelper;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
@@ -17,9 +19,9 @@ import static net.minecraftforge.common.Tags.Blocks.DIRT;
 
 public class ModBlockTagProvider extends BlockTagsProvider
 {
-    public ModBlockTagProvider(DataGenerator generatorIn)
+    public ModBlockTagProvider(DataGenerator generatorIn, ExistingFileHelper existingFileHelper)
     {
-        super(generatorIn);
+        super(generatorIn, OmnisMod.MODID, existingFileHelper);
     }
 
     @Override

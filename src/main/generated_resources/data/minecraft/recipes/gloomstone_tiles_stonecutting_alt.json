@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "omnis:gloomstone_bricks"
+  },
+  "result": "omnis:gloomstone_tiles",
+  "count": 1
+}

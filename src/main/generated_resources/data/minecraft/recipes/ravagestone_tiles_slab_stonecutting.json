@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "omnis:ravagestone_tiles"
+  },
+  "result": "omnis:ravagestone_tiles_slab",
+  "count": 2
+}

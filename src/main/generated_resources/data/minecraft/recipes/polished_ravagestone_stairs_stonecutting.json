@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "omnis:polished_ravagestone"
+  },
+  "result": "omnis:polished_ravagestone_stairs",
+  "count": 1
+}

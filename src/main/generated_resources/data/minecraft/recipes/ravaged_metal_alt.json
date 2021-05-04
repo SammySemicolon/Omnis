@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "ravaged_metal",
+  "ingredients": [
+    {
+      "item": "omnis:ravaged_metal_block"
+    }
+  ],
+  "result": {
+    "item": "omnis:ravaged_metal",
+    "count": 9
+  }
+}

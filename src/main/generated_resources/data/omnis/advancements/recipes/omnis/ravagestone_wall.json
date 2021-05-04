@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "omnis:ravagestone_wall"
+    ]
+  },
+  "criteria": {
+    "has_ravagestone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "omnis:ravagestone"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "omnis:ravagestone_wall"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ravagestone",
+      "has_the_recipe"
+    ]
+  ]
+}

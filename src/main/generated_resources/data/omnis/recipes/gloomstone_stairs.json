@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "omnis:gloomstone"
+    }
+  },
+  "result": {
+    "item": "omnis:gloomstone_stairs",
+    "count": 4
+  }
+}

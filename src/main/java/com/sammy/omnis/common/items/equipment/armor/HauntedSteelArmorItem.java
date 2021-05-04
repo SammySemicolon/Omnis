@@ -55,12 +55,14 @@ public class HauntedSteelArmorItem extends ArmorItem implements ITooltipItem
         return "omnis:textures/armor/haunted_armor.png";
     }
 
+    @OnlyIn(Dist.CLIENT)
     @Override
     public boolean noDetailed()
     {
         return true;
     }
 
+    @OnlyIn(Dist.CLIENT)
     @Override
     public void tooltip(List<ITextComponent> tooltip)
     {

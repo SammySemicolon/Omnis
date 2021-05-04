@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "omnis:ravagestone_wall",
+    "omnis:ravagestone_bricks_wall",
+    "omnis:ravagestone_tiles_wall",
+    "omnis:gloomstone_wall",
+    "omnis:gloomstone_bricks_wall",
+    "omnis:gloomstone_tiles_wall"
+  ]
+}

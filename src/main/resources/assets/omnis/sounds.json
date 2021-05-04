@@ -4,6 +4,16 @@
   "haunted_steel_place": { "sounds":["omnis:haunted_steel/break1","omnis:haunted_steel/break2","omnis:haunted_steel/break3","omnis:haunted_steel/break4"], "subtitle": "omnis.subtitle.haunted_steel_place" },
   "haunted_steel_hit": { "sounds":["omnis:haunted_steel/hit1","omnis:haunted_steel/hit2","omnis:haunted_steel/hit3","omnis:haunted_steel/hit4", "block/netherite/step1","block/netherite/step2","block/netherite/step3","block/netherite/step4","block/netherite/step5","block/netherite/step6"], "subtitle": "omnis.subtitle.haunted_steel_hit" },
 
+  "gloomstone_break": { "sounds":["omnis:gloomstone/break1","omnis:gloomstone/break2","omnis:gloomstone/break3","omnis:gloomstone/break4","omnis:gloomstone/break5","omnis:gloomstone/break6"], "subtitle": "omnis.subtitle.gloomstone_break" },
+  "gloomstone_step": { "sounds":["omnis:gloomstone/step1","omnis:gloomstone/step2","omnis:gloomstone/step3","omnis:gloomstone/step4"], "subtitle": "omnis.subtitle.gloomstone_step" },
+  "gloomstone_place": { "sounds":["omnis:gloomstone/break1","omnis:gloomstone/break2","omnis:gloomstone/break3","omnis:gloomstone/break4","omnis:gloomstone/break5","omnis:gloomstone/break6"], "subtitle": "omnis.subtitle.gloomstone_place" },
+  "gloomstone_hit": { "sounds":["omnis:gloomstone/hit1","omnis:gloomstone/hit2","omnis:gloomstone/step3","omnis:gloomstone/step4"], "subtitle": "omnis.subtitle.gloomstone_hit" },
+
+  "ravagestone_break": { "sounds":["omnis:gloomstone/break1","omnis:gloomstone/break2","omnis:gloomstone/break3","omnis:gloomstone/break4","omnis:gloomstone/break5","omnis:gloomstone/break6"], "subtitle": "omnis.subtitle.ravagestone_break" },
+  "ravagestone_step": { "sounds":["omnis:gloomstone/step1","omnis:gloomstone/step2","omnis:gloomstone/step3","omnis:gloomstone/step4"], "subtitle": "omnis.subtitle.ravagestone_step" },
+  "ravagestone_place": { "sounds":["omnis:gloomstone/break1","omnis:gloomstone/break2","omnis:gloomstone/break3","omnis:gloomstone/break4","omnis:gloomstone/break5","omnis:gloomstone/break6"], "subtitle": "omnis.subtitle.ravagestone_place" },
+  "ravagestone_hit": { "sounds":["omnis:gloomstone/step1","omnis:gloomstone/step2","omnis:gloomstone/step3","omnis:gloomstone/step4"], "subtitle": "omnis.subtitle.ravagestone_hit" },
+
   "holy_equip": { "sounds":["omnis:equip_holy"], "subtitle": "omnis.subtitle.holy_equip" },
   "sinister_equip": { "sounds":["omnis:equip_sinister"], "subtitle": "omnis.subtitle.sinister_equip" }
 }

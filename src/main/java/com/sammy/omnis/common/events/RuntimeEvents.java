@@ -46,27 +46,6 @@ import static com.sammy.omnis.network.packets.ParticlePacket.typeEnum.vindicator
 public class RuntimeEvents
 {
     @SubscribeEvent
-    public static void tooltipsEvent(ItemTooltipEvent event)
-    {
-        if (event.getItemStack().getItem() instanceof ITooltipItem)
-        {
-            ITooltipItem tooltipItem = (ITooltipItem) event.getItemStack().getItem();
-            if (tooltipItem.noDetailed())
-            {
-                tooltipItem.tooltip(event.getToolTip());
-                return;
-            }
-            if (Screen.hasShiftDown())
-            {
-                tooltipItem.detailedTooltip(event.getToolTip());
-            }
-            else
-            {
-                tooltipItem.tooltip(event.getToolTip());
-            }
-        }
-    }
-    @SubscribeEvent
     public static void triggerOnHitEffects(LivingHurtEvent event)
     {
         if (event.getSource().getTrueSource() instanceof PlayerEntity)
@@ -175,7 +154,7 @@ public class RuntimeEvents
             if (event.getEntity() instanceof VexEntity)
             {
                 VexEntity vexEntity = (VexEntity) event.getEntity();
-                if (event.getWorld().rand.nextFloat() < 0.1f)
+                //if (event.getWorld().rand.nextFloat() < 0.1f)
                 {
                     vexEntity.setItemStackToSlot(EquipmentSlotType.MAINHAND, OmnisItems.SPELL_BLADE.get().getDefaultInstance());
                     vexEntity.setDropChance(EquipmentSlotType.MAINHAND, 0.8F);
@@ -183,11 +162,12 @@ public class RuntimeEvents
             }
             if (event.getEntity() instanceof VindicatorEntity)
             {
-                VindicatorEntity vexEntity = (VindicatorEntity) event.getEntity();
-                if (event.getWorld().rand.nextFloat() < 0.1f)
+                VindicatorEntity vindicatorEntity = (VindicatorEntity) event.getEntity();
+                //if (event.getWorld().rand.nextFloat() < 0.1f)
                 {
-                    vexEntity.setItemStackToSlot(EquipmentSlotType.MAINHAND, OmnisItems.VINDICATOR_AXE.get().getDefaultInstance());
-                    vexEntity.setDropChance(EquipmentSlotType.MAINHAND, 0.8F);
+                    vindicatorEntity.setItemStackToSlot(EquipmentSlotType.MAINHAND, OmnisItems.VINDICATOR_AXE.get().getDefaultInstance());
+                    vindicatorEntity.setDropChance(EquipmentSlotType.MAINHAND, 0.8F);
+                    vindicatorEntity.setAggroed(true);
                 }
             }
         }

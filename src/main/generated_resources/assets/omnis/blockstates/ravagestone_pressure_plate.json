@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "omnis:block/ravagestone_pressure_plate_up"
+    },
+    "powered=true": {
+      "model": "omnis:block/ravagestone_pressure_plate_down"
+    }
+  }
+}

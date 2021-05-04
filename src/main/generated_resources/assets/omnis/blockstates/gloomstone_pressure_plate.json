@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "omnis:block/gloomstone_pressure_plate_up"
+    },
+    "powered=true": {
+      "model": "omnis:block/gloomstone_pressure_plate_down"
+    }
+  }
+}

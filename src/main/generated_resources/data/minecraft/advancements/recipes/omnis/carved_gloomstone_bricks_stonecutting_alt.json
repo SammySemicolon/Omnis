@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:carved_gloomstone_bricks_stonecutting_alt"
+    ]
+  },
+  "criteria": {
+    "has_gloomstone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "omnis:gloomstone"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:carved_gloomstone_bricks_stonecutting_alt"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_gloomstone",
+      "has_the_recipe"
+    ]
+  ]
+}

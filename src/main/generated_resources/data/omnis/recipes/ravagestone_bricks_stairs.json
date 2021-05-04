@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "omnis:ravagestone_bricks"
+    }
+  },
+  "result": {
+    "item": "omnis:ravagestone_bricks_stairs",
+    "count": 4
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "omnis:polished_gloomstone"
+    }
+  },
+  "result": {
+    "item": "omnis:polished_gloomstone_slab",
+    "count": 6
+  }
+}

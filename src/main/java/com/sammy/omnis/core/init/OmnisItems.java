@@ -32,10 +32,12 @@ public class OmnisItems
     }
     public static final RegistryObject<Item> RAVAGED_SCRAP = ITEMS.register("ravaged_scrap", () -> new Item(DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> RAVAGED_METAL = ITEMS.register("ravaged_metal", () -> new Item(DEFAULT_PROPERTIES()));
+    public static final RegistryObject<Item> RAVAGED_METAL_BLOCK = ITEMS.register("ravaged_metal_block", () -> new BlockItem(OmnisBlocks.RAVAGED_METAL_BLOCK.get(), DEFAULT_PROPERTIES()));
 
     public static final RegistryObject<Item> TEAR_OF_VEX = ITEMS.register("tear_of_vex", () -> new Item(DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> VEXWART = ITEMS.register("vexwart", () -> new BlockItem(OmnisBlocks.VEXWART.get(), DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> VEXWART_BLOCK = ITEMS.register("vexwart_block", () -> new BlockItem(OmnisBlocks.VEXWART_BLOCK.get(), DEFAULT_PROPERTIES()));
+
     public static final RegistryObject<Item> HAUNTED_STEEL_INGOT = ITEMS.register("haunted_steel_ingot", () -> new Item(DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> HAUNTED_STEEL_BLOCK = ITEMS.register("haunted_steel_block", () -> new BlockItem(OmnisBlocks.HAUNTED_STEEL_BLOCK.get(), DEFAULT_PROPERTIES()));
 
@@ -85,6 +87,11 @@ public class OmnisItems
     public static final RegistryObject<Item> RAVAGESTONE_BRICKS_STAIRS = ITEMS.register("ravagestone_bricks_stairs", () -> new BlockItem(OmnisBlocks.RAVAGESTONE_BRICKS_STAIRS.get(), DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> RAVAGESTONE_TILES_STAIRS = ITEMS.register("ravagestone_tiles_stairs", () -> new BlockItem(OmnisBlocks.RAVAGESTONE_TILES_STAIRS.get(), DEFAULT_PROPERTIES()));
 
+    public static final RegistryObject<Item> RAVAGESTONE_PRESSURE_PLATE = ITEMS.register("ravagestone_pressure_plate", () -> new BlockItem(OmnisBlocks.RAVAGESTONE_PRESSURE_PLATE.get(), DEFAULT_PROPERTIES()));
+    public static final RegistryObject<Item> RAVAGESTONE_WALL = ITEMS.register("ravagestone_wall", () -> new BlockItem(OmnisBlocks.RAVAGESTONE_WALL.get(), DEFAULT_PROPERTIES()));
+    public static final RegistryObject<Item> RAVAGESTONE_BRICKS_WALL = ITEMS.register("ravagestone_bricks_wall", () -> new BlockItem(OmnisBlocks.RAVAGESTONE_BRICKS_WALL.get(), DEFAULT_PROPERTIES()));
+    public static final RegistryObject<Item> RAVAGESTONE_TILES_WALL = ITEMS.register("ravagestone_tiles_wall", () -> new BlockItem(OmnisBlocks.RAVAGESTONE_TILES_WALL.get(), DEFAULT_PROPERTIES()));
+
     public static final RegistryObject<Item> GLOOMSTONE = ITEMS.register("gloomstone", () -> new BlockItem(OmnisBlocks.GLOOMSTONE.get(), DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> POLISHED_GLOOMSTONE = ITEMS.register("polished_gloomstone", () -> new BlockItem(OmnisBlocks.POLISHED_GLOOMSTONE.get(), DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> GLOOMSTONE_BRICKS = ITEMS.register("gloomstone_bricks", () -> new BlockItem(OmnisBlocks.GLOOMSTONE_BRICKS.get(), DEFAULT_PROPERTIES()));
@@ -100,5 +107,10 @@ public class OmnisItems
     public static final RegistryObject<Item> POLISHED_GLOOMSTONE_STAIRS = ITEMS.register("polished_gloomstone_stairs", () -> new BlockItem(OmnisBlocks.POLISHED_GLOOMSTONE_STAIRS.get(), DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> GLOOMSTONE_BRICKS_STAIRS = ITEMS.register("gloomstone_bricks_stairs", () -> new BlockItem(OmnisBlocks.GLOOMSTONE_BRICKS_STAIRS.get(), DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> GLOOMSTONE_TILES_STAIRS = ITEMS.register("gloomstone_tiles_stairs", () -> new BlockItem(OmnisBlocks.GLOOMSTONE_TILES_STAIRS.get(), DEFAULT_PROPERTIES()));
+
+    public static final RegistryObject<Item> GLOOMSTONE_PRESSURE_PLATE = ITEMS.register("gloomstone_pressure_plate", () -> new BlockItem(OmnisBlocks.GLOOMSTONE_PRESSURE_PLATE.get(), DEFAULT_PROPERTIES()));
+    public static final RegistryObject<Item> GLOOMSTONE_WALL = ITEMS.register("gloomstone_wall", () -> new BlockItem(OmnisBlocks.GLOOMSTONE_WALL.get(), DEFAULT_PROPERTIES()));
+    public static final RegistryObject<Item> GLOOMSTONE_BRICKS_WALL = ITEMS.register("gloomstone_bricks_wall", () -> new BlockItem(OmnisBlocks.GLOOMSTONE_BRICKS_WALL.get(), DEFAULT_PROPERTIES()));
+    public static final RegistryObject<Item> GLOOMSTONE_TILES_WALL = ITEMS.register("gloomstone_tiles_wall", () -> new BlockItem(OmnisBlocks.GLOOMSTONE_TILES_WALL.get(), DEFAULT_PROPERTIES()));
 
 }

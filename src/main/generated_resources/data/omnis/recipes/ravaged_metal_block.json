@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "ravaged_metal",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "omnis:ravaged_metal"
+    }
+  },
+  "result": {
+    "item": "omnis:ravaged_metal_block"
+  }
+}

@@ -1,5 +1,6 @@
 package com.sammy.omnis.core.data;
 
+import com.sammy.omnis.OmnisMod;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.ItemTagsProvider;
@@ -7,15 +8,16 @@ import net.minecraft.item.Item;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
+import net.minecraftforge.common.data.ExistingFileHelper;
 
 import static com.sammy.omnis.OmnisHelper.prefix;
 
 
 public class ModItemTagProvider extends ItemTagsProvider
 {
-    public ModItemTagProvider(DataGenerator dataGenerator, BlockTagsProvider blockTagProvider)
+    public ModItemTagProvider(DataGenerator dataGenerator, BlockTagsProvider blockTagProvider, ExistingFileHelper existingFileHelper)
     {
-        super(dataGenerator, blockTagProvider);
+        super(dataGenerator, blockTagProvider, OmnisMod.MODID, existingFileHelper);
     }
     
     @Override

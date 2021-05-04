@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "omnis:polished_gloomstone"
+  },
+  "result": "omnis:polished_gloomstone_stairs",
+  "count": 1
+}

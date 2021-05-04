@@ -1,5 +1,6 @@
 package com.sammy.omnis.core.data;
 
+import com.sammy.omnis.common.items.ModCombatItem;
 import net.minecraft.block.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.*;
@@ -44,6 +45,7 @@ public class ModItemModelProvider extends net.minecraftforge.client.model.genera
         
         takeAll(items, i -> i.get() instanceof BlockItem).forEach(this::blockItem);
         takeAll(items, i -> i.get() instanceof ToolItem).forEach(this::handheldItem);
+        takeAll(items, i -> i.get() instanceof ModCombatItem).forEach(this::handheldItem);
         takeAll(items, i -> i.get() instanceof SwordItem).forEach(this::handheldItem);
         takeAll(items, i -> i.get() instanceof BowItem).forEach(this::handheldItem);
         items.forEach(this::generatedItem);

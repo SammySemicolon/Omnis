@@ -75,6 +75,15 @@ public class ModLangProvider extends LanguageProvider
 
         addTooltip("haunted_armor", "+1 Magic Resistance");
 
+        addTooltip("amplified_arcana", "Amplified Arcana");
+        addTooltip("amplified_arcana_detailed", "Increases magic damage by a flat amount");
+
+        addTooltip("ravage", "Ravage");
+        addTooltip("ravage_detailed", "Greatly increased damage against illagers and players");
+
+        addTooltip("arcane", "Arcane");
+        addTooltip("arcane_detailed", "Deals both magic and physical damage with each swing");
+
         addTooltip("staggering", "Staggering");
         addTooltip("staggering_detailed", "This weapon staggers enemies on the first attack\n" +
                 "Staggered enemies deal less damage and have decreased armor");

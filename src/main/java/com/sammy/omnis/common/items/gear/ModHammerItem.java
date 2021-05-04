@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ModHammerItem extends ModCombatItem implements ITooltipItem
 {
-    public final int staggeredAmplifier ;
+    public final int staggeredAmplifier  ;
     public ModHammerItem(IItemTier material, float damage, float speed, int staggeredAmplifier, Properties properties)
     {
         super(material, damage + 6, speed - 3.2f, properties);

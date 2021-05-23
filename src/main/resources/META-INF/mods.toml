@@ -21,13 +21,13 @@ The main goal of the mod is to add more 'trident-alike' items to seek out; power
 [[dependencies.omnis]]
 modId="forge"
 mandatory=true
-versionRange="[34.0.5,)"
+versionRange="[36.1,)"
 ordering="NONE"
 side="BOTH"
 
 [[dependencies.omnis]]
 modId="curios"
 mandatory=true
-versionRange="[1.16.3-4.0.1.0,)"
+versionRange="[1.16.5-4.0.5.1,)"
 ordering="AFTER"
 side="BOTH"

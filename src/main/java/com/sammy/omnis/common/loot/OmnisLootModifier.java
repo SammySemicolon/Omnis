@@ -59,7 +59,7 @@ public class OmnisLootModifier extends LootModifier
     @Override
     protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context)
     {
-        if (context.getRandom().nextFloat() < itemChance)
+        if (context.getRandom().nextFloat() < itemChance || itemChance == 1)
         {
             int count = itemCount + context.getRandom().nextInt(extraItemCount+1);
             generatedLoot.add(new ItemStack(item, count));

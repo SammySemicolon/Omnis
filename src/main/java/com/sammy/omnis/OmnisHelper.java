@@ -1,8 +1,15 @@
 package com.sammy.omnis;
 
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import org.apache.commons.lang3.tuple.ImmutableTriple;
+import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
+import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
+import javax.annotation.Nonnull;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -88,5 +95,42 @@ public class OmnisHelper
             return Collections.emptyList();
         }
         return ret;
+    }
+
+    @Nonnull
+    public static Optional<ImmutableTriple<String, Integer, ItemStack>> findCosmeticCurio(Predicate<ItemStack> filter, @Nonnull final LivingEntity livingEntity)
+    {
+        ImmutableTriple<String, Integer, ItemStack> result = CuriosApi.getCuriosHelper().getCuriosHandler(livingEntity).map(handler -> {
+            Map<String, ICurioStacksHandler> curios = handler.getCurios();
+
+            for (String id : curios.keySet())
+            {
+                ICurioStacksHandler stacksHandler = curios.get(id);
+                IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                IDynamicStackHandler cosmeticStackHelper = stacksHandler.getCosmeticStacks();
+
+                for (int i = 0; i < stackHandler.getSlots(); i++)
+                {
+                    ItemStack stack = stackHandler.getStackInSlot(i);
+
+                    if (!stack.isEmpty() && filter.test(stack))
+                    {
+                        return new ImmutableTriple<>(id, i, stack);
+                    }
+                }
+                for (int i = 0; i < cosmeticStackHelper.getSlots(); i++)
+                {
+                    ItemStack stack = cosmeticStackHelper.getStackInSlot(i);
+
+                    if (!stack.isEmpty() && filter.test(stack))
+                    {
+                        return new ImmutableTriple<>(id, i, stack);
+                    }
+                }
+            }
+            return new ImmutableTriple<>("", 0, ItemStack.EMPTY);
+        }).orElse(new ImmutableTriple<>("", 0, ItemStack.EMPTY));
+
+        return result.getLeft().isEmpty() ? Optional.empty() : Optional.of(result);
     }
 }

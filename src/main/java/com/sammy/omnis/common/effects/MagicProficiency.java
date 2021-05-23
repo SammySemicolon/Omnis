@@ -5,6 +5,7 @@ import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectType;
+import net.minecraftforge.common.util.ForgeSoundType;
 
 public class MagicProficiency extends Effect
 {
@@ -17,5 +18,6 @@ public class MagicProficiency extends Effect
     @Override
     public void performEffect(LivingEntity entityLivingBaseIn, int amplifier)
     {
+
     }
 }

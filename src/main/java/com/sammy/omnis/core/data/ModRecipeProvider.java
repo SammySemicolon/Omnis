@@ -105,6 +105,7 @@ public class ModRecipeProvider extends RecipeProvider
         SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(OmnisItems.GLOOMSTONE_TILES.get()), OmnisItems.GLOOMSTONE_TILES_STAIRS.get()).addCriterion("has_gloomstone", hasItem(OmnisItems.GLOOMSTONE.get())).build(consumer, "gloomstone_tiles_stairs_stonecutting");
         SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(OmnisItems.GLOOMSTONE_TILES.get()), OmnisItems.GLOOMSTONE_TILES_WALL.get()).addCriterion("has_gloomstone", hasItem(OmnisItems.GLOOMSTONE.get())).build(consumer, "gloomstone_tiles_wall_stonecutting");
 
+        shapedPressurePlate(consumer, OmnisItems.GLOOMSTONE_PRESSURE_PLATE.get(), OmnisItems.GLOOMSTONE.get());
         shapedRecipe(OmnisItems.CARVED_GLOOMSTONE.get()).key('#', OmnisItems.GLOOMSTONE_SLAB.get()).patternLine("#").patternLine("#").addCriterion("has_gloomstone", hasItem(OmnisItems.GLOOMSTONE.get())).build(consumer);
         SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(OmnisItems.GLOOMSTONE.get()), OmnisItems.GLOOMSTONE_BRICKS.get()).addCriterion("has_gloomstone", hasItem(OmnisItems.GLOOMSTONE.get())).build(consumer, "gloomstone_bricks_stonecutting");
         SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(OmnisItems.GLOOMSTONE.get()), OmnisItems.POLISHED_GLOOMSTONE.get()).addCriterion("has_gloomstone", hasItem(OmnisItems.GLOOMSTONE.get())).build(consumer, "polished_gloomstone_stonecutting");
@@ -144,6 +145,7 @@ public class ModRecipeProvider extends RecipeProvider
         SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(OmnisItems.RAVAGESTONE_TILES.get()), OmnisItems.RAVAGESTONE_TILES_STAIRS.get()).addCriterion("has_ravagestone", hasItem(OmnisItems.RAVAGESTONE.get())).build(consumer, "ravagestone_tiles_stairs_stonecutting");
         SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(OmnisItems.RAVAGESTONE_TILES.get()), OmnisItems.RAVAGESTONE_TILES_WALL.get()).addCriterion("has_ravagestone", hasItem(OmnisItems.RAVAGESTONE.get())).build(consumer, "ravagestone_tiles_wall_stonecutting");
 
+        shapedPressurePlate(consumer, OmnisItems.RAVAGESTONE_PRESSURE_PLATE.get(), OmnisItems.RAVAGESTONE.get());
         shapedRecipe(OmnisItems.CARVED_RAVAGESTONE.get()).key('#', OmnisItems.RAVAGESTONE_SLAB.get()).patternLine("#").patternLine("#").addCriterion("has_ravagestone", hasItem(OmnisItems.RAVAGESTONE.get())).build(consumer);
         SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(OmnisItems.RAVAGESTONE.get()), OmnisItems.RAVAGESTONE_BRICKS.get()).addCriterion("has_ravagestone", hasItem(OmnisItems.RAVAGESTONE.get())).build(consumer, "ravagestone_bricks_stonecutting");
         SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(OmnisItems.RAVAGESTONE.get()), OmnisItems.POLISHED_RAVAGESTONE.get()).addCriterion("has_ravagestone", hasItem(OmnisItems.RAVAGESTONE.get())).build(consumer, "polished_ravagestone_stonecutting");

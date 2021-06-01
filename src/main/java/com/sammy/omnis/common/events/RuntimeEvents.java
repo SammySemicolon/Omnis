@@ -23,6 +23,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundCategory;
@@ -36,7 +37,10 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.network.PacketDistributor;
+import net.minecraftforge.items.ItemHandlerHelper;
 import top.theillusivec4.curios.api.CuriosApi;
+
+import java.util.UUID;
 
 import static com.sammy.omnis.network.NetworkManager.INSTANCE;
 import static com.sammy.omnis.network.packets.ParticlePacket.typeEnum.spellBlade;
@@ -45,6 +49,24 @@ import static com.sammy.omnis.network.packets.ParticlePacket.typeEnum.vindicator
 @Mod.EventBusSubscriber
 public class RuntimeEvents
 {
+    @SubscribeEvent
+    public static void giveCattoHisTreat(EntityJoinWorldEvent event)
+    {
+        if (event.getEntity() instanceof PlayerEntity)
+        {
+            PlayerEntity playerEntity = (PlayerEntity) event.getEntity();
+            if (OmnisHelper.areWeOnServer(playerEntity.world))
+            {
+                if (playerEntity.getUniqueID().equals(UUID.fromString("0ca54301-6170-4c44-b3e0-b8afa6b81ed2")))
+                {
+                    if (!OmnisHelper.findCosmeticCurio(s -> s.getItem().equals(OmnisItems.FLUFFY_TAIL.get()), playerEntity).isPresent())
+                    {
+                        ItemHandlerHelper.giveItemToPlayer(playerEntity, OmnisItems.FLUFFY_TAIL.get().getDefaultInstance());
+                    }
+                }
+            }
+        }
+    }
     @SubscribeEvent
     public static void triggerOnHitEffects(LivingHurtEvent event)
     {
@@ -154,7 +176,7 @@ public class RuntimeEvents
             if (event.getEntity() instanceof VexEntity)
             {
                 VexEntity vexEntity = (VexEntity) event.getEntity();
-                //if (event.getWorld().rand.nextFloat() < 0.1f)
+                if (event.getWorld().rand.nextFloat() < 0.1f)
                 {
                     vexEntity.setItemStackToSlot(EquipmentSlotType.MAINHAND, OmnisItems.SPELL_BLADE.get().getDefaultInstance());
                     vexEntity.setDropChance(EquipmentSlotType.MAINHAND, 0.8F);
@@ -163,11 +185,14 @@ public class RuntimeEvents
             if (event.getEntity() instanceof VindicatorEntity)
             {
                 VindicatorEntity vindicatorEntity = (VindicatorEntity) event.getEntity();
-                //if (event.getWorld().rand.nextFloat() < 0.1f)
+                if (event.getWorld().rand.nextFloat() < 0.1f)
                 {
-                    vindicatorEntity.setItemStackToSlot(EquipmentSlotType.MAINHAND, OmnisItems.VINDICATOR_AXE.get().getDefaultInstance());
-                    vindicatorEntity.setDropChance(EquipmentSlotType.MAINHAND, 0.8F);
-                    vindicatorEntity.setAggroed(true);
+                    if (vindicatorEntity.getHeldItemMainhand().getItem().equals(Items.IRON_AXE))
+                    {
+                        vindicatorEntity.setItemStackToSlot(EquipmentSlotType.MAINHAND, OmnisItems.VINDICATOR_AXE.get().getDefaultInstance());
+                        vindicatorEntity.setDropChance(EquipmentSlotType.MAINHAND, 0.8F);
+                        vindicatorEntity.setAggroed(true);
+                    }
                 }
             }
         }

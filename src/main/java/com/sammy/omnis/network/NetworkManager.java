@@ -22,6 +22,5 @@ public class NetworkManager
     {
         int index = 0;
         INSTANCE.registerMessage(index++, ParticlePacket.class, ParticlePacket::encode, ParticlePacket::decode, ParticlePacket::whenThisPacketIsReceived);
-
     }
 }

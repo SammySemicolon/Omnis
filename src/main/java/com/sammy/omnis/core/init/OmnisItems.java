@@ -3,6 +3,7 @@ package com.sammy.omnis.core.init;
 import com.sammy.omnis.common.items.*;
 import com.sammy.omnis.common.items.equipment.armor.HauntedSteelArmorItem;
 import com.sammy.omnis.common.items.equipment.armor.RavagedMetalArmorItem;
+import com.sammy.omnis.common.items.equipment.curios.CurioFluffyTail;
 import com.sammy.omnis.common.items.gear.*;
 import com.sammy.omnis.common.items.loot.CurioEvokerCharm;
 import com.sammy.omnis.common.items.loot.SpellBladeItem;
@@ -29,6 +30,10 @@ public class OmnisItems
     public static Item.Properties GEAR_PROPERTIES()
     {
         return new Item.Properties().group(OmnisTab.INSTANCE).maxStackSize(1);
+    }
+    public static Item.Properties CREATIVE_PROPERTIES()
+    {
+        return new Item.Properties().maxStackSize(1);
     }
     public static final RegistryObject<Item> RAVAGED_SCRAP = ITEMS.register("ravaged_scrap", () -> new Item(DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> RAVAGED_METAL = ITEMS.register("ravaged_metal", () -> new Item(DEFAULT_PROPERTIES()));
@@ -112,5 +117,7 @@ public class OmnisItems
     public static final RegistryObject<Item> GLOOMSTONE_WALL = ITEMS.register("gloomstone_wall", () -> new BlockItem(OmnisBlocks.GLOOMSTONE_WALL.get(), DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> GLOOMSTONE_BRICKS_WALL = ITEMS.register("gloomstone_bricks_wall", () -> new BlockItem(OmnisBlocks.GLOOMSTONE_BRICKS_WALL.get(), DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> GLOOMSTONE_TILES_WALL = ITEMS.register("gloomstone_tiles_wall", () -> new BlockItem(OmnisBlocks.GLOOMSTONE_TILES_WALL.get(), DEFAULT_PROPERTIES()));
+
+    public static final RegistryObject<Item> FLUFFY_TAIL = ITEMS.register("fluffy_tail", () -> new CurioFluffyTail(CREATIVE_PROPERTIES()));
 
 }

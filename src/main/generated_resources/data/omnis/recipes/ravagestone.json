@@ -31,6 +31,7 @@
     }
   ],
   "result": {
-    "item": "omnis:ravagestone"
+    "item": "omnis:ravagestone",
+    "count": 8
   }
 }

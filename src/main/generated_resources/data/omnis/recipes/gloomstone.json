@@ -30,6 +30,7 @@
     }
   ],
   "result": {
-    "item": "omnis:gloomstone"
+    "item": "omnis:gloomstone",
+    "count": 8
   }
 }

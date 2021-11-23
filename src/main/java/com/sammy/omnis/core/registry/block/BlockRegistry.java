@@ -23,7 +23,7 @@ public class BlockRegistry
     }
     public static AbstractBlock.Properties RAVAGED_METAL_BLOCK_PROPERTIES()
     {
-        return AbstractBlock.Properties.create(Material.IRON, MaterialColor.BLUE).sound(SoundType.NETHERITE).hardnessAndResistance(25f,3600f).setRequiresTool();
+        return AbstractBlock.Properties.create(Material.IRON, MaterialColor.BLUE).sound(SoundRegistry.RAVAGED_METAL).hardnessAndResistance(25f,3600f).setRequiresTool();
     }
     public static AbstractBlock.Properties VEXWART_PROPERTIES()
     {

@@ -1,18 +1,23 @@
 {
-  "haunted_steel_break": { "sounds":["omnis:haunted_steel/break1","omnis:haunted_steel/break2","omnis:haunted_steel/break3","omnis:haunted_steel/break4"], "subtitle": "omnis.subtitle.haunted_steel_break" },
-  "haunted_steel_step": { "sounds":["omnis:haunted_steel/hit1","omnis:haunted_steel/hit2","omnis:haunted_steel/hit3","omnis:haunted_steel/hit4", "block/netherite/step1","block/netherite/step2","block/netherite/step3","block/netherite/step4","block/netherite/step5","block/netherite/step6"], "subtitle": "omnis.subtitle.haunted_steel_step" },
-  "haunted_steel_place": { "sounds":["omnis:haunted_steel/break1","omnis:haunted_steel/break2","omnis:haunted_steel/break3","omnis:haunted_steel/break4"], "subtitle": "omnis.subtitle.haunted_steel_place" },
-  "haunted_steel_hit": { "sounds":["omnis:haunted_steel/hit1","omnis:haunted_steel/hit2","omnis:haunted_steel/hit3","omnis:haunted_steel/hit4", "block/netherite/step1","block/netherite/step2","block/netherite/step3","block/netherite/step4","block/netherite/step5","block/netherite/step6"], "subtitle": "omnis.subtitle.haunted_steel_hit" },
+  "haunted_steel_break": { "sounds":["omnis:magic_metal/break1","omnis:magic_metal/break2","omnis:magic_metal/break3","omnis:magic_metal/break4"], "subtitle": "omnis.subtitle.haunted_steel_break" },
+  "haunted_steel_step": { "sounds":["omnis:magic_metal/step1","omnis:magic_metal/step2","omnis:magic_metal/step3","omnis:magic_metal/step4", "block/netherite/step1","block/netherite/step2","block/netherite/step3","block/netherite/step4","block/netherite/step5","block/netherite/step6"], "subtitle": "omnis.subtitle.haunted_steel_step" },
+  "haunted_steel_place": { "sounds":["omnis:magic_metal/break1","omnis:magic_metal/break2","omnis:magic_metal/break3","omnis:magic_metal/break4"], "subtitle": "omnis.subtitle.haunted_steel_place" },
+  "haunted_steel_hit": { "sounds":["omnis:magic_metal/step1","omnis:magic_metal/step2","omnis:magic_metal/step3","omnis:magic_metal/step4", "block/netherite/step1","block/netherite/step2","block/netherite/step3","block/netherite/step4","block/netherite/step5","block/netherite/step6"], "subtitle": "omnis.subtitle.haunted_steel_hit" },
 
-  "gloomstone_break": { "sounds":["omnis:gloomstone/break1","omnis:gloomstone/break2","omnis:gloomstone/break3","omnis:gloomstone/break4","omnis:gloomstone/break5","omnis:gloomstone/break6"], "subtitle": "omnis.subtitle.gloomstone_break" },
-  "gloomstone_step": { "sounds":["omnis:gloomstone/step1","omnis:gloomstone/step2","omnis:gloomstone/step3","omnis:gloomstone/step4"], "subtitle": "omnis.subtitle.gloomstone_step" },
-  "gloomstone_place": { "sounds":["omnis:gloomstone/break1","omnis:gloomstone/break2","omnis:gloomstone/break3","omnis:gloomstone/break4","omnis:gloomstone/break5","omnis:gloomstone/break6"], "subtitle": "omnis.subtitle.gloomstone_place" },
-  "gloomstone_hit": { "sounds":["omnis:gloomstone/hit1","omnis:gloomstone/hit2","omnis:gloomstone/step3","omnis:gloomstone/step4"], "subtitle": "omnis.subtitle.gloomstone_hit" },
+  "ravaged_metal_break": { "sounds":["omnis:reinforced_metal/break1","omnis:reinforced_metal/break2","omnis:reinforced_metal/break3","omnis:reinforced_metal/break4"], "subtitle": "omnis.subtitle.ravaged_metal_break" },
+  "ravaged_metal_step": { "sounds":["omnis:reinforced_metal/step1","omnis:reinforced_metal/step2","omnis:reinforced_metal/step3","omnis:reinforced_metal/step4", "block/netherite/step1","block/netherite/step2","block/netherite/step3","block/netherite/step4","block/netherite/step5","block/netherite/step6"], "subtitle": "omnis.subtitle.ravaged_metal_step" },
+  "ravaged_metal_place": { "sounds":["omnis:reinforced_metal/break1","omnis:reinforced_metal/break2","omnis:reinforced_metal/break3","omnis:reinforced_metal/break4"], "subtitle": "omnis.subtitle.ravaged_metal_place" },
+  "ravaged_metal_hit": { "sounds":["omnis:reinforced_metal/step1","omnis:reinforced_metal/step2","omnis:reinforced_metal/step3","omnis:reinforced_metal/step4", "block/netherite/step1","block/netherite/step2","block/netherite/step3","block/netherite/step4","block/netherite/step5","block/netherite/step6"], "subtitle": "omnis.subtitle.ravaged_metal_hit" },
 
-  "ravagestone_break": { "sounds":["omnis:gloomstone/break1","omnis:gloomstone/break2","omnis:gloomstone/break3","omnis:gloomstone/break4","omnis:gloomstone/break5","omnis:gloomstone/break6"], "subtitle": "omnis.subtitle.ravagestone_break" },
-  "ravagestone_step": { "sounds":["omnis:gloomstone/step1","omnis:gloomstone/step2","omnis:gloomstone/step3","omnis:gloomstone/step4"], "subtitle": "omnis.subtitle.ravagestone_step" },
-  "ravagestone_place": { "sounds":["omnis:gloomstone/break1","omnis:gloomstone/break2","omnis:gloomstone/break3","omnis:gloomstone/break4","omnis:gloomstone/break5","omnis:gloomstone/break6"], "subtitle": "omnis.subtitle.ravagestone_place" },
-  "ravagestone_hit": { "sounds":["omnis:gloomstone/step1","omnis:gloomstone/step2","omnis:gloomstone/step3","omnis:gloomstone/step4"], "subtitle": "omnis.subtitle.ravagestone_hit" },
+  "gloomstone_break": { "sounds":["omnis:hard_stone/break1","omnis:hard_stone/break2","omnis:hard_stone/break3","omnis:hard_stone/break4"], "subtitle": "omnis.subtitle.gloomstone_break" },
+  "gloomstone_step": { "sounds":["omnis:hard_stone/step1","omnis:hard_stone/step2","omnis:hard_stone/step3","omnis:hard_stone/step4","omnis:hard_stone/step5","omnis:hard_stone/step6"], "subtitle": "omnis.subtitle.gloomstone_step" },
+  "gloomstone_place": { "sounds":["omnis:hard_stone/break1","omnis:hard_stone/break2","omnis:hard_stone/break3","omnis:hard_stone/break4"], "subtitle": "omnis.subtitle.gloomstone_place" },
+  "gloomstone_hit": { "sounds":["omnis:hard_stone/step1","omnis:hard_stone/step2","omnis:hard_stone/step3","omnis:hard_stone/step4","omnis:hard_stone/step5","omnis:hard_stone/step6"], "subtitle": "omnis.subtitle.gloomstone_hit" },
+
+  "ravagestone_break": { "sounds":["omnis:hard_stone/break1","omnis:hard_stone/break2","omnis:hard_stone/break3","omnis:hard_stone/break4"], "subtitle": "omnis.subtitle.ravagestone_break" },
+  "ravagestone_step": { "sounds":["omnis:hard_stone/step1","omnis:hard_stone/step2","omnis:hard_stone/step3","omnis:hard_stone/step4","omnis:hard_stone/step5","omnis:hard_stone/step6"], "subtitle": "omnis.subtitle.ravagestone_step" },
+  "ravagestone_place": { "sounds":["omnis:hard_stone/break1","omnis:hard_stone/break2","omnis:hard_stone/break3","omnis:hard_stone/break4"], "subtitle": "omnis.subtitle.ravagestone_place" },
+  "ravagestone_hit": { "sounds":["omnis:hard_stone/step1","omnis:hard_stone/step2","omnis:hard_stone/step3","omnis:hard_stone/step4","omnis:hard_stone/step5","omnis:hard_stone/step6"], "subtitle": "omnis.subtitle.ravagestone_hit" },
 
   "holy_equip": { "sounds":["omnis:equip_holy"], "subtitle": "omnis.subtitle.holy_equip" },
   "sinister_equip": { "sounds":["omnis:equip_sinister"], "subtitle": "omnis.subtitle.sinister_equip" }

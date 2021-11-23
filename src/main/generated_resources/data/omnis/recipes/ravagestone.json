@@ -1,35 +1,18 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "group": "ravaged_metal",
-  "ingredients": [
-    {
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "YYY",
+    "YXY",
+    "YYY"
+  ],
+  "key": {
+    "X": {
       "item": "omnis:ravaged_scrap"
     },
-    {
-      "tag": "forge:stone"
-    },
-    {
-      "tag": "forge:stone"
-    },
-    {
-      "tag": "forge:stone"
-    },
-    {
-      "tag": "forge:stone"
-    },
-    {
-      "tag": "forge:stone"
-    },
-    {
-      "tag": "forge:stone"
-    },
-    {
-      "tag": "forge:stone"
-    },
-    {
+    "Y": {
       "tag": "forge:stone"
     }
-  ],
+  },
   "result": {
     "item": "omnis:ravagestone",
     "count": 8

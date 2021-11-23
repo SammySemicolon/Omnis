@@ -37,6 +37,9 @@ public class ItemRegistry
         return new Item.Properties().maxStackSize(1);
     }
 
+    public static final RegistryObject<Item> INFERNAL_SURGE_BLOCK = ITEMS.register("infernal_surge_block", () -> new BlockItem(BlockRegistry.INFERNAL_SURGE_BLOCK.get(), DEFAULT_PROPERTIES()));
+    public static final RegistryObject<Item> AQUATIC_SURGE_BLOCK = ITEMS.register("aquatic_surge_block", () -> new BlockItem(BlockRegistry.AQUATIC_SURGE_BLOCK.get(), DEFAULT_PROPERTIES()));
+
     public static final RegistryObject<Item> RAVAGED_SCRAP = ITEMS.register("ravaged_scrap", () -> new Item(DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> RAVAGED_METAL = ITEMS.register("ravaged_metal", () -> new Item(DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> RAVAGED_METAL_BLOCK = ITEMS.register("ravaged_metal_block", () -> new BlockItem(BlockRegistry.RAVAGED_METAL_BLOCK.get(), DEFAULT_PROPERTIES()));
@@ -59,7 +62,7 @@ public class ItemRegistry
     public static final RegistryObject<Item> RAVAGED_LEGGINGS = ITEMS.register("ravaged_leggings", () -> new RavagedMetalArmorItem(EquipmentSlotType.LEGS, GEAR_PROPERTIES()));
     public static final RegistryObject<Item> RAVAGED_BOOTS = ITEMS.register("ravaged_boots", () -> new RavagedMetalArmorItem(EquipmentSlotType.FEET, GEAR_PROPERTIES()));
 
-    public static final RegistryObject<Item> VINDICATOR_AXE = ITEMS.register("vindicator_axe", () -> new VindicatorAxeItem(ItemTier.IRON, 2, -0.2f, GEAR_PROPERTIES(), 80));
+    public static final RegistryObject<Item> VINDICATOR_AXE = ITEMS.register("vindicator_axe", () -> new VindicatorAxeItem(ItemTier.IRON, 2, -0.2f, GEAR_PROPERTIES(), 240));
     public static final RegistryObject<Item> SPELL_BLADE = ITEMS.register("spell_blade", () -> new SpellBladeItem(ItemTier.DIAMOND, -1, 0.1f, GEAR_PROPERTIES(), 0.25f));
 
     public static final RegistryObject<Item> HAUNTED_BROADSWORD = ITEMS.register("haunted_broadsword", () -> new ModBroadswordItem(HAUNTED_ITEM, 0, 0, 2.5f, GEAR_PROPERTIES()));
@@ -73,7 +76,7 @@ public class ItemRegistry
     public static final RegistryObject<Item> HAUNTED_LEGGINGS = ITEMS.register("haunted_leggings", () -> new HauntedSteelArmorItem(EquipmentSlotType.LEGS, GEAR_PROPERTIES()));
     public static final RegistryObject<Item> HAUNTED_BOOTS = ITEMS.register("haunted_boots", () -> new HauntedSteelArmorItem(EquipmentSlotType.FEET, GEAR_PROPERTIES()));
 
-    public static final RegistryObject<Item> HAUNTED_VINDICATOR_AXE = ITEMS.register("haunted_vindicator_axe", () -> new VindicatorAxeItem(HAUNTED_ITEM, 2, -0.2f, GEAR_PROPERTIES(), 40));
+    public static final RegistryObject<Item> HAUNTED_VINDICATOR_AXE = ITEMS.register("haunted_vindicator_axe", () -> new VindicatorAxeItem(HAUNTED_ITEM, 2, -0.2f, GEAR_PROPERTIES(), 120));
     public static final RegistryObject<Item> HAUNTED_SPELL_BLADE = ITEMS.register("haunted_spell_blade", () -> new SpellBladeItem(HAUNTED_ITEM, -1, 0.1f, GEAR_PROPERTIES(), 0.5f));
 
     public static final RegistryObject<Item> EVOKER_CHARM = ITEMS.register("evoker_charm", () -> new CurioEvokerCharm(GEAR_PROPERTIES()));

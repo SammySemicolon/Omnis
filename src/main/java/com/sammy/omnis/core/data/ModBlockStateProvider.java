@@ -3,6 +3,7 @@ package com.sammy.omnis.core.data;
 import com.sammy.omnis.OmnisHelper;
 import com.sammy.omnis.OmnisMod;
 import com.sammy.omnis.common.blocks.VexwartBlock;
+import com.sammy.omnis.common.blocks.surge.SurgeBlock;
 import net.minecraft.block.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.state.properties.AttachFace;
@@ -46,6 +47,7 @@ public class ModBlockStateProvider extends net.minecraftforge.client.model.gener
     {
         Set<RegistryObject<Block>> blocks = new HashSet<>(BLOCKS.getEntries());
 
+        OmnisHelper.takeAll(blocks, b -> b.get() instanceof SurgeBlock).forEach(this::surgeBlock);
         OmnisHelper.takeAll(blocks, b -> b.get() instanceof VexwartBlock).forEach(this::vexwartBlock);
         OmnisHelper.takeAll(blocks, b -> b.get() instanceof GrassBlock).forEach(this::grassBlock);
         OmnisHelper.takeAll(blocks, b -> b.get() instanceof StairsBlock).forEach(this::stairsBlock);
@@ -73,7 +75,12 @@ public class ModBlockStateProvider extends net.minecraftforge.client.model.gener
     {
         simpleBlock(blockRegistryObject.get());
     }
-    
+    public void surgeBlock(RegistryObject<Block> blockRegistryObject)
+    {
+        String name = Registry.BLOCK.getKey(blockRegistryObject.get()).getPath();
+        ModelFile model = models().cubeBottomTop(name, prefix("block/" + name + "_side"), prefix("block/" + "surge_block_bottom"), prefix("block/" + name + "_top"));
+        directionalBlock(blockRegistryObject.get(), model);
+    }
     public void emptyBlock(RegistryObject<Block> blockRegistryObject)
     {
         ModelFile empty = models().getExistingFile(new ResourceLocation("block/air"));

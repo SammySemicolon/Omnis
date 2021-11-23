@@ -39,8 +39,8 @@ public class VindicatorAxeItem extends ModAxeItem implements ITooltipItem, IHurt
                     playerEntity.getCooldownTracker().setCooldown(stack.getItem(), effectCooldown);
                 }
             }
-            target.addPotionEffect(new EffectInstance(EffectRegistry.STUNNED.get(), 80, 0));
-            target.addPotionEffect(new EffectInstance(EffectRegistry.STAGGERED.get(), 80, 0));
+            target.addPotionEffect(new EffectInstance(EffectRegistry.STUNNED.get(), 160, 0));
+            target.addPotionEffect(new EffectInstance(EffectRegistry.STAGGERED.get(), 160, 0));
         }
     }
     @Override

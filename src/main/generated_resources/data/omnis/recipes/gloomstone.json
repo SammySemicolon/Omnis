@@ -1,34 +1,18 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "YYY",
+    "YXY",
+    "YYY"
+  ],
+  "key": {
+    "X": {
       "item": "omnis:tear_of_vex"
     },
-    {
-      "tag": "forge:stone"
-    },
-    {
-      "tag": "forge:stone"
-    },
-    {
-      "tag": "forge:stone"
-    },
-    {
-      "tag": "forge:stone"
-    },
-    {
-      "tag": "forge:stone"
-    },
-    {
-      "tag": "forge:stone"
-    },
-    {
-      "tag": "forge:stone"
-    },
-    {
+    "Y": {
       "tag": "forge:stone"
     }
-  ],
+  },
   "result": {
     "item": "omnis:gloomstone",
     "count": 8

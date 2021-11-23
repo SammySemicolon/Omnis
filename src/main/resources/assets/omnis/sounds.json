@@ -19,6 +19,9 @@
   "ravagestone_place": { "sounds":["omnis:hard_stone/break1","omnis:hard_stone/break2","omnis:hard_stone/break3","omnis:hard_stone/break4"], "subtitle": "omnis.subtitle.ravagestone_place" },
   "ravagestone_hit": { "sounds":["omnis:hard_stone/step1","omnis:hard_stone/step2","omnis:hard_stone/step3","omnis:hard_stone/step4","omnis:hard_stone/step5","omnis:hard_stone/step6"], "subtitle": "omnis.subtitle.ravagestone_hit" },
 
+  "heavy_crit": { "sounds":["omnis:attack/crit1","omnis:attack/crit2","omnis:attack/crit3"], "subtitle": "omnis.subtitle.heavy_crit" },
+  "magic_crit": { "sounds":["omnis:attack/magic1","omnis:attack/magic2"], "subtitle": "omnis.subtitle.magic_crit" },
+
   "holy_equip": { "sounds":["omnis:equip_holy"], "subtitle": "omnis.subtitle.holy_equip" },
   "sinister_equip": { "sounds":["omnis:equip_sinister"], "subtitle": "omnis.subtitle.sinister_equip" }
 }

@@ -2,12 +2,12 @@
   "conditions": [
     {
       "condition": "forge:loot_table_id",
-      "loot_table_id": "minecraft:entities/vindicator"
+      "loot_table_id": "savageandravage:entities/executioner"
     }
   ],
-  "itemChance": 0.75,
+  "itemChance": 1.0,
   "itemCount": 1,
   "extraItemCount": 3,
   "item": "omnis:ravaged_scrap",
-  "type": "omnis:ravaged_scrap_vindicator"
+  "type": "omnis:ravaged_scrap_executioner"
 }

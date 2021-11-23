@@ -1,5 +1,6 @@
 package com.sammy.omnis.common.items.gear;
 
+import com.sammy.omnis.core.registry.SoundRegistry;
 import com.sammy.omnis.core.systems.item.IHurtEventItem;
 import com.sammy.omnis.core.systems.item.ITooltipItem;
 import net.minecraft.entity.LivingEntity;
@@ -34,6 +35,7 @@ public class ModSpearItem extends ModCombatItem implements ITooltipItem, IHurtEv
         {
             target.hurtResistantTime = 0;
             event.setAmount(event.getAmount() + distanceDamage);
+            target.playSound(SoundRegistry.HEAVY_CRIT, 1, 1f+target.world.rand.nextFloat()*0.2f);
         }
     }
     @OnlyIn(Dist.CLIENT)

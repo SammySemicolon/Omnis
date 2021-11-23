@@ -14,7 +14,7 @@ import static com.sammy.omnis.OmnisMod.MODID;
 public class AttributeRegistry {
     public static final DeferredRegister<Attribute> ATTRIBUTES = DeferredRegister.create(ForgeRegistries.ATTRIBUTES, MODID);
 
-    public static final Attribute MAGIC_RESISTANCE = register("magic_resistance", new RangedAttribute("attribute.name.omnis.magic_resistance", 0.0D, 0.0D, 1.0D));
+    public static final Attribute MAGIC_RESISTANCE = register("magic_resistance", new RangedAttribute("attribute.name.omnis.magic_resistance", 0.0D, 0.0D, 2048.0D));
     public static final Attribute MAGIC_PROFICIENCY = register("magic_proficiency", new RangedAttribute("attribute.name.omnis.magic_proficiency", 0.0D, 0.0D, 2048.0D));
 
     public static Attribute register(String name, Attribute attribute) {

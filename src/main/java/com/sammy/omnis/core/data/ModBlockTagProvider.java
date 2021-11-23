@@ -1,6 +1,7 @@
 package com.sammy.omnis.core.data;
 
 import com.sammy.omnis.OmnisMod;
+import com.sammy.omnis.core.registry.block.BlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
@@ -27,6 +28,8 @@ public class ModBlockTagProvider extends BlockTagsProvider
     @Override
     protected void registerTags()
     {
+        getOrCreateBuilder(BEACON_BASE_BLOCKS).add(BlockRegistry.RAVAGED_METAL_BLOCK.get(), BlockRegistry.HAUNTED_STEEL_BLOCK.get());
+
         getOrCreateBuilder(BlockTags.SLABS).add(getModBlocks(b -> b instanceof SlabBlock));
         getOrCreateBuilder(BlockTags.STAIRS).add(getModBlocks(b -> b instanceof StairsBlock));
         getOrCreateBuilder(BlockTags.WALLS).add(getModBlocks(b -> b instanceof WallBlock));
@@ -38,16 +41,16 @@ public class ModBlockTagProvider extends BlockTagsProvider
         getOrCreateBuilder(BUTTONS).add(getModBlocks(b -> b instanceof AbstractButtonBlock));
         getOrCreateBuilder(WOODEN_BUTTONS).add(getModBlocks(b -> b instanceof WoodButtonBlock));
         getOrCreateBuilder(PRESSURE_PLATES).add(getModBlocks(b -> b instanceof AbstractPressurePlateBlock));
-        //getOrCreateBuilder(LOGS).add();
         getOrCreateBuilder(DIRT).add(getModBlocks(b -> b instanceof GrassBlock));
         getOrCreateBuilder(SAPLINGS).add(getModBlocks(b -> b instanceof SaplingBlock));
-        //        getOrCreateBuilder(PLANKS).add();
-        //        getOrCreateBuilder(WOODEN_FENCES).add();
-        //        getOrCreateBuilder(WOODEN_DOORS).add();
-        //        getOrCreateBuilder(WOODEN_STAIRS).add();
-        //        getOrCreateBuilder(WOODEN_SLABS).add();
-        //        getOrCreateBuilder(WOODEN_TRAPDOORS).add();
-        //        getOrCreateBuilder(WOODEN_PRESSURE_PLATES).add();
+        getOrCreateBuilder(LOGS).add(getModBlocks(b -> b.getRegistryName().getPath().endsWith("_log") || b.getRegistryName().getPath().endsWith("wood")));
+        getOrCreateBuilder(PLANKS).add(getModBlocks(b -> b.getRegistryName().getPath().endsWith("_planks")));
+        getOrCreateBuilder(WOODEN_FENCES).add(getModBlocks(b -> b.getRegistryName().getPath().endsWith("_fence")));
+        getOrCreateBuilder(WOODEN_DOORS).add(getModBlocks(b -> b.getRegistryName().getPath().endsWith("_door")));
+        getOrCreateBuilder(WOODEN_STAIRS).add(getModBlocks(b -> b.getRegistryName().getPath().endsWith("_planks_stairs")));
+        getOrCreateBuilder(WOODEN_SLABS).add(getModBlocks(b -> b.getRegistryName().getPath().endsWith("_planks_slab")));
+        getOrCreateBuilder(WOODEN_TRAPDOORS).add(getModBlocks(b -> b.getRegistryName().getPath().endsWith("_trapdoor")));
+        getOrCreateBuilder(WOODEN_PRESSURE_PLATES).add(getModBlocks(b -> b.getRegistryName().getPath().endsWith("_planks_pressure_plate")));
     }
 
     @Override

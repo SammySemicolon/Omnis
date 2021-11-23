@@ -51,10 +51,10 @@ public class ItemRegistry
     public static final RegistryObject<Item> HAUNTED_STEEL_INGOT = ITEMS.register("haunted_steel_ingot", () -> new Item(DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> HAUNTED_STEEL_BLOCK = ITEMS.register("haunted_steel_block", () -> new BlockItem(BlockRegistry.HAUNTED_STEEL_BLOCK.get(), DEFAULT_PROPERTIES()));
 
-    public static final RegistryObject<Item> RAVAGED_BROADSWORD = ITEMS.register("ravaged_broadsword", () -> new ModBroadswordItem(RAVAGED_ITEM, 0, 0, 1.5f, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> RAVAGED_BROADSWORD = ITEMS.register("ravaged_broadsword", () -> new ModBroadswordItem(RAVAGED_ITEM, 0, 0, 3.5f, GEAR_PROPERTIES()));
     public static final RegistryObject<Item> RAVAGED_HAMMER = ITEMS.register("ravaged_hammer", () -> new ModHammerItem(RAVAGED_ITEM, 0, 0, 0, GEAR_PROPERTIES()));
     public static final RegistryObject<Item> RAVAGED_BATTLE_AXE = ITEMS.register("ravaged_battle_axe", () -> new ModGreataxeItem(RAVAGED_ITEM, 0, 0, 0, GEAR_PROPERTIES()));
-    public static final RegistryObject<Item> RAVAGED_SPEAR = ITEMS.register("ravaged_spear", () -> new ModSpearItem(RAVAGED_ITEM, 0, 0, 2, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> RAVAGED_SPEAR = ITEMS.register("ravaged_spear", () -> new ModSpearItem(RAVAGED_ITEM, 0, 0, 1.5f, GEAR_PROPERTIES()));
     public static final RegistryObject<Item> RAVAGED_SCYTHE = ITEMS.register("ravaged_scythe", () -> new ModScytheItem(RAVAGED_ITEM, 0, 0, 0.25f, GEAR_PROPERTIES()));
 
     public static final RegistryObject<Item> RAVAGED_HELMET = ITEMS.register("ravaged_helmet", () -> new RavagedMetalArmorItem(EquipmentSlotType.HEAD, GEAR_PROPERTIES()));
@@ -65,10 +65,10 @@ public class ItemRegistry
     public static final RegistryObject<Item> VINDICATOR_AXE = ITEMS.register("vindicator_axe", () -> new VindicatorAxeItem(ItemTier.IRON, 2, -0.2f, GEAR_PROPERTIES(), 240));
     public static final RegistryObject<Item> SPELL_BLADE = ITEMS.register("spell_blade", () -> new SpellBladeItem(ItemTier.DIAMOND, -1, 0.1f, GEAR_PROPERTIES(), 0.25f));
 
-    public static final RegistryObject<Item> HAUNTED_BROADSWORD = ITEMS.register("haunted_broadsword", () -> new ModBroadswordItem(HAUNTED_ITEM, 0, 0, 2.5f, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> HAUNTED_BROADSWORD = ITEMS.register("haunted_broadsword", () -> new ModBroadswordItem(HAUNTED_ITEM, 0, 0, 5f, GEAR_PROPERTIES()));
     public static final RegistryObject<Item> HAUNTED_HAMMER = ITEMS.register("haunted_hammer", () -> new ModHammerItem(HAUNTED_ITEM, 0, 0, 1, GEAR_PROPERTIES()));
     public static final RegistryObject<Item> HAUNTED_BATTLE_AXE = ITEMS.register("haunted_battle_axe", () -> new ModGreataxeItem(HAUNTED_ITEM, 0, 0, 1, GEAR_PROPERTIES()));
-    public static final RegistryObject<Item> HAUNTED_SPEAR = ITEMS.register("haunted_spear", () -> new ModSpearItem(HAUNTED_ITEM, 0, 0, 3, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> HAUNTED_SPEAR = ITEMS.register("haunted_spear", () -> new ModSpearItem(HAUNTED_ITEM, 0, 0, 2.5f, GEAR_PROPERTIES()));
     public static final RegistryObject<Item> HAUNTED_SCYTHE = ITEMS.register("haunted_scythe", () -> new ModScytheItem(HAUNTED_ITEM, 0, 0, 0.5f, GEAR_PROPERTIES()));
 
     public static final RegistryObject<Item> HAUNTED_HELMET = ITEMS.register("haunted_helmet", () -> new HauntedSteelArmorItem(EquipmentSlotType.HEAD, GEAR_PROPERTIES()));

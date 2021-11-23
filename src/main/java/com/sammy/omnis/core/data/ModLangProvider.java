@@ -86,26 +86,16 @@ public class ModLangProvider extends LanguageProvider
         addTooltip("crushing_detailed", "Deals more damage to healthy enemies");
 
         addTooltip("sweeping", "Sweeping");
-        addTooltip("sweeping_detailed", "Every attack causes a strong sweep attack");
+        addTooltip("sweeping_detailed", "Every hit causes a strong sweep attack");
 
         addTooltip("outlying", "Outlying");
         addTooltip("outlying_detailed", "Deals more damage to faraway enemies");
 
-        add("item.minecraft.potion.effect.magic_proficiency", "Potion of Magic Proficiency");
-        add("item.minecraft.potion.effect.long_magic_proficiency", "Potion of Magic Proficiency");
-        add("item.minecraft.potion.effect.strong_magic_proficiency", "Potion of Magic Proficiency");
+        addPotion("magic_proficiency", "Magic Proficiency");
 
-        add("item.minecraft.splash_potion.effect.magic_proficiency", "Splash Potion of Magic Proficiency");
-        add("item.minecraft.splash_potion.effect.long_magic_proficiency", "Splash Potion of Magic Proficiency");
-        add("item.minecraft.splash_potion.effect.strong_magic_proficiency", "Splash Potion of Magic Proficiency");
+        add("attribute.name.omnis.magic_resistance", "Magic Resistance");
+        add("attribute.name.omnis.magic_proficiency", "Magic Proficiency");
 
-        add("item.minecraft.lingering_potion.effect.magic_proficiency", "Lingering Potion of Magic Proficiency");
-        add("item.minecraft.lingering_potion.effect.long_magic_proficiency", "Lingering Potion of Magic Proficiency");
-        add("item.minecraft.lingering_potion.effect.strong_magic_proficiency", "Lingering Potion of Magic Proficiency");
-
-        add("item.minecraft.tipped_arrow.effect.magic_proficiency", "Arrow of Magic Proficiency");
-        add("item.minecraft.tipped_arrow.effect.long_magic_proficiency", "Arrow of Magic Proficiency");
-        add("item.minecraft.tipped_arrow.effect.strong_magic_proficiency", "Arrow of Magic Proficiency");
         add("itemGroup." + MODID, "Omnis");
     }
 
@@ -114,10 +104,29 @@ public class ModLangProvider extends LanguageProvider
     {
         return "Lang Entries";
     }
-    
+
     public void addTooltip(String identifier, String tooltip)
     {
         add("omnis.tooltip." + identifier, tooltip);
+    }
+
+    public void addPotion(String identifier, String name)
+    {
+        add("item.minecraft.potion.effect."+identifier, "Potion of "+name);
+        add("item.minecraft.potion.effect.long_"+identifier, "Potion of "+name);
+        add("item.minecraft.potion.effect.strong_"+identifier, "Potion of "+name);
+
+        add("item.minecraft.splash_potion.effect."+identifier, "Splash Potion of "+name);
+        add("item.minecraft.splash_potion.effect.long_"+identifier, "Splash Potion of "+name);
+        add("item.minecraft.splash_potion.effect.strong_"+identifier, "Splash Potion of "+name);
+
+        add("item.minecraft.lingering_potion.effect."+identifier, "Lingering Potion of "+name);
+        add("item.minecraft.lingering_potion.effect.long_"+identifier, "Lingering Potion of "+name);
+        add("item.minecraft.lingering_potion.effect.strong_"+identifier, "Lingering Potion of "+name);
+
+        add("item.minecraft.tipped_arrow.effect."+identifier, "Arrow of "+name);
+        add("item.minecraft.tipped_arrow.effect.long_"+identifier, "Arrow of "+name);
+        add("item.minecraft.tipped_arrow.effect.strong_"+identifier, "Arrow of "+name);
     }
     public String specialBlockNameChanges(String name)
     {

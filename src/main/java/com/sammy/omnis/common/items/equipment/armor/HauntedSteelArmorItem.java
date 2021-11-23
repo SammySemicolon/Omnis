@@ -37,7 +37,7 @@ public class HauntedSteelArmorItem extends ArmorItem {
         UUID uuid = ARMOR_MODIFIERS[slot.getIndex()];
         ImmutableMultimap.Builder<Attribute, AttributeModifier> attributeBuilder = ImmutableMultimap.builder();
         attributeBuilder.putAll(field_234656_m_);
-        attributeBuilder.put(AttributeRegistry.MAGIC_RESISTANCE, new AttributeModifier(uuid, "Armor magic resistance", 0.15d, AttributeModifier.Operation.ADDITION));
+        attributeBuilder.put(AttributeRegistry.MAGIC_RESISTANCE, new AttributeModifier(uuid, "Armor magic resistance", 1, AttributeModifier.Operation.ADDITION));
         attributes = attributeBuilder.build();
     }
 

@@ -2,12 +2,12 @@
   "conditions": [
     {
       "condition": "forge:loot_table_id",
-      "loot_table_id": "minecraft:entities/vindicator"
+      "loot_table_id": "savageandravage:entities/griefer"
     }
   ],
   "itemChance": 0.75,
   "itemCount": 1,
-  "extraItemCount": 3,
+  "extraItemCount": 2,
   "item": "omnis:ravaged_scrap",
-  "type": "omnis:ravaged_scrap_vindicator"
+  "type": "omnis:ravaged_scrap_griefer"
 }

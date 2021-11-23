@@ -38,6 +38,9 @@ public class SoundRegistry
     public static final ForgeSoundType GLOOMSTONE = new ForgeSoundType(1.0F, 1.0F, ()->GLOOMSTONE_BREAK, ()->GLOOMSTONE_STEP, ()->GLOOMSTONE_PLACE, ()->GLOOMSTONE_HIT, ()->SoundEvents.BLOCK_NETHERRACK_FALL);
     public static final ForgeSoundType RAVAGESTONE = new ForgeSoundType(1.0F, 1.25F, ()->RAVAGESTONE_BREAK, ()->RAVAGESTONE_STEP, ()->RAVAGESTONE_PLACE, ()->RAVAGESTONE_HIT, ()->SoundEvents.BLOCK_NETHERRACK_FALL);
 
+    public static final SoundEvent HEAVY_CRIT = register(new SoundEvent(OmnisHelper.prefix("heavy_crit")));
+    public static final SoundEvent MAGIC_CRIT = register(new SoundEvent(OmnisHelper.prefix("magic_crit")));
+
     public static final SoundEvent SINISTER_EQUIP = register(new SoundEvent(OmnisHelper.prefix("sinister_equip")));
     public static final SoundEvent HOLY_EQUIP = register(new SoundEvent(OmnisHelper.prefix("holy_equip")));
 

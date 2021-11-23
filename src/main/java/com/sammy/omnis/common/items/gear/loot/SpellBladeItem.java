@@ -1,6 +1,7 @@
 package com.sammy.omnis.common.items.gear.loot;
 
 import com.sammy.omnis.common.packets.ParticlePacket;
+import com.sammy.omnis.core.registry.SoundRegistry;
 import com.sammy.omnis.core.systems.item.IHurtEventItem;
 import com.sammy.omnis.core.systems.item.ITooltipItem;
 import com.sammy.omnis.common.items.basic.ModSwordItem;
@@ -36,6 +37,7 @@ public class SpellBladeItem extends ModSwordItem implements ITooltipItem, IHurtE
             event.setAmount(event.getAmount() - amount);
             event.getEntity().hurtResistantTime = 0;
             target.attackEntityFrom(DamageSource.causeMobDamage(attacker).setMagicDamage(), amount);
+            target.playSound(SoundRegistry.MAGIC_CRIT, 1, 1f+target.world.rand.nextFloat()*0.2f);
         }
     }
 

@@ -1,5 +1,6 @@
 package com.sammy.omnis.common.items.gear;
 
+import com.sammy.omnis.core.registry.SoundRegistry;
 import com.sammy.omnis.core.registry.effects.EffectRegistry;
 import com.sammy.omnis.core.systems.item.IHurtEventItem;
 import com.sammy.omnis.core.systems.item.ITooltipItem;
@@ -30,6 +31,7 @@ public class ModBroadswordItem extends ModSwordItem implements ITooltipItem, IHu
     public void hurtEvent(LivingHurtEvent event, LivingEntity attacker, LivingEntity target, ItemStack stack) {
         if (target.getMaxHealth() == target.getHealth()) {
             event.setAmount(event.getAmount() + extraDamage);
+            target.playSound(SoundRegistry.HEAVY_CRIT, 1, 1f+target.world.rand.nextFloat()*0.2f);
         }
     }
 

@@ -32,11 +32,19 @@ public class ModLootProvider extends GlobalLootModifierProvider
         add("ravaged_scrap_ravager", LootModifierRegistry.RAVAGED_SCRAP_RAVAGER.get(), new OmnisLootModifier(
                 new ILootCondition[] { LootTableIdCondition.builder(new ResourceLocation("entities/ravager")).build() }, 1,2,8, ItemRegistry.RAVAGED_SCRAP.get()
         ));
-        add("ravaged_scrap_illager", LootModifierRegistry.RAVAGED_SCRAP_ILLAGER.get(), new OmnisLootModifier(
-                new ILootCondition[] { LootTableIdCondition.builder(new ResourceLocation("entities/illager")).build() }, 0.25f,1,2, ItemRegistry.RAVAGED_SCRAP.get()
+        add("ravaged_scrap_pillager", LootModifierRegistry.RAVAGED_SCRAP_PILLAGER.get(), new OmnisLootModifier(
+                new ILootCondition[] { LootTableIdCondition.builder(new ResourceLocation("entities/pillager")).build() }, 0.5f,1,2, ItemRegistry.RAVAGED_SCRAP.get()
         ));
         add("ravaged_scrap_vindicator", LootModifierRegistry.RAVAGED_SCRAP_VINDICATOR.get(), new OmnisLootModifier(
-                new ILootCondition[] { LootTableIdCondition.builder(new ResourceLocation("entities/vindicator")).build() }, 0.5f,1,3, ItemRegistry.RAVAGED_SCRAP.get()
+                new ILootCondition[] { LootTableIdCondition.builder(new ResourceLocation("entities/vindicator")).build() }, 0.75f,1,3, ItemRegistry.RAVAGED_SCRAP.get()
         ));
+
+        add("ravaged_scrap_griefer", LootModifierRegistry.RAVAGED_SCRAP_GRIEFER.get(), new OmnisLootModifier(
+                new ILootCondition[] { LootTableIdCondition.builder(new ResourceLocation("savageandravage", "entities/griefer")).build() }, 0.75f,1,2, ItemRegistry.RAVAGED_SCRAP.get()
+        ));
+        add("ravaged_scrap_executioner", LootModifierRegistry.RAVAGED_SCRAP_EXECUTIONER.get(), new OmnisLootModifier(
+                new ILootCondition[] { LootTableIdCondition.builder(new ResourceLocation("savageandravage", "entities/executioner")).build() }, 1,1,3, ItemRegistry.RAVAGED_SCRAP.get()
+        ));
+
     }
 }

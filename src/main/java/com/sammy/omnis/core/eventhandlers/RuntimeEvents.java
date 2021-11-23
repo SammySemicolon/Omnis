@@ -67,10 +67,11 @@ public class RuntimeEvents {
                 eventItem.hurtEvent(event, attacker, target, stack);
             }
             if (event.getSource().isMagicDamage()) {
-                float amount = event.getAmount();
-                amount += attacker.getAttributeValue(AttributeRegistry.MAGIC_PROFICIENCY);
-                float multiplier = (float) (1 - target.getAttributeValue(AttributeRegistry.MAGIC_RESISTANCE));
-                event.setAmount(amount * multiplier);
+                float resistance = (float) target.getAttributeValue(AttributeRegistry.MAGIC_RESISTANCE);
+                float proficiency = (float) target.getAttributeValue(AttributeRegistry.MAGIC_PROFICIENCY);
+                float amount = event.getAmount() + proficiency;
+                float multiplier = resistance * 12.5f;
+                event.setAmount(amount*multiplier);
             }
         }
     }

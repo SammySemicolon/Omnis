@@ -13,6 +13,8 @@ import static net.minecraft.block.PressurePlateBlock.Sensitivity.MOBS;
 
 public class OmnisBlocks
 {
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
+
     public static AbstractBlock.Properties HAUNTED_STEEL_BLOCK_PROPERTIES()
     {
         return AbstractBlock.Properties.create(Material.IRON, MaterialColor.BLUE).sound(OmnisSounds.HAUNTED_STEEL).hardnessAndResistance(50f,3600f).setRequiresTool();
@@ -33,7 +35,6 @@ public class OmnisBlocks
     {
         return AbstractBlock.Properties.create(Material.ROCK, MaterialColor.BLUE_TERRACOTTA).sound(OmnisSounds.GLOOMSTONE).hardnessAndResistance(1.25f,9f).setRequiresTool();
     }
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
     public static final RegistryObject<Block> HAUNTED_STEEL_BLOCK = BLOCKS.register("haunted_steel_block", () -> new Block(HAUNTED_STEEL_BLOCK_PROPERTIES()));
     public static final RegistryObject<Block> RAVAGED_METAL_BLOCK = BLOCKS.register("ravaged_metal_block", () -> new Block(RAVAGED_METAL_BLOCK_PROPERTIES()));
     public static final RegistryObject<Block> VEXWART_BLOCK = BLOCKS.register("vexwart_block", () -> new Block(VEXWART_PROPERTIES()));

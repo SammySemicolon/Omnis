@@ -1,7 +1,7 @@
 package com.sammy.omnis.common.items.gear;
 
-import com.sammy.omnis.common.items.ITooltipItem;
-import com.sammy.omnis.common.items.ModCombatItem;
+import com.sammy.omnis.core.systems.item.IHurtEventItem;
+import com.sammy.omnis.core.systems.item.ITooltipItem;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
@@ -14,10 +14,11 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 import java.util.List;
 
-public class ModSpearItem extends ModCombatItem implements ITooltipItem
+public class ModSpearItem extends ModCombatItem implements ITooltipItem, IHurtEventItem
 {
     public float distanceDamage;
     public ModSpearItem(IItemTier material, float damage, float speed, float distanceDamage, Properties properties)
@@ -27,34 +28,24 @@ public class ModSpearItem extends ModCombatItem implements ITooltipItem
     }
 
     @Override
-    public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
-    {
+    public void hurtEvent(LivingHurtEvent event, LivingEntity attacker, LivingEntity target, ItemStack stack) {
         float distance = target.getDistance(attacker);
-        if (distance > 2f)
+        if (distance > 3.5f)
         {
             target.hurtResistantTime = 0;
-            target.attackEntityFrom(DamageSource.causeMobDamage(attacker), distanceDamage);
-            target.world.playSound(null, target.getPosition(), SoundEvents.ENTITY_SPLASH_POTION_BREAK, SoundCategory.PLAYERS, 1, 1.8f);
-            target.world.playSound(null, target.getPosition(), SoundEvents.ENTITY_PLAYER_ATTACK_CRIT, SoundCategory.PLAYERS, 1, 0.8f);
-            target.world.playSound(null, target.getPosition(), SoundEvents.ENTITY_PLAYER_ATTACK_CRIT, SoundCategory.PLAYERS, 1, 1f);
-            target.world.playSound(null, target.getPosition(), SoundEvents.ENTITY_PLAYER_ATTACK_CRIT, SoundCategory.PLAYERS, 1, 1.2f);
-            if (attacker instanceof PlayerEntity)
-            {
-                ((PlayerEntity) attacker).onCriticalHit(target);
-            }
+            event.setAmount(event.getAmount() + distanceDamage);
         }
-        return super.hitEntity(stack, target, attacker);
     }
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void detailedTooltip(List<ITextComponent> tooltip)
+    public void addSneakTooltip(List<ITextComponent> tooltip)
     {
         tooltip.add(new TranslationTextComponent("omnis.tooltip.outlying_detailed").mergeStyle(TextFormatting.BLUE));
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void tooltip(List<ITextComponent> tooltip)
+    public void addDefaultTooltip(List<ITextComponent> tooltip)
     {
         tooltip.add(new TranslationTextComponent("omnis.tooltip.outlying").mergeStyle(TextFormatting.BLUE));
     }

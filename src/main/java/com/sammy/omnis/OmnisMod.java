@@ -1,11 +1,9 @@
 package com.sammy.omnis;
 
 import com.sammy.omnis.core.data.*;
-import com.sammy.omnis.core.init.effects.OmnisEffects;
-import com.sammy.omnis.core.init.effects.OmnisPotions;
-import com.sammy.omnis.core.particles.ParticleRendering;
+import com.sammy.omnis.core.registry.EntityRegistry;
+import com.sammy.omnis.core.systems.particles.ParticleRendering;
 import net.minecraft.data.BlockTagsProvider;
-import net.minecraft.data.LootTableProvider;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -17,13 +15,16 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import static com.sammy.omnis.OmnisMod.MODID;
-import static com.sammy.omnis.core.init.OmnisBlocks.BLOCKS;
-import static com.sammy.omnis.core.init.OmnisItems.ITEMS;
-import static com.sammy.omnis.core.init.OmnisParticles.PARTICLES;
-import static com.sammy.omnis.core.init.OmnisSounds.SOUNDS;
-import static com.sammy.omnis.core.init.Registries.*;
-import static com.sammy.omnis.core.init.effects.OmnisEffects.EFFECTS;
-import static com.sammy.omnis.core.init.effects.OmnisPotions.POTIONS;
+import static com.sammy.omnis.core.registry.block.BlockRegistry.BLOCKS;
+import static com.sammy.omnis.core.registry.block.TileEntityRegistry.TILE_ENTITIES;
+import static com.sammy.omnis.core.registry.item.EnchantmentRegistry.ENCHANTMENTS;
+import static com.sammy.omnis.core.registry.item.ItemRegistry.ITEMS;
+import static com.sammy.omnis.core.registry.misc.AttributeRegistry.ATTRIBUTES;
+import static com.sammy.omnis.core.registry.ParticleRegistry.PARTICLES;
+import static com.sammy.omnis.core.registry.SoundRegistry.SOUNDS;
+import static com.sammy.omnis.core.registry.misc.LootModifierRegistry.*;
+import static com.sammy.omnis.core.registry.effects.EffectRegistry.EFFECTS;
+import static com.sammy.omnis.core.registry.effects.PotionRegistry.POTIONS;
 
 @Mod(MODID)
 public class OmnisMod
@@ -33,11 +34,12 @@ public class OmnisMod
 
     public OmnisMod() {
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
+        ATTRIBUTES.register(modBus);
         ENCHANTMENTS.register(modBus);
         BLOCKS.register(modBus);
         ITEMS.register(modBus);
         TILE_ENTITIES.register(modBus);
-        ENTITY_TYPES.register(modBus);
+        EntityRegistry.ENTITY_TYPES.register(modBus);
         GLM.register(modBus);
         POTIONS.register(modBus);
         EFFECTS.register(modBus);

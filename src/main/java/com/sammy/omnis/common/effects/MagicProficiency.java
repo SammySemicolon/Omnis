@@ -1,5 +1,6 @@
 package com.sammy.omnis.common.effects;
 
+import com.sammy.omnis.core.registry.misc.AttributeRegistry;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.Attributes;
@@ -12,7 +13,7 @@ public class MagicProficiency extends Effect
     public MagicProficiency()
     {
         super(EffectType.BENEFICIAL, 7504018);
-
+        addAttributesModifier(AttributeRegistry.MAGIC_PROFICIENCY, "122d45bb-90de-4a29-a504-be2400759f49",4, AttributeModifier.Operation.ADDITION);
     }
     
     @Override

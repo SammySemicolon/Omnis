@@ -1,10 +1,8 @@
 package com.sammy.omnis.core.data;
 
 import com.sammy.omnis.OmnisHelper;
-import com.sammy.omnis.core.init.OmnisBlocks;
-import com.sammy.omnis.core.init.OmnisItems;
-import com.sammy.omnis.core.init.effects.OmnisEffects;
-import com.sammy.omnis.core.init.effects.OmnisPotions;
+import com.sammy.omnis.core.registry.block.BlockRegistry;
+import com.sammy.omnis.core.registry.item.ItemRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.WallTorchBlock;
 import net.minecraft.data.DataGenerator;
@@ -12,8 +10,6 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Effect;
-import net.minecraft.potion.Potion;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.fml.RegistryObject;
@@ -21,11 +17,10 @@ import net.minecraftforge.fml.RegistryObject;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.sammy.omnis.core.init.OmnisSounds.SOUNDS;
-import static com.sammy.omnis.core.init.Registries.*;
+import static com.sammy.omnis.core.registry.SoundRegistry.SOUNDS;
 import static com.sammy.omnis.OmnisMod.MODID;
-import static com.sammy.omnis.core.init.effects.OmnisEffects.EFFECTS;
-import static com.sammy.omnis.core.init.effects.OmnisPotions.POTIONS;
+import static com.sammy.omnis.core.registry.effects.EffectRegistry.EFFECTS;
+import static com.sammy.omnis.core.registry.item.EnchantmentRegistry.ENCHANTMENTS;
 
 
 public class ModLangProvider extends LanguageProvider
@@ -38,8 +33,8 @@ public class ModLangProvider extends LanguageProvider
     @Override
     protected void addTranslations()
     {
-        Set<RegistryObject<Block>> blocks = new HashSet<>(OmnisBlocks.BLOCKS.getEntries());
-        Set<RegistryObject<Item>> items = new HashSet<>(OmnisItems.ITEMS.getEntries());
+        Set<RegistryObject<Block>> blocks = new HashSet<>(BlockRegistry.BLOCKS.getEntries());
+        Set<RegistryObject<Item>> items = new HashSet<>(ItemRegistry.ITEMS.getEntries());
         Set<RegistryObject<SoundEvent>> sounds = new HashSet<>(SOUNDS.getEntries());
         Set<RegistryObject<Enchantment>> enchantments = new HashSet<>(ENCHANTMENTS.getEntries());
         Set<RegistryObject<Effect>> effects = new HashSet<>(EFFECTS.getEntries());
@@ -73,30 +68,25 @@ public class ModLangProvider extends LanguageProvider
             add("effect." + MODID + "." + e.get().getRegistryName().getPath(), name);
         });
 
-        addTooltip("haunted_armor", "+1 Magic Resistance");
-
-        addTooltip("amplified_arcana", "Amplified Arcana");
-        addTooltip("amplified_arcana_detailed", "Increases magic damage by a flat amount");
-
         addTooltip("ravage", "Ravage");
-        addTooltip("ravage_detailed", "Greatly increased damage against illagers and players");
+        addTooltip("ravage_detailed", "Staggers and stuns enemies when attacking");
 
         addTooltip("arcane", "Arcane");
         addTooltip("arcane_detailed", "Deals both magic and physical damage with each swing");
 
         addTooltip("staggering", "Staggering");
-        addTooltip("staggering_detailed", "This weapon staggers enemies on the first attack\n" +
+        addTooltip("staggering_detailed", "Staggers healthy enemies\n" +
                 "Staggered enemies deal less damage and have decreased armor");
 
         addTooltip("stunning", "Stunning");
-        addTooltip("stunning_detailed", "This weapon stuns enemies on the first attack\n" +
+        addTooltip("stunning_detailed", "Stuns healthy enemies\n" +
                 "Stunned enemies move slower and have decreased range");
 
         addTooltip("crushing", "Crushing");
-        addTooltip("crushing_detailed", "This weapon deals more damage on the first attack");
+        addTooltip("crushing_detailed", "Deals more damage to healthy enemies");
 
         addTooltip("sweeping", "Sweeping");
-        addTooltip("sweeping_detailed", "Every attack from this weapon causes a strong sweep attack");
+        addTooltip("sweeping_detailed", "Every attack causes a strong sweep attack");
 
         addTooltip("outlying", "Outlying");
         addTooltip("outlying_detailed", "Deals more damage to faraway enemies");
@@ -116,7 +106,7 @@ public class ModLangProvider extends LanguageProvider
         add("item.minecraft.tipped_arrow.effect.magic_proficiency", "Arrow of Magic Proficiency");
         add("item.minecraft.tipped_arrow.effect.long_magic_proficiency", "Arrow of Magic Proficiency");
         add("item.minecraft.tipped_arrow.effect.strong_magic_proficiency", "Arrow of Magic Proficiency");
-        add("itemGroup." + MODID, "Omnis ");
+        add("itemGroup." + MODID, "Omnis");
     }
 
     @Override

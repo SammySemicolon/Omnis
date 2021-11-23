@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 
-import static com.sammy.omnis.core.init.OmnisBlocks.BLOCKS;
+import static com.sammy.omnis.core.registry.block.BlockRegistry.BLOCKS;
 import static net.minecraft.tags.BlockTags.*;
 import static net.minecraftforge.common.Tags.Blocks.DIRT;
 

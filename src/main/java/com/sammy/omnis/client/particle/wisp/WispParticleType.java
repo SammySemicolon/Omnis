@@ -1,7 +1,7 @@
 package com.sammy.omnis.client.particle.wisp;
 
 import com.mojang.serialization.Codec;
-import com.sammy.omnis.core.particles.data.MalumParticleData;
+import com.sammy.omnis.core.systems.particles.data.MalumParticleData;
 import net.minecraft.client.particle.IAnimatedSprite;
 import net.minecraft.client.particle.IParticleFactory;
 import net.minecraft.client.particle.Particle;

@@ -2,7 +2,7 @@ package com.sammy.omnis.core.data;
 
 import com.mojang.datafixers.util.Pair;
 import com.sammy.omnis.common.blocks.VexwartBlock;
-import com.sammy.omnis.core.init.OmnisItems;
+import com.sammy.omnis.core.registry.item.ItemRegistry;
 import net.minecraft.advancements.criterion.*;
 import net.minecraft.block.*;
 import net.minecraft.data.DataGenerator;
@@ -27,10 +27,9 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-import static com.sammy.omnis.OmnisHelper.prefix;
 import static com.sammy.omnis.OmnisHelper.takeAll;
-import static com.sammy.omnis.core.init.OmnisBlocks.BLOCKS;
-import static com.sammy.omnis.core.init.OmnisBlocks.VEXWART;
+import static com.sammy.omnis.core.registry.block.BlockRegistry.BLOCKS;
+import static com.sammy.omnis.core.registry.block.BlockRegistry.VEXWART;
 
 public class ModLootTableProvider extends LootTableProvider
 {
@@ -66,7 +65,7 @@ public class ModLootTableProvider extends LootTableProvider
         
         Set<RegistryObject<Block>> blocks = new HashSet<>(BLOCKS.getEntries());
         blocks.remove(VEXWART);
-        registerLootTable(VEXWART.get(), vexwartDropping(VEXWART.get(), OmnisItems.VEXWART.get()));
+        registerLootTable(VEXWART.get(), vexwartDropping(VEXWART.get(), ItemRegistry.VEXWART.get()));
         takeAll(blocks, b -> b.get() instanceof WallTorchBlock);
         takeAll(blocks, b -> b.get() instanceof LeavesBlock);
         takeAll(blocks, b -> b.get() instanceof DoublePlantBlock).forEach(b -> registerLootTable(b.get(),onlyWithShears(b.get().asItem())));
@@ -130,7 +129,7 @@ public class ModLootTableProvider extends LootTableProvider
                         .acceptCondition(BlockStateProperty.builder(vexWart).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(VexwartBlock.AGE, 2))))
                 .addEntry(ItemLootEntry.builder(item).acceptFunction(SetCount.builder(RandomValueRange.of(2, 4)))
                         .acceptCondition(BlockStateProperty.builder(vexWart).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(VexwartBlock.AGE, 3))))
-                .addEntry(ItemLootEntry.builder(OmnisItems.TEAR_OF_VEX.get()).acceptFunction(SetCount.builder(RandomValueRange.of(1,2))
+                .addEntry(ItemLootEntry.builder(ItemRegistry.TEAR_OF_VEX.get()).acceptFunction(SetCount.builder(RandomValueRange.of(1,2))
                         .acceptCondition(BlockStateProperty.builder(vexWart).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(VexwartBlock.AGE, 3))))
 
         )));

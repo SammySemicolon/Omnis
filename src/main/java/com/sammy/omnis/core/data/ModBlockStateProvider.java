@@ -22,7 +22,7 @@ import java.util.Set;
 import java.util.function.Function;
 
 import static com.sammy.omnis.OmnisHelper.prefix;
-import static com.sammy.omnis.core.init.OmnisBlocks.BLOCKS;
+import static com.sammy.omnis.core.registry.block.BlockRegistry.BLOCKS;
 import static net.minecraft.state.properties.DoubleBlockHalf.LOWER;
 import static net.minecraft.state.properties.DoubleBlockHalf.UPPER;
 

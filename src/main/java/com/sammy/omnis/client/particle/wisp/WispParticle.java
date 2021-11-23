@@ -2,9 +2,9 @@ package com.sammy.omnis.client.particle.wisp;
 
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import com.sammy.omnis.RenderUtil;
-import com.sammy.omnis.core.particles.GenericMalumParticle;
-import com.sammy.omnis.core.particles.ParticleRendering;
-import com.sammy.omnis.core.particles.data.MalumParticleData;
+import com.sammy.omnis.core.systems.particles.GenericMalumParticle;
+import com.sammy.omnis.core.systems.particles.ParticleRendering;
+import com.sammy.omnis.core.systems.particles.data.MalumParticleData;
 import net.minecraft.client.renderer.ActiveRenderInfo;
 import net.minecraft.client.world.ClientWorld;
 

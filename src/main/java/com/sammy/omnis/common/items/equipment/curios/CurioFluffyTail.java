@@ -4,7 +4,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import com.sammy.omnis.OmnisHelper;
 import com.sammy.omnis.client.model.ModelLapisTail;
-import com.sammy.omnis.core.init.OmnisSounds;
+import com.sammy.omnis.core.registry.SoundRegistry;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
@@ -32,8 +32,8 @@ public class CurioFluffyTail extends OmnisCurioItem
     @Override
     public void playRightClickEquipSound(LivingEntity livingEntity, ItemStack stack)
     {
-        livingEntity.world.playSound(null, livingEntity.getPosition(), OmnisSounds.SINISTER_EQUIP, SoundCategory.NEUTRAL, 1.0f, 1.0f);
-        livingEntity.world.playSound(null, livingEntity.getPosition(), OmnisSounds.HOLY_EQUIP, SoundCategory.NEUTRAL, 1.0f, 1.0f);
+        livingEntity.world.playSound(null, livingEntity.getPosition(), SoundRegistry.SINISTER_EQUIP, SoundCategory.NEUTRAL, 1.0f, 1.0f);
+        livingEntity.world.playSound(null, livingEntity.getPosition(), SoundRegistry.HOLY_EQUIP, SoundCategory.NEUTRAL, 1.0f, 1.0f);
     }
 
     @Nonnull

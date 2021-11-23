@@ -15,7 +15,7 @@ import net.minecraftforge.fml.loading.FMLEnvironment;
 
 import javax.annotation.Nullable;
 
-import static com.sammy.omnis.common.items.OmnisArmorTiers.ArmorTierEnum.RAVAGED_ARMOR;
+import static com.sammy.omnis.core.registry.item.ArmorTierRegistry.ArmorTierEnum.RAVAGED_ARMOR;
 
 
 public class RavagedMetalArmorItem extends ArmorItem

@@ -1,6 +1,6 @@
 package com.sammy.omnis.core.data;
 
-import com.sammy.omnis.common.items.ModCombatItem;
+import com.sammy.omnis.common.items.gear.ModCombatItem;
 import net.minecraft.block.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.*;
@@ -16,8 +16,8 @@ import java.util.Set;
 import static com.sammy.omnis.OmnisHelper.prefix;
 import static com.sammy.omnis.OmnisHelper.takeAll;
 import static com.sammy.omnis.OmnisMod.MODID;
-import static com.sammy.omnis.core.init.OmnisItems.ITEMS;
-import static com.sammy.omnis.core.init.OmnisItems.VEXWART;
+import static com.sammy.omnis.core.registry.item.ItemRegistry.ITEMS;
+import static com.sammy.omnis.core.registry.item.ItemRegistry.VEXWART;
 
 public class ModItemModelProvider extends net.minecraftforge.client.model.generators.ItemModelProvider
 {

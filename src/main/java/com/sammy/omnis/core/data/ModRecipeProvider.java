@@ -41,6 +41,7 @@ public class ModRecipeProvider extends RecipeProvider
 
         smithingReinforce(consumer, ItemRegistry.SPELL_BLADE.get(), ItemRegistry.HAUNTED_SPELL_BLADE.get(), ItemRegistry.HAUNTED_STEEL_INGOT.get());
         smithingReinforce(consumer, ItemRegistry.VINDICATOR_AXE.get(), ItemRegistry.HAUNTED_VINDICATOR_AXE.get(), ItemRegistry.HAUNTED_STEEL_INGOT.get());
+        smithingReinforce(consumer, ItemRegistry.RAVAGED_CHARM.get(), ItemRegistry.HAUNTED_CHARM.get(), ItemRegistry.HAUNTED_STEEL_INGOT.get());
 
         ShapedRecipeBuilder.shapedRecipe(ItemRegistry.RAVAGED_METAL_BLOCK.get()).key('#', ItemRegistry.RAVAGED_METAL.get()).patternLine("###").patternLine("###").patternLine("###").setGroup("ravaged_metal").addCriterion("has_ravaged_metal", hasItem(ItemRegistry.RAVAGED_METAL.get())).build(consumer);
         ShapelessRecipeBuilder.shapelessRecipe(ItemRegistry.RAVAGED_METAL.get(), 9).addIngredient(ItemRegistry.RAVAGED_METAL_BLOCK.get()).setGroup("ravaged_metal").addCriterion("has_ravaged_metal", hasItem(ItemRegistry.RAVAGED_METAL.get())).build(consumer, "ravaged_metal_alt");
@@ -56,6 +57,8 @@ public class ModRecipeProvider extends RecipeProvider
         ShapedRecipeBuilder.shapedRecipe(ItemRegistry.RAVAGED_CHESTPLATE.get()).key('X', ItemRegistry.RAVAGED_METAL.get()).patternLine("X X").patternLine("XXX").patternLine("XXX").addCriterion("has_ravaged_metal", hasItem(ItemRegistry.RAVAGED_METAL.get())).build(consumer);
         ShapedRecipeBuilder.shapedRecipe(ItemRegistry.RAVAGED_LEGGINGS.get()).key('X', ItemRegistry.RAVAGED_METAL.get()).patternLine("XXX").patternLine("X X").patternLine("X X").addCriterion("has_ravaged_metal", hasItem(ItemRegistry.RAVAGED_METAL.get())).build(consumer);
         ShapedRecipeBuilder.shapedRecipe(ItemRegistry.RAVAGED_BOOTS.get()).key('X', ItemRegistry.RAVAGED_METAL.get()).patternLine("X X").patternLine("X X").addCriterion("has_ravaged_metal", hasItem(ItemRegistry.RAVAGED_METAL.get())).build(consumer);
+
+        ShapedRecipeBuilder.shapedRecipe(ItemRegistry.RAVAGED_CHARM.get()).key('X', ItemRegistry.RAVAGED_METAL.get()).key('Y', Tags.Items.LEATHER).patternLine(" Y ").patternLine("Y Y").patternLine(" X ").addCriterion("has_ravaged_metal", hasItem(ItemRegistry.RAVAGED_METAL.get())).build(consumer);
 
         ShapedRecipeBuilder.shapedRecipe(ItemRegistry.HAUNTED_STEEL_BLOCK.get()).key('#', ItemRegistry.HAUNTED_STEEL_INGOT.get()).patternLine("###").patternLine("###").patternLine("###").setGroup("haunted_steel").addCriterion("has_haunted_steel", hasItem(ItemRegistry.HAUNTED_STEEL_INGOT.get())).build(consumer);
         ShapelessRecipeBuilder.shapelessRecipe(ItemRegistry.HAUNTED_STEEL_INGOT.get(), 9).addIngredient(ItemRegistry.HAUNTED_STEEL_BLOCK.get()).setGroup("haunted_steel").addCriterion("has_haunted_steel", hasItem(ItemRegistry.HAUNTED_STEEL_INGOT.get())).build(consumer, "haunted_ingot_alt");

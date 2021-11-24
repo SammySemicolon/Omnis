@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " Y ",
+    "Y Y",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "omnis:ravaged_metal"
+    },
+    "Y": {
+      "tag": "forge:leather"
+    }
+  },
+  "result": {
+    "item": "omnis:ravaged_charm"
+  }
+}

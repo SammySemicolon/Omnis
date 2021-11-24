@@ -2,6 +2,7 @@
   "attribute.name.omnis.magic_proficiency": "Magic Proficiency",
   "attribute.name.omnis.magic_resistance": "Magic Resistance",
   "block.omnis.aquatic_surge_block": "Aquatic Surge Block",
+  "block.omnis.aquatic_surge_jet_block": "Aquatic Surge Jet Block",
   "block.omnis.carved_gloomstone": "Carved Gloomstone",
   "block.omnis.carved_ravagestone": "Carved Ravagestone",
   "block.omnis.gloomstone": "Gloomstone",
@@ -19,6 +20,7 @@
   "block.omnis.gloomstone_wall": "Gloomstone Wall",
   "block.omnis.haunted_steel_block": "Haunted Steel Block",
   "block.omnis.infernal_surge_block": "Infernal Surge Block",
+  "block.omnis.infernal_surge_jet_block": "Infernal Surge Jet Block",
   "block.omnis.polished_gloomstone": "Polished Gloomstone",
   "block.omnis.polished_gloomstone_slab": "Polished Gloomstone Slab",
   "block.omnis.polished_gloomstone_stairs": "Polished Gloomstone Stairs",
@@ -61,6 +63,7 @@
   "item.omnis.haunted_battle_axe": "Haunted Battle Axe",
   "item.omnis.haunted_boots": "Haunted Boots",
   "item.omnis.haunted_broadsword": "Haunted Broadsword",
+  "item.omnis.haunted_charm": "Haunted Charm",
   "item.omnis.haunted_chestplate": "Haunted Chestplate",
   "item.omnis.haunted_hammer": "Haunted Hammer",
   "item.omnis.haunted_helmet": "Haunted Helmet",
@@ -73,6 +76,7 @@
   "item.omnis.ravaged_battle_axe": "Ravaged Battle Axe",
   "item.omnis.ravaged_boots": "Ravaged Boots",
   "item.omnis.ravaged_broadsword": "Ravaged Broadsword",
+  "item.omnis.ravaged_charm": "Ravaged Charm",
   "item.omnis.ravaged_chestplate": "Ravaged Chestplate",
   "item.omnis.ravaged_hammer": "Ravaged Hammer",
   "item.omnis.ravaged_helmet": "Ravaged Helmet",
@@ -118,5 +122,5 @@
   "omnis.tooltip.stunning": "Stunning",
   "omnis.tooltip.stunning_detailed": "Stuns healthy enemies\nStunned enemies move slower and have decreased range",
   "omnis.tooltip.sweeping": "Sweeping",
-  "omnis.tooltip.sweeping_detailed": "Every attack causes a strong sweep attack"
+  "omnis.tooltip.sweeping_detailed": "Every hit causes a strong sweep attack"
 }

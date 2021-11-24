@@ -1,27 +1,53 @@
 {
   "variants": {
-    "facing=down": {
+    "facing=down,triggered=false": {
       "model": "omnis:block/infernal_surge_block",
       "x": 180
     },
-    "facing=up": {
+    "facing=up,triggered=false": {
       "model": "omnis:block/infernal_surge_block"
     },
-    "facing=north": {
+    "facing=north,triggered=false": {
       "model": "omnis:block/infernal_surge_block",
       "x": 90
     },
-    "facing=south": {
+    "facing=south,triggered=false": {
       "model": "omnis:block/infernal_surge_block",
       "x": 90,
       "y": 180
     },
-    "facing=west": {
+    "facing=west,triggered=false": {
       "model": "omnis:block/infernal_surge_block",
       "x": 90,
       "y": 270
     },
-    "facing=east": {
+    "facing=east,triggered=false": {
+      "model": "omnis:block/infernal_surge_block",
+      "x": 90,
+      "y": 90
+    },
+    "facing=down,triggered=true": {
+      "model": "omnis:block/infernal_surge_block",
+      "x": 180
+    },
+    "facing=up,triggered=true": {
+      "model": "omnis:block/infernal_surge_block"
+    },
+    "facing=north,triggered=true": {
+      "model": "omnis:block/infernal_surge_block",
+      "x": 90
+    },
+    "facing=south,triggered=true": {
+      "model": "omnis:block/infernal_surge_block",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west,triggered=true": {
+      "model": "omnis:block/infernal_surge_block",
+      "x": 90,
+      "y": 270
+    },
+    "facing=east,triggered=true": {
       "model": "omnis:block/infernal_surge_block",
       "x": 90,
       "y": 90

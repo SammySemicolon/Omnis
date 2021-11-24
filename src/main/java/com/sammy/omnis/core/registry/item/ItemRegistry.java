@@ -4,9 +4,7 @@ import com.sammy.omnis.common.items.equipment.armor.HauntedSteelArmorItem;
 import com.sammy.omnis.common.items.equipment.armor.RavagedMetalArmorItem;
 import com.sammy.omnis.common.items.equipment.curios.CurioFluffyTail;
 import com.sammy.omnis.common.items.gear.*;
-import com.sammy.omnis.common.items.gear.loot.CurioEvokerCharm;
-import com.sammy.omnis.common.items.gear.loot.SpellBladeItem;
-import com.sammy.omnis.common.items.gear.loot.VindicatorAxeItem;
+import com.sammy.omnis.common.items.gear.loot.*;
 import com.sammy.omnis.core.registry.block.BlockRegistry;
 import com.sammy.omnis.core.registry.item.tabs.OmnisTab;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -62,6 +60,8 @@ public class ItemRegistry
     public static final RegistryObject<Item> RAVAGED_LEGGINGS = ITEMS.register("ravaged_leggings", () -> new RavagedMetalArmorItem(EquipmentSlotType.LEGS, GEAR_PROPERTIES()));
     public static final RegistryObject<Item> RAVAGED_BOOTS = ITEMS.register("ravaged_boots", () -> new RavagedMetalArmorItem(EquipmentSlotType.FEET, GEAR_PROPERTIES()));
 
+    public static final RegistryObject<Item> RAVAGED_CHARM = ITEMS.register("ravaged_charm", () -> new CurioRavagedCharm(GEAR_PROPERTIES()));
+
     public static final RegistryObject<Item> VINDICATOR_AXE = ITEMS.register("vindicator_axe", () -> new VindicatorAxeItem(ItemTier.IRON, 2, -0.2f, GEAR_PROPERTIES(), 240));
     public static final RegistryObject<Item> SPELL_BLADE = ITEMS.register("spell_blade", () -> new SpellBladeItem(ItemTier.DIAMOND, -1, 0.1f, GEAR_PROPERTIES(), 0.25f));
 
@@ -75,6 +75,8 @@ public class ItemRegistry
     public static final RegistryObject<Item> HAUNTED_CHESTPLATE = ITEMS.register("haunted_chestplate", () -> new HauntedSteelArmorItem(EquipmentSlotType.CHEST, GEAR_PROPERTIES()));
     public static final RegistryObject<Item> HAUNTED_LEGGINGS = ITEMS.register("haunted_leggings", () -> new HauntedSteelArmorItem(EquipmentSlotType.LEGS, GEAR_PROPERTIES()));
     public static final RegistryObject<Item> HAUNTED_BOOTS = ITEMS.register("haunted_boots", () -> new HauntedSteelArmorItem(EquipmentSlotType.FEET, GEAR_PROPERTIES()));
+
+    public static final RegistryObject<Item> HAUNTED_CHARM = ITEMS.register("haunted_charm", () -> new CurioHauntedCharm(GEAR_PROPERTIES()));
 
     public static final RegistryObject<Item> HAUNTED_VINDICATOR_AXE = ITEMS.register("haunted_vindicator_axe", () -> new VindicatorAxeItem(HAUNTED_ITEM, 2, -0.2f, GEAR_PROPERTIES(), 120));
     public static final RegistryObject<Item> HAUNTED_SPELL_BLADE = ITEMS.register("haunted_spell_blade", () -> new SpellBladeItem(HAUNTED_ITEM, -1, 0.1f, GEAR_PROPERTIES(), 0.5f));

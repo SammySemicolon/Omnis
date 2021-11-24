@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "omnis:ravaged_charm"
+  },
+  "addition": {
+    "item": "omnis:haunted_steel_ingot"
+  },
+  "result": {
+    "item": "omnis:haunted_charm"
+  }
+}

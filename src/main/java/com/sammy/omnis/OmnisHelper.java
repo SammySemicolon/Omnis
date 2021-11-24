@@ -1,9 +1,15 @@
 package com.sammy.omnis;
 
+import com.sammy.omnis.core.registry.block.BlockRegistry;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.RegistryObject;
 import org.apache.commons.lang3.tuple.ImmutableTriple;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
@@ -44,7 +50,46 @@ public class OmnisHelper
     {
         return items.collect(Collectors.toCollection(ArrayList::new));
     }
-    
+
+    public static void updateState(World worldIn, BlockPos pos) {
+        updateState(worldIn.getBlockState(pos), worldIn, pos);
+    }
+
+    public static void updateState(BlockState state, World worldIn, BlockPos pos) {
+        worldIn.notifyBlockUpdate(pos, state, state, 2);
+    }
+
+    public static void updateAndNotifyState(World worldIn, BlockPos pos) {
+        updateAndNotifyState(worldIn.getBlockState(pos), worldIn, pos);
+    }
+
+    public static void updateAndNotifyState(BlockState state, World worldIn, BlockPos pos) {
+        worldIn.notifyBlockUpdate(pos, state, state, 2);
+        state.updateNeighbours(worldIn, pos, 2);
+    }
+
+    public static CompoundNBT writeBlockPos(CompoundNBT compoundNBT, BlockPos pos) {
+        compoundNBT.putInt("X", pos.getX());
+        compoundNBT.putInt("Y", pos.getY());
+        compoundNBT.putInt("Z", pos.getZ());
+        return compoundNBT;
+    }
+
+    public static CompoundNBT writeBlockPos(CompoundNBT compoundNBT, BlockPos pos, String extra) {
+        compoundNBT.putInt(extra + "X", pos.getX());
+        compoundNBT.putInt(extra + "Y", pos.getY());
+        compoundNBT.putInt(extra + "Z", pos.getZ());
+        return compoundNBT;
+    }
+
+    public static BlockPos readBlockPos(CompoundNBT tag) {
+        return new BlockPos(tag.getInt("X"), tag.getInt("Y"), tag.getInt("Z"));
+    }
+
+    public static BlockPos readBlockPos(CompoundNBT tag, String extra) {
+        return new BlockPos(tag.getInt(extra + "X"), tag.getInt(extra + "Y"), tag.getInt(extra + "Z"));
+    }
+
     public static String toTitleCase(String givenString, String regex)
     {
         String[] stringArray = givenString.split(regex);
@@ -97,6 +142,16 @@ public class OmnisHelper
         return ret;
     }
 
+    public static Block[] getModBlocks(Class<?>... blockClasses) {
+        Collection<RegistryObject<Block>> blocks = BlockRegistry.BLOCKS.getEntries();
+        ArrayList<Block> matchingBlocks = new ArrayList<>();
+        for (RegistryObject<Block> registryObject : blocks) {
+            if (Arrays.stream(blockClasses).anyMatch(b -> b.isInstance(registryObject.get()))) {
+                matchingBlocks.add(registryObject.get());
+            }
+        }
+        return matchingBlocks.toArray(new Block[0]);
+    }
     @Nonnull
     public static Optional<ImmutableTriple<String, Integer, ItemStack>> findCosmeticCurio(Predicate<ItemStack> filter, @Nonnull final LivingEntity livingEntity)
     {

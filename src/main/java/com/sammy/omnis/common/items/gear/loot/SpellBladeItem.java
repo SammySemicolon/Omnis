@@ -1,6 +1,5 @@
 package com.sammy.omnis.common.items.gear.loot;
 
-import com.sammy.omnis.common.packets.ParticlePacket;
 import com.sammy.omnis.core.registry.SoundRegistry;
 import com.sammy.omnis.core.systems.item.IHurtEventItem;
 import com.sammy.omnis.core.systems.item.ITooltipItem;
@@ -12,14 +11,10 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.fml.network.PacketDistributor;
 
 import java.util.List;
 
-import static com.sammy.omnis.common.packets.ParticlePacket.typeEnum.spellBlade;
-import static com.sammy.omnis.core.eventhandlers.NetworkEvents.INSTANCE;
 
 public class SpellBladeItem extends ModSwordItem implements ITooltipItem, IHurtEventItem {
     public final float effectStrength;
@@ -31,13 +26,14 @@ public class SpellBladeItem extends ModSwordItem implements ITooltipItem, IHurtE
 
     @Override
     public void hurtEvent(LivingHurtEvent event, LivingEntity attacker, LivingEntity target, ItemStack stack) {
-        if (!event.getSource().isMagicDamage())
-        {
+        if (!event.getSource().isMagicDamage()) {
             float amount = event.getAmount() * effectStrength;
             event.setAmount(event.getAmount() - amount);
             event.getEntity().hurtResistantTime = 0;
-            target.attackEntityFrom(DamageSource.causeMobDamage(attacker).setMagicDamage(), amount);
-            target.playSound(SoundRegistry.MAGIC_CRIT, 1, 1f+target.world.rand.nextFloat()*0.2f);
+            if (target.isAlive()) {
+                target.attackEntityFrom(DamageSource.causeMobDamage(attacker).setMagicDamage(), amount);
+            }
+            target.playSound(SoundRegistry.MAGIC_CRIT, 1, 1f + target.world.rand.nextFloat() * 0.2f);
         }
     }
 

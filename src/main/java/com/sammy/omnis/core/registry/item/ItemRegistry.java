@@ -82,6 +82,7 @@ public class ItemRegistry
     public static final RegistryObject<Item> HAUNTED_SPELL_BLADE = ITEMS.register("haunted_spell_blade", () -> new SpellBladeItem(HAUNTED_ITEM, -1, 0.1f, GEAR_PROPERTIES(), 0.5f));
 
     public static final RegistryObject<Item> EVOKER_CHARM = ITEMS.register("evoker_charm", () -> new CurioEvokerCharm(GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> ANKH_CHARM = ITEMS.register("ankh_charm", () -> new CurioAnkhCharm(GEAR_PROPERTIES()));
 
     public static final RegistryObject<Item> RAVAGESTONE = ITEMS.register("ravagestone", () -> new BlockItem(BlockRegistry.RAVAGESTONE.get(), DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> POLISHED_RAVAGESTONE = ITEMS.register("polished_ravagestone", () -> new BlockItem(BlockRegistry.POLISHED_RAVAGESTONE.get(), DEFAULT_PROPERTIES()));

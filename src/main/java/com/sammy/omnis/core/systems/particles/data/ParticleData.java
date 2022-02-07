@@ -10,7 +10,7 @@ import net.minecraft.particles.ParticleType;
 
 import java.awt.*;
 
-public class MalumParticleData implements IParticleData {
+public class ParticleData implements IParticleData {
     public float r1 = 1, g1 = 1, b1 = 1, a1 = 1, r2 = 1, g2 = 1, b2 = 1, a2 = 0;
     public float scale1 = 1, scale2 = 0;
     public int lifetime = 20;
@@ -18,7 +18,7 @@ public class MalumParticleData implements IParticleData {
     public boolean gravity = false;
     public boolean noClip = false;
 
-    public static Codec<MalumParticleData> codecFor(ParticleType<?> type) {
+    public static Codec<ParticleData> codecFor(ParticleType<?> type) {
         return RecordCodecBuilder.create(instance -> instance.group(
             Codec.FLOAT.fieldOf("r1").forGetter(d -> d.r1),
             Codec.FLOAT.fieldOf("g1").forGetter(d -> d.g1),
@@ -36,7 +36,7 @@ public class MalumParticleData implements IParticleData {
                 Codec.BOOL.fieldOf("noClip").forGetter(d -> d.noClip)
         ).apply(instance, (r1, g1, b1, a1, r2, g2, b2, a2, scale1, scale2,
                            lifetime, spin, gravity, noClip) -> {
-            MalumParticleData data = new MalumParticleData(type);
+            ParticleData data = new ParticleData(type);
             data.r1 = r1; data.g1 = g1; data.b1 = b1; data.a1 = a1;
             data.r2 = r2; data.g2 = g2; data.b2 = b2; data.a2 = a2;
             data.scale1 = scale1;
@@ -51,7 +51,7 @@ public class MalumParticleData implements IParticleData {
 
     ParticleType<?> type;
 
-    public MalumParticleData(ParticleType<?> type) {
+    public ParticleData(ParticleType<?> type) {
         this.type = type;
     }
 
@@ -87,9 +87,9 @@ public class MalumParticleData implements IParticleData {
         return getClass().getSimpleName() + ":internal";
     }
 
-    public static final IDeserializer<MalumParticleData> DESERIALIZER = new IDeserializer<MalumParticleData>() {
+    public static final IDeserializer<ParticleData> DESERIALIZER = new IDeserializer<ParticleData>() {
         @Override
-        public MalumParticleData deserialize(ParticleType<MalumParticleData> type, StringReader reader) throws CommandSyntaxException {
+        public ParticleData deserialize(ParticleType<ParticleData> type, StringReader reader) throws CommandSyntaxException {
             reader.expect(' ');
             float r1 = reader.readFloat();
             reader.expect(' ');
@@ -118,7 +118,7 @@ public class MalumParticleData implements IParticleData {
             boolean gravity = reader.readBoolean();
             reader.expect(' ');
             boolean noClip = reader.readBoolean();
-            MalumParticleData data = new MalumParticleData(type);
+            ParticleData data = new ParticleData(type);
             data.r1 = r1;
             data.g1 = g1;
             data.b1 = b1;
@@ -137,7 +137,7 @@ public class MalumParticleData implements IParticleData {
         }
 
         @Override
-        public MalumParticleData read(ParticleType<MalumParticleData> type, PacketBuffer buf) {
+        public ParticleData read(ParticleType<ParticleData> type, PacketBuffer buf) {
             float r1 = buf.readFloat();
             float g1 = buf.readFloat();
             float b1 = buf.readFloat();
@@ -152,7 +152,7 @@ public class MalumParticleData implements IParticleData {
             float spin = buf.readFloat();
             boolean gravity = buf.readBoolean();
             boolean noClip = buf.readBoolean();
-            MalumParticleData data = new MalumParticleData(type);
+            ParticleData data = new ParticleData(type);
             data.r1 = r1;
             data.g1 = g1;
             data.b1 = b1;

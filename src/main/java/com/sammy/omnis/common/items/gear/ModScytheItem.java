@@ -16,6 +16,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 import java.util.List;
 
@@ -29,13 +30,12 @@ public class ModScytheItem extends ModCombatItem implements ITooltipItem, IHurtE
     }
 
     @Override
-    public void hurtEvent(LivingEntity attacker, LivingEntity target, ItemStack stack) {
+    public void hurtEvent(LivingHurtEvent event, LivingEntity attacker, LivingEntity target, ItemStack stack) {
+        float damage = 1.0f + event.getAmount() * (areaDamage + EnchantmentHelper.getSweepingDamageRatio(attacker));
         target.world.getEntitiesWithinAABBExcludingEntity(attacker, target.getBoundingBox().grow(1)).forEach(e ->
         {
             if (e instanceof LivingEntity)
             {
-                float baseDamage = (float) attacker.getAttributeValue(Attributes.ATTACK_DAMAGE);
-                float damage = 1.0f + baseDamage * areaDamage + baseDamage * EnchantmentHelper.getSweepingDamageRatio(attacker);
                 e.attackEntityFrom(DamageSource.causeMobDamage(attacker), damage);
                 ((LivingEntity) e).applyKnockback(0.4F, MathHelper.sin(attacker.rotationYaw * ((float) Math.PI / 180F)), (-MathHelper.cos(attacker.rotationYaw * ((float) Math.PI / 180F))));
             }

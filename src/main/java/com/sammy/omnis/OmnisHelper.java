@@ -4,10 +4,13 @@ import com.sammy.omnis.core.registry.block.BlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.RegistryObject;
 import org.apache.commons.lang3.tuple.ImmutableTriple;
@@ -89,7 +92,12 @@ public class OmnisHelper
     public static BlockPos readBlockPos(CompoundNBT tag, String extra) {
         return new BlockPos(tag.getInt(extra + "X"), tag.getInt(extra + "Y"), tag.getInt(extra + "Z"));
     }
-
+    public static Vector3d randPos(BlockPos pos, Random rand, double min, double max) {
+        double x = MathHelper.nextDouble(rand, min, max) + pos.getX();
+        double y = MathHelper.nextDouble(rand, min, max) + pos.getY();
+        double z = MathHelper.nextDouble(rand, min, max) + pos.getZ();
+        return new Vector3d(x, y, z);
+    }
     public static String toTitleCase(String givenString, String regex)
     {
         String[] stringArray = givenString.split(regex);
@@ -151,6 +159,10 @@ public class OmnisHelper
             }
         }
         return matchingBlocks.toArray(new Block[0]);
+    }
+
+    public static boolean hasCurioEquipped(LivingEntity entity, RegistryObject<Item> curio) {
+        return CuriosApi.getCuriosHelper().findEquippedCurio(curio.get(), entity).isPresent();
     }
     @Nonnull
     public static Optional<ImmutableTriple<String, Integer, ItemStack>> findCosmeticCurio(Predicate<ItemStack> filter, @Nonnull final LivingEntity livingEntity)

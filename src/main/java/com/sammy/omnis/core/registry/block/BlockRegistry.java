@@ -38,8 +38,8 @@ public class BlockRegistry
     {
         return AbstractBlock.Properties.create(Material.ROCK, MaterialColor.BLUE_TERRACOTTA).sound(SoundRegistry.GLOOMSTONE).hardnessAndResistance(1.25f,9f).setRequiresTool();
     }
-    public static final RegistryObject<Block> INFERNAL_SURGE_JET_BLOCK = BLOCKS.register("infernal_surge_jet_block", () -> new SurgeJetBlock(AbstractBlock.Properties.from(Blocks.AIR).tickRandomly()));
-    public static final RegistryObject<Block> AQUATIC_SURGE_JET_BLOCK = BLOCKS.register("aquatic_surge_jet_block", () -> new SurgeJetBlock(AbstractBlock.Properties.from(Blocks.AIR).tickRandomly()));
+    public static final RegistryObject<Block> INFERNAL_SURGE_JET_BLOCK = BLOCKS.register("infernal_surge_jet_block", () -> new SurgeJetBlock(AbstractBlock.Properties.from(Blocks.AIR).tickRandomly().notSolid()));
+    public static final RegistryObject<Block> AQUATIC_SURGE_JET_BLOCK = BLOCKS.register("aquatic_surge_jet_block", () -> new SurgeJetBlock(AbstractBlock.Properties.from(Blocks.AIR).tickRandomly().notSolid()));
     public static final RegistryObject<Block> INFERNAL_SURGE_BLOCK = BLOCKS.register("infernal_surge_block", () -> new SurgeBlock(RAVAGED_METAL_BLOCK_PROPERTIES(), INFERNAL_SURGE_JET_BLOCK));
     public static final RegistryObject<Block> AQUATIC_SURGE_BLOCK = BLOCKS.register("aquatic_surge_block", () -> new SurgeBlock(RAVAGED_METAL_BLOCK_PROPERTIES(), AQUATIC_SURGE_JET_BLOCK));
 

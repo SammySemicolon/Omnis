@@ -1,8 +1,6 @@
 package com.sammy.omnis.core.eventhandlers;
 
 import com.sammy.omnis.OmnisHelper;
-import com.sammy.omnis.OmnisMod;
-import com.sammy.omnis.common.packets.ParticlePacket;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -23,6 +21,5 @@ public class NetworkEvents
     public static void registerPackets(FMLCommonSetupEvent event)
     {
         int index = 0;
-        INSTANCE.registerMessage(index++, ParticlePacket.class, ParticlePacket::encode, ParticlePacket::decode, ParticlePacket::whenThisPacketIsReceived);
     }
 }

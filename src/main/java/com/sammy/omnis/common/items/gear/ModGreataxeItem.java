@@ -1,5 +1,6 @@
 package com.sammy.omnis.common.items.gear;
 
+import com.sammy.omnis.core.registry.SoundRegistry;
 import com.sammy.omnis.core.registry.effects.EffectRegistry;
 import com.sammy.omnis.core.systems.item.IHurtEventItem;
 import com.sammy.omnis.core.systems.item.ITooltipItem;
@@ -26,8 +27,9 @@ public class ModGreataxeItem extends ModAxeItem implements ITooltipItem, IHurtEv
 
     @Override
     public void hurtEvent(LivingEntity attacker, LivingEntity target, ItemStack stack) {
-        if (target.getMaxHealth() == target.getHealth()) {
+        if (target.getHealth() >= target.getMaxHealth()*0.9f) {
             target.addPotionEffect(new EffectInstance(EffectRegistry.STUNNED.get(), 200, stunnedAmplifier));
+            target.playSound(SoundRegistry.HEAVY_CRIT, 1, 1f+target.world.rand.nextFloat()*0.2f);
         }
     }
 

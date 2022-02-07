@@ -1,6 +1,6 @@
 package com.sammy.omnis.core.systems.particles;
 
-import com.sammy.omnis.core.systems.particles.data.MalumParticleData;
+import com.sammy.omnis.core.systems.particles.data.ParticleData;
 import com.sammy.omnis.core.systems.particles.rendertypes.SpriteParticleRenderType;
 import net.minecraft.client.particle.IParticleRenderType;
 import net.minecraft.client.particle.SpriteTexturedParticle;
@@ -10,10 +10,10 @@ import net.minecraft.util.math.MathHelper;
 
 import java.awt.*;
 
-public class GenericMalumParticle extends SpriteTexturedParticle {
-    MalumParticleData data;
+public class GenericParticle extends SpriteTexturedParticle {
+    ParticleData data;
     float[] hsv1 = new float[3], hsv2 = new float[3];
-    public GenericMalumParticle(ClientWorld world, MalumParticleData data, double x, double y, double z, double vx, double vy, double vz) {
+    public GenericParticle(ClientWorld world, ParticleData data, double x, double y, double z, double vx, double vy, double vz) {
         super(world, x, y, z, vx, vy, vz);
         this.setPosition(x, y, z);
         this.data = data;

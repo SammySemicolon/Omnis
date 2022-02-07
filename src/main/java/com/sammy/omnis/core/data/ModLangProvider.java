@@ -91,6 +91,9 @@ public class ModLangProvider extends LanguageProvider
         addTooltip("outlying", "Outlying");
         addTooltip("outlying_detailed", "Deals more damage to faraway enemies");
 
+        addTooltip("curative", "Curative");
+        addTooltip("curative_detailed", "Beneficial potion effects last longer, harmful effects are shorter.");
+
         addPotion("magic_proficiency", "Magic Proficiency");
 
         add("attribute.name.omnis.magic_resistance", "Magic Resistance");

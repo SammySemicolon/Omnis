@@ -30,19 +30,13 @@ public class CurioRavagedCharm extends Item implements ICurio {
             @Override
             public void playRightClickEquipSound(LivingEntity livingEntity) {
                 livingEntity.world.playSound(null, livingEntity.getPosition(), SoundRegistry.SINISTER_EQUIP, SoundCategory.NEUTRAL, 1.0f, 1.0f);
-
             }
 
             @Override
-            public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext,
-                                                                                UUID uuid) {
+            public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid) {
                 Multimap<Attribute, AttributeModifier> atts = HashMultimap.create();
-                atts.put(Attributes.ARMOR,
-                        new AttributeModifier(uuid, "Curio armor", 2,
-                                AttributeModifier.Operation.ADDITION));
-                atts.put(Attributes.ARMOR_TOUGHNESS,
-                        new AttributeModifier(uuid, "Curio armor toughness", 2,
-                                AttributeModifier.Operation.ADDITION));
+                atts.put(Attributes.ARMOR, new AttributeModifier(uuid, "Curio armor", 2, AttributeModifier.Operation.ADDITION));
+                atts.put(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(uuid, "Curio armor toughness", 2, AttributeModifier.Operation.ADDITION));
                 return atts;
             }
 

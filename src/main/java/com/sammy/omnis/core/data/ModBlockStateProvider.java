@@ -86,7 +86,7 @@ public class ModBlockStateProvider extends net.minecraftforge.client.model.gener
     public void surgeBlock(RegistryObject<Block> blockRegistryObject)
     {
         String name = Registry.BLOCK.getKey(blockRegistryObject.get()).getPath();
-        ModelFile model = models().cubeBottomTop(name, prefix("block/" + name + "_side"), prefix("block/" + "surge_block_bottom"), prefix("block/" + name + "_top"));
+        ModelFile model = models().cubeBottomTop(name, prefix("block/" + name + "_side"), prefix("block/surge_block_bottom"), prefix("block/" + name + "_top"));
         directionalBlock(blockRegistryObject.get(), model);
     }
     public void emptyBlock(RegistryObject<Block> blockRegistryObject)

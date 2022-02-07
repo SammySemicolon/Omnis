@@ -1,6 +1,6 @@
 package com.sammy.omnis.core.systems.particles;
 
-import com.sammy.omnis.core.systems.particles.data.MalumParticleData;
+import com.sammy.omnis.core.systems.particles.data.ParticleData;
 import net.minecraft.particles.ParticleType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -18,7 +18,7 @@ public class ParticleManager
         static Random random = new Random();
     
         ParticleType<?> type;
-        MalumParticleData data;
+        ParticleData data;
         double vx = 0, vy = 0, vz = 0;
         double dx = 0, dy = 0, dz = 0;
         double maxXSpeed = 0, maxYSpeed = 0, maxZSpeed = 0;
@@ -27,7 +27,7 @@ public class ParticleManager
         protected ParticleBuilder(ParticleType<?> type)
         {
             this.type = type;
-            this.data = new MalumParticleData(type);
+            this.data = new ParticleData(type);
         }
     
         public ParticleBuilder setColor(float r, float g, float b)

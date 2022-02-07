@@ -1,46 +1,38 @@
 package com.sammy.omnis.core.eventhandlers;
 
 import com.sammy.omnis.OmnisHelper;
-import com.sammy.omnis.common.items.gear.loot.CurioEvokerCharm;
-import com.sammy.omnis.common.items.gear.loot.SpellBladeItem;
-import com.sammy.omnis.common.items.gear.loot.VindicatorAxeItem;
 import com.sammy.omnis.core.registry.item.ItemRegistry;
-import com.sammy.omnis.core.registry.effects.EffectRegistry;
 import com.sammy.omnis.core.registry.misc.AttributeRegistry;
-import com.sammy.omnis.common.packets.ParticlePacket;
 import com.sammy.omnis.core.systems.item.IHurtEventItem;
-import net.minecraft.entity.CreatureAttribute;
+import net.minecraft.client.renderer.entity.WanderingTraderRenderer;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
+import net.minecraft.entity.merchant.villager.VillagerProfession;
+import net.minecraft.entity.merchant.villager.VillagerTrades;
 import net.minecraft.entity.monster.VexEntity;
 import net.minecraft.entity.monster.VindicatorEntity;
-import net.minecraft.entity.monster.ZombieVillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.potion.EffectInstance;
-import net.minecraft.util.DamageSource;
-import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.event.entity.EntityAttributeModificationEvent;
+import net.minecraft.potion.EffectType;
+import net.minecraftforge.common.BasicTrade;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.PotionEvent;
+import net.minecraftforge.event.village.VillagerTradesEvent;
+import net.minecraftforge.event.village.WandererTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.network.PacketDistributor;
 import net.minecraftforge.items.ItemHandlerHelper;
-import top.theillusivec4.curios.api.CuriosApi;
 
+import java.util.Collections;
 import java.util.UUID;
-
-import static com.sammy.omnis.core.eventhandlers.NetworkEvents.INSTANCE;
-import static com.sammy.omnis.common.packets.ParticlePacket.typeEnum.spellBlade;
-import static com.sammy.omnis.common.packets.ParticlePacket.typeEnum.vindicatorAxe;
 
 @Mod.EventBusSubscriber
 public class RuntimeEvents {
+
     @SubscribeEvent
     public static void giveSammyHisTreat(EntityJoinWorldEvent event) {
         if (event.getEntity() instanceof PlayerEntity) {
@@ -54,7 +46,29 @@ public class RuntimeEvents {
             }
         }
     }
-
+    @SubscribeEvent
+    public static void addTrades(VillagerTradesEvent event) {
+        if (event.getType().equals(VillagerProfession.CLERIC)) {
+            event.getTrades().putIfAbsent(1, Collections.singletonList(new BasicTrade(ItemRegistry.EVOKER_CHARM.get().getDefaultInstance(), new ItemStack(Items.EMERALD, 20), ItemRegistry.ANKH_CHARM.get().getDefaultInstance(), 3, 0, 1)));
+        }
+    }
+    @SubscribeEvent
+    public static void addTrades(WandererTradesEvent event)
+    {
+        event.getRareTrades().add(new BasicTrade(ItemRegistry.EVOKER_CHARM.get().getDefaultInstance(), new ItemStack(Items.EMERALD, 20), ItemRegistry.ANKH_CHARM.get().getDefaultInstance(), 3,0,1));
+    }
+    @SubscribeEvent
+    public static void ankhCharmEffect(PotionEvent.PotionAddedEvent event) {
+        if (OmnisHelper.hasCurioEquipped(event.getEntityLiving(), ItemRegistry.ANKH_CHARM)) {
+            EffectInstance instance = event.getPotionEffect();
+            if (instance.getPotion().isBeneficial()) {
+                instance.duration *= 1.5f;
+            }
+            if (instance.getPotion().getEffectType().equals(EffectType.HARMFUL)) {
+                instance.duration *= 0.5f;
+            }
+        }
+    }
     @SubscribeEvent
     public static void triggerOnHurtEvents(LivingHurtEvent event) {
         if (event.getSource().getTrueSource() instanceof LivingEntity) {
@@ -70,7 +84,7 @@ public class RuntimeEvents {
                 float resistance = (float) target.getAttributeValue(AttributeRegistry.MAGIC_RESISTANCE);
                 float proficiency = (float) target.getAttributeValue(AttributeRegistry.MAGIC_PROFICIENCY);
                 float amount = event.getAmount() + proficiency;
-                float multiplier = resistance * 12.5f;
+                float multiplier = 1 - (resistance * 0.125f);
                 event.setAmount(amount*multiplier);
             }
         }

@@ -40,7 +40,7 @@ f1c054a6257c7147047394d50ac57e12144a5141 assets/omnis/blockstates/ravagestone_ti
 610c60dcff61dbf2b99ac5ebe632f22aff6212cf assets/omnis/blockstates/ravagestone_wall.json
 f38e23d946c65c764654c2cb2f5aae38aa1efd54 assets/omnis/blockstates/vexwart.json
 491232bc661e665f1fb02bc8063ac955a5a832ac assets/omnis/blockstates/vexwart_block.json
-8cc078f00694e8375158245aae399cf612317096 assets/omnis/lang/en_us.json
+4e3477bc3e47a1f3396b6916a2b9bdfac502ee83 assets/omnis/lang/en_us.json
 66855bd476492588d3488cd93bad41ea7af42b7c assets/omnis/models/block/aquatic_surge_block.json
 7c36ca6b27a15a866df7b717a17d0025dc1407a3 assets/omnis/models/block/aquatic_surge_jet_block.json
 2dfc5c91efb7e55264baf0059f37d0f558d272ae assets/omnis/models/block/carved_gloomstone.json
@@ -124,6 +124,7 @@ aca8d41072316a47f01353a5f9895f6c5d5f5f67 assets/omnis/models/block/ravagestone_w
 a468919d95f3ef316a4a0531a7cdb24d32ef639c assets/omnis/models/block/vexwart_2.json
 8b23e50689d8cd375f380dc4cd5ba8705b43d4e8 assets/omnis/models/block/vexwart_3.json
 7e2f486ae92800afab6ced4cd20d9b4188024f01 assets/omnis/models/block/vexwart_block.json
+c76035d870634735172dd089ee06f780f409e77c assets/omnis/models/item/ankh_charm.json
 4fd18b9bd9a09c5eb9f3461cbd399f6fd094a7a1 assets/omnis/models/item/aquatic_surge_block.json
 61be5db4cd84d5bbaa8401533612b31e2b095752 assets/omnis/models/item/carved_gloomstone.json
 406c84e7533d58df7b4c644dbc2e6933607eeb58 assets/omnis/models/item/carved_ravagestone.json

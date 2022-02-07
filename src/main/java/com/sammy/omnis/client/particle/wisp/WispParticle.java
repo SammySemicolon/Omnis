@@ -2,15 +2,15 @@ package com.sammy.omnis.client.particle.wisp;
 
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import com.sammy.omnis.RenderUtil;
-import com.sammy.omnis.core.systems.particles.GenericMalumParticle;
+import com.sammy.omnis.core.systems.particles.GenericParticle;
 import com.sammy.omnis.core.systems.particles.ParticleRendering;
-import com.sammy.omnis.core.systems.particles.data.MalumParticleData;
+import com.sammy.omnis.core.systems.particles.data.ParticleData;
 import net.minecraft.client.renderer.ActiveRenderInfo;
 import net.minecraft.client.world.ClientWorld;
 
-public class WispParticle extends GenericMalumParticle
+public class WispParticle extends GenericParticle
 {
-    public WispParticle(ClientWorld world, MalumParticleData data, double x, double y, double z, double vx, double vy, double vz) {
+    public WispParticle(ClientWorld world, ParticleData data, double x, double y, double z, double vx, double vy, double vz) {
         super(world, data, x, y, z, vx, vy, vz);
     }
 

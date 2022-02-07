@@ -29,7 +29,7 @@ public class ModBroadswordItem extends ModSwordItem implements ITooltipItem, IHu
 
     @Override
     public void hurtEvent(LivingHurtEvent event, LivingEntity attacker, LivingEntity target, ItemStack stack) {
-        if (target.getMaxHealth() == target.getHealth()) {
+        if (target.getHealth() >= target.getMaxHealth()*0.9f) {
             event.setAmount(event.getAmount() + extraDamage);
             target.playSound(SoundRegistry.HEAVY_CRIT, 1, 1f+target.world.rand.nextFloat()*0.2f);
         }

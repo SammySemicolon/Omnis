@@ -46,17 +46,19 @@ public class RuntimeEvents {
             }
         }
     }
+
     @SubscribeEvent
     public static void addTrades(VillagerTradesEvent event) {
         if (event.getType().equals(VillagerProfession.CLERIC)) {
             event.getTrades().putIfAbsent(1, Collections.singletonList(new BasicTrade(ItemRegistry.EVOKER_CHARM.get().getDefaultInstance(), new ItemStack(Items.EMERALD, 20), ItemRegistry.ANKH_CHARM.get().getDefaultInstance(), 3, 0, 1)));
         }
     }
+
     @SubscribeEvent
-    public static void addTrades(WandererTradesEvent event)
-    {
-        event.getRareTrades().add(new BasicTrade(ItemRegistry.EVOKER_CHARM.get().getDefaultInstance(), new ItemStack(Items.EMERALD, 20), ItemRegistry.ANKH_CHARM.get().getDefaultInstance(), 3,0,1));
+    public static void addTrades(WandererTradesEvent event) {
+        event.getRareTrades().add(new BasicTrade(ItemRegistry.EVOKER_CHARM.get().getDefaultInstance(), new ItemStack(Items.EMERALD, 20), ItemRegistry.ANKH_CHARM.get().getDefaultInstance(), 3, 0, 1));
     }
+
     @SubscribeEvent
     public static void ankhCharmEffect(PotionEvent.PotionAddedEvent event) {
         if (OmnisHelper.hasCurioEquipped(event.getEntityLiving(), ItemRegistry.ANKH_CHARM)) {
@@ -69,6 +71,7 @@ public class RuntimeEvents {
             }
         }
     }
+
     @SubscribeEvent
     public static void triggerOnHurtEvents(LivingHurtEvent event) {
         if (event.getSource().getTrueSource() instanceof LivingEntity) {
@@ -80,12 +83,13 @@ public class RuntimeEvents {
                 IHurtEventItem eventItem = (IHurtEventItem) item;
                 eventItem.hurtEvent(event, attacker, target, stack);
             }
+            float amount = event.getAmount();
             if (event.getSource().isMagicDamage()) {
                 float resistance = (float) target.getAttributeValue(AttributeRegistry.MAGIC_RESISTANCE);
-                float proficiency = (float) target.getAttributeValue(AttributeRegistry.MAGIC_PROFICIENCY);
-                float amount = event.getAmount() + proficiency;
-                float multiplier = 1 - (resistance * 0.125f);
-                event.setAmount(amount*multiplier);
+                float proficiency = (float) attacker.getAttributeValue(AttributeRegistry.MAGIC_PROFICIENCY);
+
+                float multiplier = (float) (1 * Math.exp(-0.15f * resistance) * Math.exp(0.075f * proficiency));
+                event.setAmount(amount * multiplier);
             }
         }
     }

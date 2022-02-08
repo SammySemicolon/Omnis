@@ -4,17 +4,19 @@ import com.sammy.omnis.core.registry.SoundRegistry;
 import com.sammy.omnis.core.systems.item.IHurtEventItem;
 import com.sammy.omnis.core.systems.item.ITooltipItem;
 import com.sammy.omnis.common.items.basic.ModSwordItem;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 import java.util.List;
 
+
+import net.minecraft.item.Item.Properties;
 
 public class SpellBladeItem extends ModSwordItem implements ITooltipItem, IHurtEventItem {
     public final float effectStrength;
@@ -26,24 +28,24 @@ public class SpellBladeItem extends ModSwordItem implements ITooltipItem, IHurtE
 
     @Override
     public void hurtEvent(LivingHurtEvent event, LivingEntity attacker, LivingEntity target, ItemStack stack) {
-        if (!event.getSource().isMagicDamage()) {
+        if (!event.getSource().isMagic()) {
             float amount = event.getAmount() * effectStrength;
             event.setAmount(event.getAmount() - amount);
-            event.getEntity().hurtResistantTime = 0;
+            event.getEntity().invulnerableTime = 0;
             if (target.isAlive()) {
-                target.attackEntityFrom(DamageSource.causeMobDamage(attacker).setMagicDamage(), amount);
+                target.hurt(DamageSource.mobAttack(attacker).setMagic(), amount);
             }
-            target.playSound(SoundRegistry.MAGIC_CRIT, 1, 1f + target.world.rand.nextFloat() * 0.2f);
+            target.playSound(SoundRegistry.MAGIC_CRIT, 1, 1f + target.level.random.nextFloat() * 0.2f);
         }
     }
 
     @Override
-    public void addSneakTooltip(List<ITextComponent> tooltip) {
-        tooltip.add(new TranslationTextComponent("omnis.tooltip.arcane_detailed").mergeStyle(TextFormatting.BLUE));
+    public void addSneakTooltip(List<Component> tooltip) {
+        tooltip.add(new TranslationTextComponent("omnis.tooltip.arcane_detailed").withStyle(TextFormatting.BLUE));
     }
 
     @Override
-    public void addDefaultTooltip(List<ITextComponent> tooltip) {
-        tooltip.add(new TranslationTextComponent("omnis.tooltip.arcane").mergeStyle(TextFormatting.BLUE));
+    public void addDefaultTooltip(List<Component> tooltip) {
+        tooltip.add(new TranslationTextComponent("omnis.tooltip.arcane").withStyle(TextFormatting.BLUE));
     }
 }

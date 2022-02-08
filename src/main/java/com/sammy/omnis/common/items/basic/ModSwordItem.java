@@ -1,13 +1,13 @@
 package com.sammy.omnis.common.items.basic;
 
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.SwordItem;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.Tier;
 
 public class ModSwordItem extends SwordItem
 {
-    public ModSwordItem(IItemTier material, int attackDamage, float attackSpeed, Properties properties)
+    public ModSwordItem(Tier material, int attackDamage, float attackSpeed, Properties properties)
     {
-        super(material, attackDamage + 3, attackSpeed - 2.4f, properties.maxDamage(material.getMaxUses()));
+        super(material, attackDamage + 3, attackSpeed - 2.4f, properties.durability(material.getUses()));
     }
 }
 

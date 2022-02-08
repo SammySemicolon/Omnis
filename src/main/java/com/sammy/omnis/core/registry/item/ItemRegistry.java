@@ -2,16 +2,14 @@ package com.sammy.omnis.core.registry.item;
 
 import com.sammy.omnis.common.items.equipment.armor.HauntedSteelArmorItem;
 import com.sammy.omnis.common.items.equipment.armor.RavagedMetalArmorItem;
-import com.sammy.omnis.common.items.equipment.curios.CurioFluffyTail;
 import com.sammy.omnis.common.items.gear.*;
 import com.sammy.omnis.common.items.gear.loot.*;
 import com.sammy.omnis.core.registry.block.BlockRegistry;
 import com.sammy.omnis.core.registry.item.tabs.OmnisTab;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemTier;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -24,15 +22,15 @@ public class ItemRegistry
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
     public static Item.Properties DEFAULT_PROPERTIES()
     {
-        return new Item.Properties().group(OmnisTab.INSTANCE);
+        return new Item.Properties().tab(OmnisTab.INSTANCE);
     }
     public static Item.Properties GEAR_PROPERTIES()
     {
-        return new Item.Properties().group(OmnisTab.INSTANCE).maxStackSize(1);
+        return new Item.Properties().tab(OmnisTab.INSTANCE).stacksTo(1);
     }
     public static Item.Properties CREATIVE_PROPERTIES()
     {
-        return new Item.Properties().maxStackSize(1);
+        return new Item.Properties().stacksTo(1);
     }
 
     public static final RegistryObject<Item> INFERNAL_SURGE_BLOCK = ITEMS.register("infernal_surge_block", () -> new BlockItem(BlockRegistry.INFERNAL_SURGE_BLOCK.get(), DEFAULT_PROPERTIES()));
@@ -55,10 +53,10 @@ public class ItemRegistry
     public static final RegistryObject<Item> RAVAGED_SPEAR = ITEMS.register("ravaged_spear", () -> new ModSpearItem(RAVAGED_ITEM, 0, 0, 1.5f, GEAR_PROPERTIES()));
     public static final RegistryObject<Item> RAVAGED_SCYTHE = ITEMS.register("ravaged_scythe", () -> new ModScytheItem(RAVAGED_ITEM, 0, 0, 0.25f, GEAR_PROPERTIES()));
 
-    public static final RegistryObject<Item> RAVAGED_HELMET = ITEMS.register("ravaged_helmet", () -> new RavagedMetalArmorItem(EquipmentSlotType.HEAD, GEAR_PROPERTIES()));
-    public static final RegistryObject<Item> RAVAGED_CHESTPLATE = ITEMS.register("ravaged_chestplate", () -> new RavagedMetalArmorItem(EquipmentSlotType.CHEST, GEAR_PROPERTIES()));
-    public static final RegistryObject<Item> RAVAGED_LEGGINGS = ITEMS.register("ravaged_leggings", () -> new RavagedMetalArmorItem(EquipmentSlotType.LEGS, GEAR_PROPERTIES()));
-    public static final RegistryObject<Item> RAVAGED_BOOTS = ITEMS.register("ravaged_boots", () -> new RavagedMetalArmorItem(EquipmentSlotType.FEET, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> RAVAGED_HELMET = ITEMS.register("ravaged_helmet", () -> new RavagedMetalArmorItem(EquipmentSlot.HEAD, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> RAVAGED_CHESTPLATE = ITEMS.register("ravaged_chestplate", () -> new RavagedMetalArmorItem(EquipmentSlot.CHEST, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> RAVAGED_LEGGINGS = ITEMS.register("ravaged_leggings", () -> new RavagedMetalArmorItem(EquipmentSlot.LEGS, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> RAVAGED_BOOTS = ITEMS.register("ravaged_boots", () -> new RavagedMetalArmorItem(EquipmentSlot.FEET, GEAR_PROPERTIES()));
 
     public static final RegistryObject<Item> RAVAGED_CHARM = ITEMS.register("ravaged_charm", () -> new CurioRavagedCharm(GEAR_PROPERTIES()));
 
@@ -71,10 +69,10 @@ public class ItemRegistry
     public static final RegistryObject<Item> HAUNTED_SPEAR = ITEMS.register("haunted_spear", () -> new ModSpearItem(HAUNTED_ITEM, 0, 0, 2.5f, GEAR_PROPERTIES()));
     public static final RegistryObject<Item> HAUNTED_SCYTHE = ITEMS.register("haunted_scythe", () -> new ModScytheItem(HAUNTED_ITEM, 0, 0, 0.5f, GEAR_PROPERTIES()));
 
-    public static final RegistryObject<Item> HAUNTED_HELMET = ITEMS.register("haunted_helmet", () -> new HauntedSteelArmorItem(EquipmentSlotType.HEAD, GEAR_PROPERTIES()));
-    public static final RegistryObject<Item> HAUNTED_CHESTPLATE = ITEMS.register("haunted_chestplate", () -> new HauntedSteelArmorItem(EquipmentSlotType.CHEST, GEAR_PROPERTIES()));
-    public static final RegistryObject<Item> HAUNTED_LEGGINGS = ITEMS.register("haunted_leggings", () -> new HauntedSteelArmorItem(EquipmentSlotType.LEGS, GEAR_PROPERTIES()));
-    public static final RegistryObject<Item> HAUNTED_BOOTS = ITEMS.register("haunted_boots", () -> new HauntedSteelArmorItem(EquipmentSlotType.FEET, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> HAUNTED_HELMET = ITEMS.register("haunted_helmet", () -> new HauntedSteelArmorItem(EquipmentSlot.HEAD, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> HAUNTED_CHESTPLATE = ITEMS.register("haunted_chestplate", () -> new HauntedSteelArmorItem(EquipmentSlot.CHEST, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> HAUNTED_LEGGINGS = ITEMS.register("haunted_leggings", () -> new HauntedSteelArmorItem(EquipmentSlot.LEGS, GEAR_PROPERTIES()));
+    public static final RegistryObject<Item> HAUNTED_BOOTS = ITEMS.register("haunted_boots", () -> new HauntedSteelArmorItem(EquipmentSlot.FEET, GEAR_PROPERTIES()));
 
     public static final RegistryObject<Item> HAUNTED_CHARM = ITEMS.register("haunted_charm", () -> new CurioHauntedCharm(GEAR_PROPERTIES()));
 

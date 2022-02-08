@@ -4,16 +4,18 @@ import com.sammy.omnis.core.registry.effects.EffectRegistry;
 import com.sammy.omnis.core.systems.item.IHurtEventItem;
 import com.sammy.omnis.core.systems.item.ITooltipItem;
 import com.sammy.omnis.common.items.basic.ModAxeItem;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 
 import java.util.List;
+
+import net.minecraft.item.Item.Properties;
 
 public class VindicatorAxeItem extends ModAxeItem implements ITooltipItem, IHurtEventItem
 {
@@ -30,28 +32,28 @@ public class VindicatorAxeItem extends ModAxeItem implements ITooltipItem, IHurt
             if (attacker instanceof PlayerEntity)
             {
                 PlayerEntity playerEntity = (PlayerEntity) attacker;
-                if (playerEntity.getCooldownTracker().hasCooldown(stack.getItem()))
+                if (playerEntity.getCooldowns().isOnCooldown(stack.getItem()))
                 {
                     return;
                 }
                 else
                 {
-                    playerEntity.getCooldownTracker().setCooldown(stack.getItem(), effectCooldown);
+                    playerEntity.getCooldowns().addCooldown(stack.getItem(), effectCooldown);
                 }
             }
-            target.addPotionEffect(new EffectInstance(EffectRegistry.STUNNED.get(), 160, 0));
-            target.addPotionEffect(new EffectInstance(EffectRegistry.STAGGERED.get(), 160, 0));
+            target.addEffect(new EffectInstance(EffectRegistry.STUNNED.get(), 160, 0));
+            target.addEffect(new EffectInstance(EffectRegistry.STAGGERED.get(), 160, 0));
         }
     }
     @Override
-    public void addSneakTooltip(List<ITextComponent> tooltip)
+    public void addSneakTooltip(List<Component> tooltip)
     {
-        tooltip.add(new TranslationTextComponent("omnis.tooltip.ravage_detailed").mergeStyle(TextFormatting.BLUE));
+        tooltip.add(new TranslationTextComponent("omnis.tooltip.ravage_detailed").withStyle(TextFormatting.BLUE));
     }
 
     @Override
-    public void addDefaultTooltip(List<ITextComponent> tooltip)
+    public void addDefaultTooltip(List<Component> tooltip)
     {
-        tooltip.add(new TranslationTextComponent("omnis.tooltip.ravage").mergeStyle(TextFormatting.BLUE));
+        tooltip.add(new TranslationTextComponent("omnis.tooltip.ravage").withStyle(TextFormatting.BLUE));
     }
 }

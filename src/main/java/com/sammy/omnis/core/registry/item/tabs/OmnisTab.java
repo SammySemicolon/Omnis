@@ -3,7 +3,7 @@ package com.sammy.omnis.core.registry.item.tabs;
 import com.sammy.omnis.OmnisMod;
 import com.sammy.omnis.core.registry.item.ItemRegistry;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.ItemStack;
 
 import javax.annotation.Nonnull;
 
@@ -17,7 +17,7 @@ public class OmnisTab extends ItemGroup
     
     @Nonnull
     @Override
-    public ItemStack createIcon() {
+    public ItemStack makeIcon() {
         return new ItemStack(ItemRegistry.HAUNTED_STEEL_BLOCK.get());
     }
 }

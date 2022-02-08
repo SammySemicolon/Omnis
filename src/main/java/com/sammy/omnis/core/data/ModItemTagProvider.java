@@ -4,7 +4,7 @@ import com.sammy.omnis.OmnisMod;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.ItemTagsProvider;
-import net.minecraft.item.Item;
+import net.minecraft.world.item.Item;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
@@ -31,7 +31,7 @@ public class ModItemTagProvider extends ItemTagsProvider
         return ItemTags.createOptional(prefix(id));
     }
     @Override
-    protected void registerTags()
+    protected void addTags()
     {
         this.copy(BlockTags.WOOL, ItemTags.WOOL);
         this.copy(BlockTags.PLANKS, ItemTags.PLANKS);

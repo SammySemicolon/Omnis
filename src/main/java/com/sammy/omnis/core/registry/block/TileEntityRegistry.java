@@ -3,7 +3,7 @@ package com.sammy.omnis.core.registry.block;
 import com.sammy.omnis.OmnisHelper;
 import com.sammy.omnis.common.blocks.surge.SurgeBlock;
 import net.minecraft.tileentity.TileEntityType;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 

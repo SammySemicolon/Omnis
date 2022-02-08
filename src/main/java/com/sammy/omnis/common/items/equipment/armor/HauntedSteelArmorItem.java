@@ -1,62 +1,50 @@
 package com.sammy.omnis.common.items.equipment.armor;
 
 import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.sammy.omnis.client.model.ModelRavagedMetalArmor;
 import com.sammy.omnis.core.registry.misc.AttributeRegistry;
-import net.minecraft.client.renderer.entity.model.BipedModel;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.attributes.Attribute;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.LazyValue;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.loading.FMLEnvironment;
-
-import javax.annotation.Nullable;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.item.Item;
 
 import java.util.UUID;
 
 import static com.sammy.omnis.core.registry.item.ArmorTierRegistry.ArmorTierEnum.HAUNTED_ARMOR;
 
 
-public class HauntedSteelArmorItem extends ArmorItem {
-    private LazyValue<Object> model;
-    private final Multimap<Attribute, AttributeModifier> attributes;
-
-    public HauntedSteelArmorItem(EquipmentSlotType slot, Properties builder) {
-        super(HAUNTED_ARMOR, slot, builder);
-        if (FMLEnvironment.dist == Dist.CLIENT) {
-            this.model = DistExecutor.runForDist(() -> () -> new LazyValue<>(() -> new ModelRavagedMetalArmor(slot)), () -> () -> null);
-        }
-        UUID uuid = ARMOR_MODIFIERS[slot.getIndex()];
-        ImmutableMultimap.Builder<Attribute, AttributeModifier> attributeBuilder = ImmutableMultimap.builder();
-        attributeBuilder.putAll(field_234656_m_);
-        attributeBuilder.put(AttributeRegistry.MAGIC_RESISTANCE, new AttributeModifier(uuid, "Armor magic resistance", 1, AttributeModifier.Operation.ADDITION));
-        attributes = attributeBuilder.build();
+public class HauntedSteelArmorItem extends OmnisArmorItem {
+    public HauntedSteelArmorItem(EquipmentSlot slot, Item.Properties builder) {
+        super(HAUNTED_ARMOR, slot, builder, createExtraAttributes(slot));
     }
 
-    @Override
-    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
-        return equipmentSlot == this.slot ? this.attributes : ImmutableMultimap.of();
+    public static ImmutableMultimap.Builder<Attribute, AttributeModifier> createExtraAttributes(EquipmentSlot slot) {
+        ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = new ImmutableMultimap.Builder<>();
+        UUID uuid = ARMOR_MODIFIER_UUID_PER_SLOT[slot.getIndex()];
+        builder.put(AttributeRegistry.MAGIC_RESISTANCE, new AttributeModifier(uuid, "Magic Resistance", 1f, AttributeModifier.Operation.ADDITION));
+        return builder;
     }
 
-    @Override
-    @OnlyIn(Dist.CLIENT)
-    @SuppressWarnings("unchecked")
-    public <A extends BipedModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlotType armorSlot, A original) {
-        return (A) model.getValue();
+
+    public String getTexture() {
+        return "haunted_steel";
     }
 
-    @OnlyIn(Dist.CLIENT)
-    @Override
-    @Nullable
-    public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlotType slot, String type) {
-        return "omnis:textures/armor/haunted_armor.png";
-    }
+//    @OnlyIn(Dist.CLIENT)
+//    @Override
+//    public void initializeClient(java.util.function.Consumer<IItemRenderProperties> consumer) {
+//        consumer.accept(new IItemRenderProperties() {
+//            @Override
+//            public SoulStainedSteelArmorModel getArmorModel(LivingEntity entity, ItemStack itemStack, EquipmentSlot armorSlot, HumanoidModel _default) {
+//                float pticks = Minecraft.getInstance().getFrameTime();
+//                float f = Mth.rotLerp(pticks, entity.yBodyRotO, entity.yBodyRot);
+//                float f1 = Mth.rotLerp(pticks, entity.yHeadRotO, entity.yHeadRot);
+//                float netHeadYaw = f1 - f;
+//                float netHeadPitch = Mth.lerp(pticks, entity.xRotO, entity.getXRot());
+//                ItemRegistry.ClientOnly.SOUL_STAINED_ARMOR.slot = slot;
+//                ItemRegistry.ClientOnly.SOUL_STAINED_ARMOR.copyFromDefault(_default);
+//                ItemRegistry.ClientOnly.SOUL_STAINED_ARMOR.setupAnim(entity, entity.animationPosition, entity.animationSpeed, entity.tickCount + pticks, netHeadYaw, netHeadPitch);
+//                return ItemRegistry.ClientOnly.SOUL_STAINED_ARMOR;
+//            }
+//        });
+//    }
 }

@@ -1,18 +1,18 @@
 package com.sammy.omnis;
 
+import com.mojang.math.Vector3d;
 import com.sammy.omnis.core.registry.block.BlockRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.registries.RegistryObject;
 import org.apache.commons.lang3.tuple.ImmutableTriple;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
@@ -29,14 +29,13 @@ import static com.sammy.omnis.OmnisMod.MODID;
 
 public class OmnisHelper
 {
-    public static boolean areWeOnClient(World world)
+    public static boolean areWeOnClient(Level level)
     {
-        return world.isRemote;
+        return level.isClientSide;
     }
-    
-    public static boolean areWeOnServer(World world)
+    public static boolean areWeOnServer(Level level)
     {
-        return !areWeOnClient(world);
+        return !areWeOnClient(level);
     }
     
     public static ResourceLocation prefix(String path)
@@ -54,48 +53,49 @@ public class OmnisHelper
         return items.collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public static void updateState(World worldIn, BlockPos pos) {
-        updateState(worldIn.getBlockState(pos), worldIn, pos);
+    public static void updateState(Level levelIn, BlockPos pos) {
+        updateState(levelIn.getBlockState(pos), levelIn, pos);
     }
 
-    public static void updateState(BlockState state, World worldIn, BlockPos pos) {
-        worldIn.notifyBlockUpdate(pos, state, state, 2);
+    public static void updateState(BlockState state, Level levelIn, BlockPos pos) {
+        levelIn.sendBlockUpdated(pos, state, state, 2);
     }
 
-    public static void updateAndNotifyState(World worldIn, BlockPos pos) {
-        updateAndNotifyState(worldIn.getBlockState(pos), worldIn, pos);
+    public static void updateAndNotifyState(Level levelIn, BlockPos pos) {
+        updateAndNotifyState(levelIn.getBlockState(pos), levelIn, pos);
     }
 
-    public static void updateAndNotifyState(BlockState state, World worldIn, BlockPos pos) {
-        worldIn.notifyBlockUpdate(pos, state, state, 2);
-        state.updateNeighbours(worldIn, pos, 2);
+    public static void updateAndNotifyState(BlockState state, Level levelIn, BlockPos pos) {
+        levelIn.sendBlockUpdated(pos, state, state, 2);
+        state.updateNeighbourShapes(levelIn, pos, 2);
     }
 
-    public static CompoundNBT writeBlockPos(CompoundNBT compoundNBT, BlockPos pos) {
+    public static CompoundTag writeBlockPos(CompoundTag compoundNBT, BlockPos pos) {
         compoundNBT.putInt("X", pos.getX());
         compoundNBT.putInt("Y", pos.getY());
         compoundNBT.putInt("Z", pos.getZ());
         return compoundNBT;
     }
 
-    public static CompoundNBT writeBlockPos(CompoundNBT compoundNBT, BlockPos pos, String extra) {
+    public static CompoundTag writeBlockPos(CompoundTag compoundNBT, BlockPos pos, String extra) {
         compoundNBT.putInt(extra + "X", pos.getX());
         compoundNBT.putInt(extra + "Y", pos.getY());
         compoundNBT.putInt(extra + "Z", pos.getZ());
         return compoundNBT;
     }
 
-    public static BlockPos readBlockPos(CompoundNBT tag) {
+    public static BlockPos readBlockPos(CompoundTag tag) {
         return new BlockPos(tag.getInt("X"), tag.getInt("Y"), tag.getInt("Z"));
     }
 
-    public static BlockPos readBlockPos(CompoundNBT tag, String extra) {
+    public static BlockPos readBlockPos(CompoundTag tag, String extra) {
         return new BlockPos(tag.getInt(extra + "X"), tag.getInt(extra + "Y"), tag.getInt(extra + "Z"));
     }
+
     public static Vector3d randPos(BlockPos pos, Random rand, double min, double max) {
-        double x = MathHelper.nextDouble(rand, min, max) + pos.getX();
-        double y = MathHelper.nextDouble(rand, min, max) + pos.getY();
-        double z = MathHelper.nextDouble(rand, min, max) + pos.getZ();
+        double x = Mth.nextDouble(rand, min, max) + pos.getX();
+        double y = Mth.nextDouble(rand, min, max) + pos.getY();
+        double z = Mth.nextDouble(rand, min, max) + pos.getZ();
         return new Vector3d(x, y, z);
     }
     public static String toTitleCase(String givenString, String regex)

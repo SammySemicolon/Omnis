@@ -1,13 +1,15 @@
 package com.sammy.omnis.common.blocks;
 
 import com.sammy.omnis.core.registry.item.ItemRegistry;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.NetherWartBlock;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorldReader;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.NetherWartBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.HitResult;
 
 public class VexwartBlock extends NetherWartBlock
 {
@@ -17,13 +19,12 @@ public class VexwartBlock extends NetherWartBlock
     }
 
     @Override
-    public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state)
-    {
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player) {
         return ItemRegistry.VEXWART.get().getDefaultInstance();
     }
 
     @Override
-    public boolean isValidPosition(BlockState state, IWorldReader reader, BlockPos pos) {
-        return reader.getBlockState(pos.down()).isIn(Blocks.SOUL_SAND);
+    public boolean canSurvive(BlockState state, LevelReader reader, BlockPos pos) {
+        return reader.getBlockState(pos.below()).is(Blocks.SOUL_SAND);
     }
 }

@@ -4,17 +4,19 @@ import com.sammy.omnis.core.registry.SoundRegistry;
 import com.sammy.omnis.core.registry.effects.EffectRegistry;
 import com.sammy.omnis.core.systems.item.IHurtEventItem;
 import com.sammy.omnis.core.systems.item.ITooltipItem;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.List;
+
+import net.minecraft.item.Item.Properties;
 
 public class ModHammerItem extends ModCombatItem implements ITooltipItem, IHurtEventItem {
     public final int staggeredAmplifier;
@@ -27,20 +29,20 @@ public class ModHammerItem extends ModCombatItem implements ITooltipItem, IHurtE
     @Override
     public void hurtEvent(LivingEntity attacker, LivingEntity target, ItemStack stack) {
         if (target.getHealth() >= target.getMaxHealth()*0.9f) {
-            target.addPotionEffect(new EffectInstance(EffectRegistry.STAGGERED.get(), 200, staggeredAmplifier));
-            target.playSound(SoundRegistry.HEAVY_CRIT, 1, 1f+target.world.rand.nextFloat()*0.2f);
+            target.addEffect(new EffectInstance(EffectRegistry.STAGGERED.get(), 200, staggeredAmplifier));
+            target.playSound(SoundRegistry.HEAVY_CRIT, 1, 1f+target.level.random.nextFloat()*0.2f);
         }
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void addSneakTooltip(List<ITextComponent> tooltip) {
-        tooltip.add(new TranslationTextComponent("omnis.tooltip.staggering_detailed").mergeStyle(TextFormatting.BLUE));
+    public void addSneakTooltip(List<Component> tooltip) {
+        tooltip.add(new TranslationTextComponent("omnis.tooltip.staggering_detailed").withStyle(TextFormatting.BLUE));
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void addDefaultTooltip(List<ITextComponent> tooltip) {
-        tooltip.add(new TranslationTextComponent("omnis.tooltip.staggering").mergeStyle(TextFormatting.BLUE));
+    public void addDefaultTooltip(List<Component> tooltip) {
+        tooltip.add(new TranslationTextComponent("omnis.tooltip.staggering").withStyle(TextFormatting.BLUE));
     }
 }

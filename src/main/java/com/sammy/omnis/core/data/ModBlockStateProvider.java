@@ -10,12 +10,12 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.state.properties.AttachFace;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.RegistryObject;
 
 import javax.annotation.Nonnull;
 import java.util.Collection;
@@ -111,13 +111,13 @@ public class ModBlockStateProvider extends net.minecraftforge.client.model.gener
         ModelFile torch = models().torchWall(blockRegistryObject.get().getRegistryName().getPath(), prefix("block/" + name.substring(5)));
     
         getVariantBuilder(blockRegistryObject.get())
-                .partialState().with(WallTorchBlock.HORIZONTAL_FACING, Direction.NORTH)
+                .partialState().with(WallTorchBlock.FACING, Direction.NORTH)
                 .modelForState().modelFile(torch).rotationY(270).addModel()
-                .partialState().with(WallTorchBlock.HORIZONTAL_FACING, Direction.WEST)
+                .partialState().with(WallTorchBlock.FACING, Direction.WEST)
                 .modelForState().modelFile(torch).rotationY(180).addModel()
-                .partialState().with(WallTorchBlock.HORIZONTAL_FACING, Direction.SOUTH)
+                .partialState().with(WallTorchBlock.FACING, Direction.SOUTH)
                 .modelForState().modelFile(torch).rotationY(90).addModel()
-                .partialState().with(WallTorchBlock.HORIZONTAL_FACING, Direction.EAST)
+                .partialState().with(WallTorchBlock.FACING, Direction.EAST)
                 .modelForState().modelFile(torch).addModel();
     }
     
@@ -194,7 +194,7 @@ public class ModBlockStateProvider extends net.minecraftforge.client.model.gener
         ModelFile buttonPressed = models().withExistingParent(name + "_pressed", new ResourceLocation("block/button_pressed")).texture("texture", prefix("block/" + baseName));
         Function<BlockState, ModelFile> modelFunc = $ -> buttom;
         Function<BlockState, ModelFile> pressedModelFunc = $ -> buttonPressed;
-        getVariantBuilder(blockRegistryObject.get()).forAllStates(s -> ConfiguredModel.builder().modelFile(s.get(BlockStateProperties.POWERED) ? pressedModelFunc.apply(s) : modelFunc.apply(s)).uvLock(s.get(BlockStateProperties.FACE).equals(AttachFace.WALL)).rotationX(s.get(BlockStateProperties.FACE).ordinal() * 90).rotationY((((int) s.get(BlockStateProperties.HORIZONTAL_FACING).getHorizontalAngle() + 180) + (s.get(BlockStateProperties.FACE) == AttachFace.CEILING ? 180 : 0)) % 360).build());
+        getVariantBuilder(blockRegistryObject.get()).forAllStates(s -> ConfiguredModel.builder().modelFile(s.getValue(BlockStateProperties.POWERED) ? pressedModelFunc.apply(s) : modelFunc.apply(s)).uvLock(s.getValue(BlockStateProperties.ATTACH_FACE).equals(AttachFace.WALL)).rotationX(s.getValue(BlockStateProperties.ATTACH_FACE).ordinal() * 90).rotationY((((int) s.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot() + 180) + (s.getValue(BlockStateProperties.ATTACH_FACE) == AttachFace.CEILING ? 180 : 0)) % 360).build());
         models().withExistingParent(name + "_inventory", new ResourceLocation("block/button_inventory")).texture("texture", prefix("block/" + baseName));
     
     }

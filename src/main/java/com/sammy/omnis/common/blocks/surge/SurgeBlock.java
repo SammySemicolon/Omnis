@@ -1,18 +1,20 @@
 package com.sammy.omnis.common.blocks.surge;
 
 import com.sammy.omnis.common.blocks.OmnisDirectionalBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.level.IBlockReader;
+import net.minecraft.world.level.Level;
 
 import java.awt.*;
 import java.util.function.Supplier;
+
+import net.minecraft.block.AbstractBlock.Properties;
 
 public class SurgeBlock extends OmnisDirectionalBlock {
     public static final BooleanProperty TRIGGERED = BlockStateProperties.TRIGGERED;
@@ -20,13 +22,13 @@ public class SurgeBlock extends OmnisDirectionalBlock {
 
     public SurgeBlock(Properties p_i48415_1_, Supplier<Block> jetBlock) {
         super(p_i48415_1_);
-        this.setDefaultState(this.stateContainer.getBaseState().with(TRIGGERED, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(TRIGGERED, false));
         this.jetBlock = jetBlock;
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(TRIGGERED);
-        super.fillStateContainer(builder);
+        super.createBlockStateDefinition(builder);
     }
 }

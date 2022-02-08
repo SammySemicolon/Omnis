@@ -1,13 +1,13 @@
 package com.sammy.omnis.core.systems.item;
 
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
 
 import java.util.List;
 
 public interface ITooltipItem
 {
-    public default void addTooltip(List<ITextComponent> tooltip)
+    public default void addTooltip(List<Component> tooltip)
     {
         if (sneakIndependent())
         {
@@ -27,9 +27,9 @@ public interface ITooltipItem
     {
         return false;
     }
-    public default void addSneakTooltip(List<ITextComponent> tooltip)
+    public default void addSneakTooltip(List<Component> tooltip)
     {
 
     }
-    public void addDefaultTooltip(List<ITextComponent> tooltip);
+    public void addDefaultTooltip(List<Component> tooltip);
 }

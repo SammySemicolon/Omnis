@@ -2,15 +2,14 @@ package com.sammy.omnis;
 
 import com.sammy.omnis.core.data.*;
 import com.sammy.omnis.core.registry.EntityRegistry;
-import com.sammy.omnis.core.systems.particles.ParticleRendering;
-import net.minecraft.data.BlockTagsProvider;
+import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -46,10 +45,6 @@ public class OmnisMod
         PARTICLES.register(modBus);
         SOUNDS.register(modBus);
         modBus.addListener(this::gatherData);
-        DistExecutor.unsafeCallWhenOn(Dist.CLIENT, () -> () -> {
-            MinecraftForge.EVENT_BUS.register(new ParticleRendering());
-            return new Object();
-        });
     }
     public void gatherData(GatherDataEvent evt)
     {

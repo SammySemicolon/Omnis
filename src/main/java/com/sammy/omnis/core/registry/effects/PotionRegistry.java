@@ -4,7 +4,7 @@ import com.sammy.omnis.core.registry.item.ItemRegistry;
 import net.minecraft.item.Items;
 import net.minecraft.potion.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.DeferredRegister;

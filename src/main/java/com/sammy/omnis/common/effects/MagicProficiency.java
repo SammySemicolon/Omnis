@@ -1,23 +1,21 @@
 package com.sammy.omnis.common.effects;
 
 import com.sammy.omnis.core.registry.misc.AttributeRegistry;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectType;
-import net.minecraftforge.common.util.ForgeSoundType;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 
-public class MagicProficiency extends Effect
+public class MagicProficiency extends MobEffect
 {
     public MagicProficiency()
     {
-        super(EffectType.BENEFICIAL, 7504018);
-        addAttributesModifier(AttributeRegistry.MAGIC_PROFICIENCY, "122d45bb-90de-4a29-a504-be2400759f49",4, AttributeModifier.Operation.ADDITION);
+        super(MobEffectCategory.BENEFICIAL, 7504018);
+        addAttributeModifier(AttributeRegistry.MAGIC_PROFICIENCY, "122d45bb-90de-4a29-a504-be2400759f49",4, AttributeModifier.Operation.ADDITION);
     }
     
     @Override
-    public void performEffect(LivingEntity entityLivingBaseIn, int amplifier)
+    public void applyEffectTick(LivingEntity entityLivingBaseIn, int amplifier)
     {
 
     }

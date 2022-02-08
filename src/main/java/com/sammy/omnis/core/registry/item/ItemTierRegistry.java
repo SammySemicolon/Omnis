@@ -1,17 +1,15 @@
 package com.sammy.omnis.core.registry.item;
 
-import com.sammy.omnis.core.registry.item.ItemRegistry;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.Item;
-import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.function.Supplier;
 
 public class ItemTierRegistry
 {
-    public enum ItemTierEnum implements IItemTier
+    public enum ItemTierEnum implements Tier
     {
-
         HAUNTED_ITEM(1951, 9f, 3.5f, 4, 22, ItemRegistry.HAUNTED_STEEL_INGOT),
         RAVAGED_ITEM(1243, 8f, 2.5f, 3, 14, ItemRegistry.HAUNTED_STEEL_INGOT);
         private final int maxUses;
@@ -32,39 +30,39 @@ public class ItemTierRegistry
         }
 
         @Override
-        public int getMaxUses()
+        public int getUses()
         {
             return maxUses;
         }
 
         @Override
-        public float getEfficiency()
+        public float getSpeed()
         {
             return efficiency;
         }
 
         @Override
-        public float getAttackDamage()
+        public float getAttackDamageBonus()
         {
             return attackDamage;
         }
 
         @Override
-        public int getHarvestLevel()
+        public int getLevel()
         {
             return harvestLevel;
         }
 
         @Override
-        public int getEnchantability()
+        public int getEnchantmentValue()
         {
             return enchantability;
         }
 
         @Override
-        public Ingredient getRepairMaterial()
+        public Ingredient getRepairIngredient()
         {
-            return Ingredient.fromItems(repairItem.get());
+            return Ingredient.of(repairItem.get());
         }
     }
 }

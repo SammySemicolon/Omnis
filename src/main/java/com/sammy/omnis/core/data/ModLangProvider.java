@@ -3,16 +3,16 @@ package com.sammy.omnis.core.data;
 import com.sammy.omnis.OmnisHelper;
 import com.sammy.omnis.core.registry.block.BlockRegistry;
 import com.sammy.omnis.core.registry.item.ItemRegistry;
-import net.minecraft.block.Block;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.block.WallTorchBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.potion.Effect;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraftforge.common.data.LanguageProvider;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -37,21 +37,21 @@ public class ModLangProvider extends LanguageProvider
         Set<RegistryObject<Item>> items = new HashSet<>(ItemRegistry.ITEMS.getEntries());
         Set<RegistryObject<SoundEvent>> sounds = new HashSet<>(SOUNDS.getEntries());
         Set<RegistryObject<Enchantment>> enchantments = new HashSet<>(ENCHANTMENTS.getEntries());
-        Set<RegistryObject<Effect>> effects = new HashSet<>(EFFECTS.getEntries());
+        Set<RegistryObject<MobEffect>> effects = new HashSet<>(EFFECTS.getEntries());
         OmnisHelper.takeAll(items, i -> i.get() instanceof BlockItem);
         OmnisHelper.takeAll(blocks, i -> i.get() instanceof WallTorchBlock);
         blocks.forEach(b -> {
-            String name = b.get().getTranslationKey().replaceFirst("block." + MODID + ".", "");
+            String name = b.get().getDescriptionId().replaceFirst("block." + MODID + ".", "");
             name = OmnisHelper.toTitleCase(specialBlockNameChanges(name), "_");
-            add(b.get().getTranslationKey(), name);
+            add(b.get().getDescriptionId(), name);
         });
         
         items.forEach(i -> {
             if (!(i.get() instanceof BlockItem))
             {
-                String name = i.get().getTranslationKey().replaceFirst("item." + MODID + ".", "");
+                String name = i.get().getDescriptionId().replaceFirst("item." + MODID + ".", "");
                 name = OmnisHelper.toTitleCase(specialBlockNameChanges(name), "_");
-                add(i.get().getTranslationKey(), name);
+                add(i.get().getDescriptionId(), name);
             }
         });
 
@@ -61,7 +61,7 @@ public class ModLangProvider extends LanguageProvider
         });
         enchantments.forEach(e -> {
             String name = OmnisHelper.toTitleCase(e.getId().getPath(), "_");
-            add(e.get().getName(), name);
+            add(e.get().getDescriptionId(), name);
         });
         effects.forEach(e -> {
             String name = OmnisHelper.toTitleCase(e.getId().getPath(), "_");

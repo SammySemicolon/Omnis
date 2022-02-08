@@ -2,7 +2,7 @@ package com.sammy.omnis.core.registry.misc;
 
 import com.sammy.omnis.common.loot.OmnisLootModifier;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 

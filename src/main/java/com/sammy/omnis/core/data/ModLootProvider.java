@@ -6,7 +6,7 @@ import com.sammy.omnis.core.registry.item.ItemRegistry;
 import com.sammy.omnis.core.registry.misc.LootModifierRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.loot.conditions.ILootCondition;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.common.loot.LootTableIdCondition;
 

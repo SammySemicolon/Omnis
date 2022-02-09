@@ -15,6 +15,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import static com.sammy.omnis.OmnisMod.MODID;
+import static com.sammy.omnis.core.registry.EntityRegistry.ENTITY_TYPES;
 import static com.sammy.omnis.core.registry.block.BlockRegistry.BLOCKS;
 import static com.sammy.omnis.core.registry.block.TileEntityRegistry.TILE_ENTITIES;
 import static com.sammy.omnis.core.registry.item.EnchantmentRegistry.ENCHANTMENTS;
@@ -39,7 +40,7 @@ public class OmnisMod
         BLOCKS.register(modBus);
         ITEMS.register(modBus);
         TILE_ENTITIES.register(modBus);
-        EntityRegistry.ENTITY_TYPES.register(modBus);
+        ENTITY_TYPES.register(modBus);
         GLM.register(modBus);
         POTIONS.register(modBus);
         EFFECTS.register(modBus);

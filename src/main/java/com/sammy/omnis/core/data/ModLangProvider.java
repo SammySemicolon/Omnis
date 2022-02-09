@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.WallTorchBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Effect;
@@ -21,6 +22,7 @@ import static com.sammy.omnis.core.registry.SoundRegistry.SOUNDS;
 import static com.sammy.omnis.OmnisMod.MODID;
 import static com.sammy.omnis.core.registry.effects.EffectRegistry.EFFECTS;
 import static com.sammy.omnis.core.registry.item.EnchantmentRegistry.ENCHANTMENTS;
+import static com.sammy.omnis.core.registry.misc.AttributeRegistry.ATTRIBUTES;
 
 
 public class ModLangProvider extends LanguageProvider
@@ -38,6 +40,7 @@ public class ModLangProvider extends LanguageProvider
         Set<RegistryObject<SoundEvent>> sounds = new HashSet<>(SOUNDS.getEntries());
         Set<RegistryObject<Enchantment>> enchantments = new HashSet<>(ENCHANTMENTS.getEntries());
         Set<RegistryObject<Effect>> effects = new HashSet<>(EFFECTS.getEntries());
+        Set<RegistryObject<Attribute>> attributes = new HashSet<>(ATTRIBUTES.getEntries());
         OmnisHelper.takeAll(items, i -> i.get() instanceof BlockItem);
         OmnisHelper.takeAll(blocks, i -> i.get() instanceof WallTorchBlock);
         blocks.forEach(b -> {
@@ -67,7 +70,10 @@ public class ModLangProvider extends LanguageProvider
             String name = OmnisHelper.toTitleCase(e.getId().getPath(), "_");
             add("effect." + MODID + "." + e.get().getRegistryName().getPath(), name);
         });
-
+        attributes.forEach(a -> {
+            String name = OmnisHelper.toTitleCase(a.getId().getPath(), "_");
+            add("attribute.name." + MODID + "." + a.get().getRegistryName().getPath(), name);
+        });
         addTooltip("ravage", "Ravage");
         addTooltip("ravage_detailed", "Staggers and stuns enemies when attacking");
 
@@ -95,9 +101,6 @@ public class ModLangProvider extends LanguageProvider
         addTooltip("curative_detailed", "Beneficial potion effects last longer, harmful effects are shorter.");
 
         addPotion("magic_proficiency", "Magic Proficiency");
-
-        add("attribute.name.omnis.magic_resistance", "Magic Resistance");
-        add("attribute.name.omnis.magic_proficiency", "Magic Proficiency");
 
         add("itemGroup." + MODID, "Omnis");
     }

@@ -27,23 +27,21 @@ import static com.sammy.omnis.core.registry.item.ArmorTierRegistry.ArmorTierEnum
 
 public class HauntedSteelArmorItem extends ArmorItem {
     private LazyValue<Object> model;
-    private final Multimap<Attribute, AttributeModifier> attributes;
 
     public HauntedSteelArmorItem(EquipmentSlotType slot, Properties builder) {
         super(HAUNTED_ARMOR, slot, builder);
         if (FMLEnvironment.dist == Dist.CLIENT) {
             this.model = DistExecutor.runForDist(() -> () -> new LazyValue<>(() -> new ModelRavagedMetalArmor(slot)), () -> () -> null);
         }
-        UUID uuid = ARMOR_MODIFIERS[slot.getIndex()];
-        ImmutableMultimap.Builder<Attribute, AttributeModifier> attributeBuilder = ImmutableMultimap.builder();
-        attributeBuilder.putAll(field_234656_m_);
-        attributeBuilder.put(AttributeRegistry.MAGIC_RESISTANCE, new AttributeModifier(uuid, "Armor magic resistance", 1, AttributeModifier.Operation.ADDITION));
-        attributes = attributeBuilder.build();
     }
 
     @Override
-    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
-        return equipmentSlot == this.slot ? this.attributes : ImmutableMultimap.of();
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType slot, ItemStack stack) {
+        ImmutableMultimap.Builder<Attribute, AttributeModifier> attributeBuilder = ImmutableMultimap.builder();
+        UUID uuid = ARMOR_MODIFIERS[slot.getIndex()];
+        attributeBuilder.putAll(field_234656_m_);
+        attributeBuilder.put(AttributeRegistry.MAGIC_RESISTANCE.get(), new AttributeModifier(uuid, "Armor magic resistance", 1, AttributeModifier.Operation.ADDITION));
+        return slot == this.slot ? attributeBuilder.build() : ImmutableMultimap.of();
     }
 
     @Override

@@ -74,23 +74,23 @@ public class RuntimeEvents {
 
     @SubscribeEvent
     public static void triggerOnHurtEvents(LivingHurtEvent event) {
-        if (event.getSource().getTrueSource() instanceof LivingEntity) {
-            LivingEntity attacker = (LivingEntity) event.getSource().getTrueSource();
+        if (event.getSource().isMagicDamage()) {
             LivingEntity target = event.getEntityLiving();
-            ItemStack stack = attacker.getHeldItemMainhand();
-            Item item = stack.getItem();
-            if (item instanceof IHurtEventItem) {
-                IHurtEventItem eventItem = (IHurtEventItem) item;
-                eventItem.hurtEvent(event, attacker, target, stack);
-            }
             float amount = event.getAmount();
-            if (event.getSource().isMagicDamage()) {
-                float resistance = (float) target.getAttributeValue(AttributeRegistry.MAGIC_RESISTANCE);
-                float proficiency = (float) attacker.getAttributeValue(AttributeRegistry.MAGIC_PROFICIENCY);
-
-                float multiplier = (float) (1 * Math.exp(-0.15f * resistance) * Math.exp(0.075f * proficiency));
-                event.setAmount(amount * multiplier);
+            if (event.getSource().getTrueSource() instanceof LivingEntity) {
+                LivingEntity attacker = (LivingEntity) event.getSource().getTrueSource();
+                ItemStack stack = attacker.getHeldItemMainhand();
+                Item item = stack.getItem();
+                if (item instanceof IHurtEventItem) {
+                    IHurtEventItem eventItem = (IHurtEventItem) item;
+                    eventItem.hurtEvent(event, attacker, target, stack);
+                }
+                float proficiency = (float) attacker.getAttributeValue(AttributeRegistry.MAGIC_PROFICIENCY.get());
+                amount *= (1 * Math.exp(0.075f * proficiency));
             }
+            float resistance = (float) target.getAttributeValue(AttributeRegistry.MAGIC_RESISTANCE.get());
+            amount *= (1 * Math.exp(-0.15f * resistance));
+            event.setAmount(amount);
         }
     }
 

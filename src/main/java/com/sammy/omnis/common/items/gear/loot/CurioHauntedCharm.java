@@ -34,7 +34,7 @@ public class CurioHauntedCharm extends Item implements ICurio {
             @Override
             public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid) {
                 Multimap<Attribute, AttributeModifier> atts = HashMultimap.create();
-                atts.put(AttributeRegistry.MAGIC_RESISTANCE, new AttributeModifier(uuid, "Curio magic resistance", 2, AttributeModifier.Operation.ADDITION));
+                atts.put(AttributeRegistry.MAGIC_RESISTANCE.get(), new AttributeModifier(uuid, "Curio magic resistance", 2, AttributeModifier.Operation.ADDITION));
                 return atts;
             }
 

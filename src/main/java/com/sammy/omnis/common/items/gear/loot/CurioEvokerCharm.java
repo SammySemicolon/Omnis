@@ -41,7 +41,7 @@ public class CurioEvokerCharm extends Item implements ICurio {
             @Override
             public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid) {
                 Multimap<Attribute, AttributeModifier> atts = HashMultimap.create();
-                atts.put(AttributeRegistry.MAGIC_PROFICIENCY, new AttributeModifier(uuid, "Curio magic proficiency", 4, AttributeModifier.Operation.ADDITION));
+                atts.put(AttributeRegistry.MAGIC_PROFICIENCY.get(), new AttributeModifier(uuid, "Curio magic proficiency", 4, AttributeModifier.Operation.ADDITION));
                 return atts;
             }
 

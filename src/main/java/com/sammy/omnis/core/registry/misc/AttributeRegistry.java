@@ -18,7 +18,6 @@ public class AttributeRegistry {
     public static final RegistryObject<RangedAttribute> MAGIC_RESISTANCE = ATTRIBUTES.register("magic_resistance", () -> new RangedAttribute("attribute.name.omnis.magic_resistance", 0.0D, 0.0D, 2048.0D));
     public static final RegistryObject<RangedAttribute> MAGIC_PROFICIENCY = ATTRIBUTES.register("magic_proficiency", () -> new RangedAttribute("attribute.name.omnis.magic_proficiency", 0.0D, 0.0D, 2048.0D));
 
-
     @SubscribeEvent
     public static void modifyEntityAttributes(EntityAttributeModificationEvent event) {
         event.getTypes().forEach(e -> {

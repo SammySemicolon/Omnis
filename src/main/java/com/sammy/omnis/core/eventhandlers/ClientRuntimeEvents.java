@@ -12,9 +12,8 @@ public class ClientRuntimeEvents
     @SubscribeEvent
     public static void tooltipsEvent(ItemTooltipEvent event)
     {
-        if (event.getItemStack().getItem() instanceof ITooltipItem)
+        if (event.getItemStack().getItem() instanceof ITooltipItem tooltipItem)
         {
-            ITooltipItem tooltipItem = (ITooltipItem) event.getItemStack().getItem();
             tooltipItem.addTooltip(event.getToolTip());
         }
     }

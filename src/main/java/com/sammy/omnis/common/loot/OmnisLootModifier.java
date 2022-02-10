@@ -1,12 +1,12 @@
 package com.sammy.omnis.common.loot;
 
 import com.google.gson.JsonObject;
+import net.minecraft.util.GsonHelper;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.loot.LootContext;
-import net.minecraft.loot.conditions.ILootCondition;
-import net.minecraft.util.JSONUtils;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -21,7 +21,7 @@ public class OmnisLootModifier extends LootModifier
     private final int extraItemCount;
     private final Item item;
 
-    public OmnisLootModifier(ILootCondition[] conditionsIn, float itemChance, int itemCount, int extraItemCount, Item item)
+    public OmnisLootModifier(LootItemCondition[] conditionsIn, float itemChance, int itemCount, int extraItemCount, Item item)
     {
         super(conditionsIn);
         this.itemChance = itemChance;
@@ -34,12 +34,12 @@ public class OmnisLootModifier extends LootModifier
     {
 
         @Override
-        public OmnisLootModifier read(ResourceLocation name, JsonObject object, ILootCondition[] conditionsIn)
+        public OmnisLootModifier read(ResourceLocation name, JsonObject object, LootItemCondition[] conditionsIn)
         {
-            float itemChance = JSONUtils.getAsFloat(object, "itemChance");
-            int itemCount = JSONUtils.getAsInt(object, "itemCount");
-            int extraItemCount = JSONUtils.getAsInt(object, "extraItemCount");
-            Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation((JSONUtils.getAsString(object, "item"))));
+            float itemChance = GsonHelper.getAsFloat(object, "itemChance");
+            int itemCount = GsonHelper.getAsInt(object, "itemCount");
+            int extraItemCount = GsonHelper.getAsInt(object, "extraItemCount");
+            Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation((GsonHelper.getAsString(object, "item"))));
             return new OmnisLootModifier(conditionsIn, itemChance, itemCount, extraItemCount, item);
         }
 
@@ -59,7 +59,7 @@ public class OmnisLootModifier extends LootModifier
     @Override
     protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context)
     {
-        if (context.getRandom().nextFloat() < itemChance || itemChance == 1)
+        if (itemChance == 1 || context.getRandom().nextFloat() < itemChance)
         {
             int count = itemCount + context.getRandom().nextInt(extraItemCount+1);
             generatedLoot.add(new ItemStack(item, count));

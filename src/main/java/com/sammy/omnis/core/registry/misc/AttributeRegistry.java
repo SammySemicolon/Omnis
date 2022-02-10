@@ -7,6 +7,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 import static com.sammy.omnis.OmnisMod.MODID;
 
@@ -14,19 +15,15 @@ import static com.sammy.omnis.OmnisMod.MODID;
 public class AttributeRegistry {
     public static final DeferredRegister<Attribute> ATTRIBUTES = DeferredRegister.create(ForgeRegistries.ATTRIBUTES, MODID);
 
-    public static final Attribute MAGIC_RESISTANCE = register("magic_resistance", new RangedAttribute("attribute.name.omnis.magic_resistance", 0.0D, 0.0D, 2048.0D));
-    public static final Attribute MAGIC_PROFICIENCY = register("magic_proficiency", new RangedAttribute("attribute.name.omnis.magic_proficiency", 0.0D, 0.0D, 2048.0D));
+    public static final RegistryObject<Attribute> MAGIC_RESISTANCE = ATTRIBUTES.register("magic_resistance", ()->new RangedAttribute("attribute.name.omnis.magic_resistance", 0.0D, 0.0D, 2048.0D));
+    public static final RegistryObject<Attribute> MAGIC_PROFICIENCY = ATTRIBUTES.register("magic_proficiency", ()->new RangedAttribute("attribute.name.omnis.magic_proficiency", 0.0D, 0.0D, 2048.0D));
 
-    public static Attribute register(String name, Attribute attribute) {
-        ATTRIBUTES.register(name, () -> attribute);
-        return attribute;
-    }
 
     @SubscribeEvent
     public static void modifyEntityAttributes(EntityAttributeModificationEvent event) {
         event.getTypes().forEach(e -> {
-            event.add(e, AttributeRegistry.MAGIC_RESISTANCE);
-            event.add(e, AttributeRegistry.MAGIC_PROFICIENCY);
+            event.add(e, AttributeRegistry.MAGIC_RESISTANCE.get());
+            event.add(e, AttributeRegistry.MAGIC_PROFICIENCY.get());
         });
     }
 }

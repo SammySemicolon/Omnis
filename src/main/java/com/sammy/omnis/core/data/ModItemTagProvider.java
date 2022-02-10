@@ -1,12 +1,11 @@
 package com.sammy.omnis.core.data;
 
 import com.sammy.omnis.OmnisMod;
-import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.ItemTagsProvider;
+import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.world.item.Item;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -25,11 +24,7 @@ public class ModItemTagProvider extends ItemTagsProvider
     {
         return "Item Tags";
     }
-    
-    public static ITag.INamedTag<Item> makeWrapperTag(String id)
-    {
-        return ItemTags.createOptional(prefix(id));
-    }
+
     @Override
     protected void addTags()
     {

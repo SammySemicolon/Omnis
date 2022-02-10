@@ -1,4 +1,4 @@
-package com.sammy.omnis.common.items.equipment.armor;
+package com.sammy.omnis.common.items.gear.armor;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.sammy.omnis.core.registry.misc.AttributeRegistry;
@@ -14,13 +14,14 @@ import static com.sammy.omnis.core.registry.item.ArmorTierRegistry.ArmorTierEnum
 
 public class HauntedSteelArmorItem extends OmnisArmorItem {
     public HauntedSteelArmorItem(EquipmentSlot slot, Item.Properties builder) {
-        super(HAUNTED_ARMOR, slot, builder, createExtraAttributes(slot));
+        super(HAUNTED_ARMOR, slot, builder);
     }
 
-    public static ImmutableMultimap.Builder<Attribute, AttributeModifier> createExtraAttributes(EquipmentSlot slot) {
+    @Override
+    public ImmutableMultimap.Builder<Attribute, AttributeModifier> createExtraAttributes(EquipmentSlot slot) {
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = new ImmutableMultimap.Builder<>();
         UUID uuid = ARMOR_MODIFIER_UUID_PER_SLOT[slot.getIndex()];
-        builder.put(AttributeRegistry.MAGIC_RESISTANCE, new AttributeModifier(uuid, "Magic Resistance", 1f, AttributeModifier.Operation.ADDITION));
+        builder.put(AttributeRegistry.MAGIC_RESISTANCE.get(), new AttributeModifier(uuid, "Magic Resistance", 1f, AttributeModifier.Operation.ADDITION));
         return builder;
     }
 

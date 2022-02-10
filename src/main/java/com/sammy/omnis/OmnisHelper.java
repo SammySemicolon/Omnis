@@ -29,15 +29,6 @@ import static com.sammy.omnis.OmnisMod.MODID;
 
 public class OmnisHelper
 {
-    public static boolean areWeOnClient(Level level)
-    {
-        return level.isClientSide;
-    }
-    public static boolean areWeOnServer(Level level)
-    {
-        return !areWeOnClient(level);
-    }
-    
     public static ResourceLocation prefix(String path)
     {
         return new ResourceLocation(MODID, path);

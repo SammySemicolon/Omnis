@@ -4,24 +4,21 @@ import com.sammy.omnis.core.registry.SoundRegistry;
 import com.sammy.omnis.core.systems.item.IHurtEventItem;
 import com.sammy.omnis.core.systems.item.ITooltipItem;
 import com.sammy.omnis.common.items.basic.ModSwordItem;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.util.DamageSource;
 import net.minecraft.network.chat.Component;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.item.Tier;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 import java.util.List;
 
-
-import net.minecraft.item.Item.Properties;
-
 public class SpellBladeItem extends ModSwordItem implements ITooltipItem, IHurtEventItem {
     public final float effectStrength;
 
-    public SpellBladeItem(IItemTier material, int attackDamage, float attackSpeed, Properties properties, float effectStrength) {
+    public SpellBladeItem(Tier material, int attackDamage, float attackSpeed, Properties properties, float effectStrength) {
         super(material, attackDamage, attackSpeed, properties);
         this.effectStrength = effectStrength;
     }
@@ -41,11 +38,11 @@ public class SpellBladeItem extends ModSwordItem implements ITooltipItem, IHurtE
 
     @Override
     public void addSneakTooltip(List<Component> tooltip) {
-        tooltip.add(new TranslationTextComponent("omnis.tooltip.arcane_detailed").withStyle(TextFormatting.BLUE));
+        tooltip.add(new TranslatableComponent("omnis.tooltip.arcane_detailed").withStyle(ChatFormatting.BLUE));
     }
 
     @Override
     public void addDefaultTooltip(List<Component> tooltip) {
-        tooltip.add(new TranslationTextComponent("omnis.tooltip.arcane").withStyle(TextFormatting.BLUE));
+        tooltip.add(new TranslatableComponent("omnis.tooltip.arcane").withStyle(ChatFormatting.BLUE));
     }
 }

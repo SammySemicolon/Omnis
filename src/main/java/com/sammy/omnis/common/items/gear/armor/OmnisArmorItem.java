@@ -1,4 +1,4 @@
-package com.sammy.omnis.common.items.equipment.armor;
+package com.sammy.omnis.common.items.gear.armor;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
@@ -11,18 +11,24 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 
 public class OmnisArmorItem extends ArmorItem {
-    private final Multimap<Attribute, AttributeModifier> attributes;
+    private Multimap<Attribute, AttributeModifier> attributes;
 
-    public OmnisArmorItem(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder, ImmutableMultimap.Builder<Attribute, AttributeModifier> extraAttributes) {
+    public OmnisArmorItem(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
         super(materialIn, slot, builder);
-        ImmutableMultimap.Builder<Attribute, AttributeModifier> attributeBuilder = new ImmutableMultimap.Builder<>();
-        attributeBuilder.putAll(defaultModifiers);
-        attributeBuilder.putAll(extraAttributes.build());
-        attributes = attributeBuilder.build();
+    }
+
+    public ImmutableMultimap.Builder<Attribute, AttributeModifier> createExtraAttributes(EquipmentSlot slot) {
+        return new ImmutableMultimap.Builder<>();
     }
 
     @Override
     public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot equipmentSlot) {
+        if (attributes == null) {
+            ImmutableMultimap.Builder<Attribute, AttributeModifier> attributeBuilder = new ImmutableMultimap.Builder<>();
+            attributeBuilder.putAll(defaultModifiers);
+            attributeBuilder.putAll(createExtraAttributes(slot).build());
+            attributes = attributeBuilder.build();
+        }
         return equipmentSlot == this.slot ? this.attributes : ImmutableMultimap.of();
     }
 

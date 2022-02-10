@@ -1,11 +1,11 @@
 package com.sammy.omnis.core.data;
 
 import com.sammy.omnis.common.items.gear.ModCombatItem;
-import net.minecraft.block.*;
+import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.item.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.world.item.*;
+import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
@@ -37,14 +37,14 @@ public class ModItemModelProvider extends net.minecraftforge.client.model.genera
         takeAll(items, i -> i.get() instanceof BlockItem && ((BlockItem) i.get()).getBlock() instanceof DoorBlock).forEach(this::generatedItem);
         takeAll(items, i -> i.get() instanceof BlockItem && ((BlockItem) i.get()).getBlock() instanceof TrapDoorBlock).forEach(this::trapdoorBlockItem);
         takeAll(items, i -> i.get() instanceof BlockItem && ((BlockItem) i.get()).getBlock() instanceof PressurePlateBlock).forEach(this::pressurePlateBlockItem);
-        takeAll(items, i -> i.get() instanceof BlockItem && ((BlockItem) i.get()).getBlock() instanceof AbstractButtonBlock).forEach(this::buttonBlockItem);
+        takeAll(items, i -> i.get() instanceof BlockItem && ((BlockItem) i.get()).getBlock() instanceof ButtonBlock).forEach(this::buttonBlockItem);
         takeAll(items, i -> i.get() instanceof BlockItem && ((BlockItem) i.get()).getBlock() instanceof BushBlock && !(((BlockItem) i.get()).getBlock() instanceof DoublePlantBlock)).forEach(this::blockGeneratedItem);
         takeAll(items, i -> i.get() instanceof BlockItem && ((BlockItem) i.get()).getBlock() instanceof DoublePlantBlock).forEach(this::generatedItem);
         takeAll(items, i -> i.get() instanceof BlockItem && ((BlockItem) i.get()).getBlock() instanceof LanternBlock).forEach(this::generatedItem);
         takeAll(items, i -> i.get() instanceof BlockItem && ((BlockItem) i.get()).getBlock() instanceof TorchBlock).forEach(this::generatedItem);
         
         takeAll(items, i -> i.get() instanceof BlockItem).forEach(this::blockItem);
-        takeAll(items, i -> i.get() instanceof ToolItem).forEach(this::handheldItem);
+        takeAll(items, i -> i.get() instanceof DiggerItem).forEach(this::handheldItem);
         takeAll(items, i -> i.get() instanceof ModCombatItem).forEach(this::handheldItem);
         takeAll(items, i -> i.get() instanceof SwordItem).forEach(this::handheldItem);
         takeAll(items, i -> i.get() instanceof BowItem).forEach(this::handheldItem);

@@ -3,14 +3,14 @@ package com.sammy.omnis.core.data;
 import com.sammy.omnis.OmnisHelper;
 import com.sammy.omnis.core.registry.block.BlockRegistry;
 import com.sammy.omnis.core.registry.item.ItemRegistry;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.block.WallTorchBlock;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.level.block.WallTorchBlock;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.registries.RegistryObject;
 

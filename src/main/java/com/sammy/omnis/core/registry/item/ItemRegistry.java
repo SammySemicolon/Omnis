@@ -1,7 +1,7 @@
 package com.sammy.omnis.core.registry.item;
 
-import com.sammy.omnis.common.items.equipment.armor.HauntedSteelArmorItem;
-import com.sammy.omnis.common.items.equipment.armor.RavagedMetalArmorItem;
+import com.sammy.omnis.common.items.gear.armor.HauntedSteelArmorItem;
+import com.sammy.omnis.common.items.gear.armor.RavagedMetalArmorItem;
 import com.sammy.omnis.common.items.gear.*;
 import com.sammy.omnis.common.items.gear.loot.*;
 import com.sammy.omnis.core.registry.block.BlockRegistry;
@@ -9,6 +9,7 @@ import com.sammy.omnis.core.registry.item.tabs.OmnisTab;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Tiers;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -17,19 +18,18 @@ import static com.sammy.omnis.OmnisMod.MODID;
 import static com.sammy.omnis.core.registry.item.ItemTierRegistry.ItemTierEnum.HAUNTED_ITEM;
 import static com.sammy.omnis.core.registry.item.ItemTierRegistry.ItemTierEnum.RAVAGED_ITEM;
 
-public class ItemRegistry
-{
+public class ItemRegistry {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
-    public static Item.Properties DEFAULT_PROPERTIES()
-    {
+
+    public static Item.Properties DEFAULT_PROPERTIES() {
         return new Item.Properties().tab(OmnisTab.INSTANCE);
     }
-    public static Item.Properties GEAR_PROPERTIES()
-    {
+
+    public static Item.Properties GEAR_PROPERTIES() {
         return new Item.Properties().tab(OmnisTab.INSTANCE).stacksTo(1);
     }
-    public static Item.Properties CREATIVE_PROPERTIES()
-    {
+
+    public static Item.Properties CREATIVE_PROPERTIES() {
         return new Item.Properties().stacksTo(1);
     }
 
@@ -60,8 +60,8 @@ public class ItemRegistry
 
     public static final RegistryObject<Item> RAVAGED_CHARM = ITEMS.register("ravaged_charm", () -> new CurioRavagedCharm(GEAR_PROPERTIES()));
 
-    public static final RegistryObject<Item> VINDICATOR_AXE = ITEMS.register("vindicator_axe", () -> new VindicatorAxeItem(ItemTier.IRON, 2, -0.2f, GEAR_PROPERTIES(), 240));
-    public static final RegistryObject<Item> SPELL_BLADE = ITEMS.register("spell_blade", () -> new SpellBladeItem(ItemTier.DIAMOND, -1, 0.1f, GEAR_PROPERTIES(), 0.25f));
+    public static final RegistryObject<Item> VINDICATOR_AXE = ITEMS.register("vindicator_axe", () -> new VindicatorAxeItem(Tiers.IRON, 2, -0.2f, GEAR_PROPERTIES(), 240));
+    public static final RegistryObject<Item> SPELL_BLADE = ITEMS.register("spell_blade", () -> new SpellBladeItem(Tiers.DIAMOND, -1, 0.1f, GEAR_PROPERTIES(), 0.25f));
 
     public static final RegistryObject<Item> HAUNTED_BROADSWORD = ITEMS.register("haunted_broadsword", () -> new ModBroadswordItem(HAUNTED_ITEM, 0, 0, 5f, GEAR_PROPERTIES()));
     public static final RegistryObject<Item> HAUNTED_HAMMER = ITEMS.register("haunted_hammer", () -> new ModHammerItem(HAUNTED_ITEM, 0, 0, 1, GEAR_PROPERTIES()));
@@ -123,7 +123,4 @@ public class ItemRegistry
     public static final RegistryObject<Item> GLOOMSTONE_WALL = ITEMS.register("gloomstone_wall", () -> new BlockItem(BlockRegistry.GLOOMSTONE_WALL.get(), DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> GLOOMSTONE_BRICKS_WALL = ITEMS.register("gloomstone_bricks_wall", () -> new BlockItem(BlockRegistry.GLOOMSTONE_BRICKS_WALL.get(), DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> GLOOMSTONE_TILES_WALL = ITEMS.register("gloomstone_tiles_wall", () -> new BlockItem(BlockRegistry.GLOOMSTONE_TILES_WALL.get(), DEFAULT_PROPERTIES()));
-
-    public static final RegistryObject<Item> FLUFFY_TAIL = ITEMS.register("fluffy_tail", () -> new CurioFluffyTail(CREATIVE_PROPERTIES()));
-
 }

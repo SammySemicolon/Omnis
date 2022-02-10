@@ -12,7 +12,7 @@ import static com.sammy.omnis.OmnisMod.MODID;
 
 public class EffectRegistry
 {
-    public static final DeferredRegister<MobEffect> EFFECTS = DeferredRegister.create(ForgeRegistries.POTIONS, MODID);
+    public static final DeferredRegister<MobEffect> EFFECTS = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, MODID);
 
     public static final RegistryObject<MobEffect> MAGIC_PROFICIENCY = EFFECTS.register("magic_proficiency", MagicProficiency::new);
     public static final RegistryObject<MobEffect> STAGGERED = EFFECTS.register("staggered", StaggeredEffect::new);

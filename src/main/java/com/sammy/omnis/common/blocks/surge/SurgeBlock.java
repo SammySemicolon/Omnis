@@ -3,18 +3,13 @@ package com.sammy.omnis.common.blocks.surge;
 import com.sammy.omnis.common.blocks.OmnisDirectionalBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.state.BooleanProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.core.BlockPos;
-import net.minecraft.level.IBlockReader;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 
 import java.awt.*;
 import java.util.function.Supplier;
 
-import net.minecraft.block.AbstractBlock.Properties;
 
 public class SurgeBlock extends OmnisDirectionalBlock {
     public static final BooleanProperty TRIGGERED = BlockStateProperties.TRIGGERED;
@@ -27,7 +22,7 @@ public class SurgeBlock extends OmnisDirectionalBlock {
     }
 
     @Override
-    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(TRIGGERED);
         super.createBlockStateDefinition(builder);
     }

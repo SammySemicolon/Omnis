@@ -2,12 +2,12 @@ package com.sammy.omnis.core.registry.item.tabs;
 
 import com.sammy.omnis.OmnisMod;
 import com.sammy.omnis.core.registry.item.ItemRegistry;
-import net.minecraft.item.ItemGroup;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
 import javax.annotation.Nonnull;
 
-public class OmnisTab extends ItemGroup
+public class OmnisTab extends CreativeModeTab
 {
     public static final OmnisTab INSTANCE = new OmnisTab();
 

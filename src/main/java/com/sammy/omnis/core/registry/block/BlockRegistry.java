@@ -6,12 +6,13 @@ import com.sammy.omnis.common.blocks.VexwartBlock;
 import com.sammy.omnis.common.blocks.surge.SurgeBlock;
 import com.sammy.omnis.common.blocks.surge.SurgeJetBlock;
 import com.sammy.omnis.core.registry.SoundRegistry;
-import net.minecraft.block.*;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialColor;
+import com.sammy.omnis.core.systems.block.SimpleBlockProperties;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -24,33 +25,34 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static com.sammy.omnis.OmnisMod.MODID;
-import static net.minecraft.block.PressurePlateBlock.Sensitivity.MOBS;
+import static net.minecraft.world.level.block.PressurePlateBlock.Sensitivity.MOBS;
 
 public class BlockRegistry {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
 
-    public static AbstractBlock.Properties HAUNTED_STEEL_BLOCK_PROPERTIES() {
-        return AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_BLUE).sound(SoundRegistry.HAUNTED_STEEL).strength(50f, 3600f).requiresCorrectToolForDrops();
+    public static SimpleBlockProperties HAUNTED_STEEL_BLOCK_PROPERTIES() {
+        return new SimpleBlockProperties(Material.METAL, MaterialColor.COLOR_BLUE).sound(SoundRegistry.HAUNTED_STEEL).strength(50f, 3600f).requiresCorrectToolForDrops();
     }
 
-    public static AbstractBlock.Properties RAVAGED_METAL_BLOCK_PROPERTIES() {
-        return AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_BLUE).sound(SoundRegistry.RAVAGED_METAL).strength(25f, 3600f).requiresCorrectToolForDrops();
+    public static SimpleBlockProperties RAVAGED_METAL_BLOCK_PROPERTIES() {
+        return new SimpleBlockProperties(Material.METAL, MaterialColor.COLOR_BLUE).sound(SoundRegistry.RAVAGED_METAL).strength(25f, 3600f).requiresCorrectToolForDrops();
     }
 
-    public static AbstractBlock.Properties VEXWART_PROPERTIES() {
-        return AbstractBlock.Properties.of(Material.GRASS, MaterialColor.COLOR_BLUE).strength(1.0F).sound(SoundType.WART_BLOCK);
+    public static SimpleBlockProperties VEXWART_PROPERTIES() {
+        return new SimpleBlockProperties(Material.GRASS, MaterialColor.COLOR_BLUE).strength(1.0F).sound(SoundType.WART_BLOCK);
     }
 
-    public static AbstractBlock.Properties RAVAGESTONE_PROPERTIES() {
-        return AbstractBlock.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_ORANGE).sound(SoundRegistry.RAVAGESTONE).strength(1.25f, 9f).requiresCorrectToolForDrops();
+    public static SimpleBlockProperties RAVAGESTONE_PROPERTIES() {
+        return new SimpleBlockProperties(Material.STONE, MaterialColor.TERRACOTTA_ORANGE).sound(SoundRegistry.RAVAGESTONE).strength(1.25f, 9f).requiresCorrectToolForDrops();
     }
 
-    public static AbstractBlock.Properties GLOOMSTONE_PROPERTIES() {
-        return AbstractBlock.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_BLUE).sound(SoundRegistry.GLOOMSTONE).strength(1.25f, 9f).requiresCorrectToolForDrops();
+    public static SimpleBlockProperties GLOOMSTONE_PROPERTIES() {
+        return new SimpleBlockProperties(Material.STONE, MaterialColor.TERRACOTTA_BLUE).sound(SoundRegistry.GLOOMSTONE).strength(1.25f, 9f).requiresCorrectToolForDrops();
     }
 
-    public static final RegistryObject<Block> INFERNAL_SURGE_JET_BLOCK = BLOCKS.register("infernal_surge_jet_block", () -> new SurgeJetBlock(AbstractBlock.Properties.copy(Blocks.AIR).randomTicks().noOcclusion()));
-    public static final RegistryObject<Block> AQUATIC_SURGE_JET_BLOCK = BLOCKS.register("aquatic_surge_jet_block", () -> new SurgeJetBlock(AbstractBlock.Properties.copy(Blocks.AIR).randomTicks().noOcclusion()));
+
+    public static final RegistryObject<Block> INFERNAL_SURGE_JET_BLOCK = BLOCKS.register("infernal_surge_jet_block", () -> new SurgeJetBlock(BlockBehaviour.Properties.copy(Blocks.AIR).randomTicks().noOcclusion()));
+    public static final RegistryObject<Block> AQUATIC_SURGE_JET_BLOCK = BLOCKS.register("aquatic_surge_jet_block", () -> new SurgeJetBlock(BlockBehaviour.Properties.copy(Blocks.AIR).randomTicks().noOcclusion()));
     public static final RegistryObject<Block> INFERNAL_SURGE_BLOCK = BLOCKS.register("infernal_surge_block", () -> new SurgeBlock(RAVAGED_METAL_BLOCK_PROPERTIES(), INFERNAL_SURGE_JET_BLOCK));
     public static final RegistryObject<Block> AQUATIC_SURGE_BLOCK = BLOCKS.register("aquatic_surge_block", () -> new SurgeBlock(RAVAGED_METAL_BLOCK_PROPERTIES(), AQUATIC_SURGE_JET_BLOCK));
 
@@ -70,10 +72,10 @@ public class BlockRegistry {
     public static final RegistryObject<Block> RAVAGESTONE_BRICKS_SLAB = BLOCKS.register("ravagestone_bricks_slab", () -> new SlabBlock(RAVAGESTONE_PROPERTIES()));
     public static final RegistryObject<Block> RAVAGESTONE_TILES_SLAB = BLOCKS.register("ravagestone_tiles_slab", () -> new SlabBlock(RAVAGESTONE_PROPERTIES()));
 
-    public static final RegistryObject<Block> RAVAGESTONE_STAIRS = BLOCKS.register("ravagestone_stairs", () -> new StairsBlock(RAVAGESTONE.get().defaultBlockState(), RAVAGESTONE_PROPERTIES()));
-    public static final RegistryObject<Block> POLISHED_RAVAGESTONE_STAIRS = BLOCKS.register("polished_ravagestone_stairs", () -> new StairsBlock(POLISHED_RAVAGESTONE.get().defaultBlockState(), RAVAGESTONE_PROPERTIES()));
-    public static final RegistryObject<Block> RAVAGESTONE_BRICKS_STAIRS = BLOCKS.register("ravagestone_bricks_stairs", () -> new StairsBlock(RAVAGESTONE_BRICKS.get().defaultBlockState(), RAVAGESTONE_PROPERTIES()));
-    public static final RegistryObject<Block> RAVAGESTONE_TILES_STAIRS = BLOCKS.register("ravagestone_tiles_stairs", () -> new StairsBlock(RAVAGESTONE_TILES.get().defaultBlockState(), RAVAGESTONE_PROPERTIES()));
+    public static final RegistryObject<Block> RAVAGESTONE_STAIRS = BLOCKS.register("ravagestone_stairs", () -> new StairBlock(RAVAGESTONE.get().defaultBlockState(), RAVAGESTONE_PROPERTIES()));
+    public static final RegistryObject<Block> POLISHED_RAVAGESTONE_STAIRS = BLOCKS.register("polished_ravagestone_stairs", () -> new StairBlock(POLISHED_RAVAGESTONE.get().defaultBlockState(), RAVAGESTONE_PROPERTIES()));
+    public static final RegistryObject<Block> RAVAGESTONE_BRICKS_STAIRS = BLOCKS.register("ravagestone_bricks_stairs", () -> new StairBlock(RAVAGESTONE_BRICKS.get().defaultBlockState(), RAVAGESTONE_PROPERTIES()));
+    public static final RegistryObject<Block> RAVAGESTONE_TILES_STAIRS = BLOCKS.register("ravagestone_tiles_stairs", () -> new StairBlock(RAVAGESTONE_TILES.get().defaultBlockState(), RAVAGESTONE_PROPERTIES()));
 
     public static final RegistryObject<Block> RAVAGESTONE_PRESSURE_PLATE = BLOCKS.register("ravagestone_pressure_plate", () -> new PressurePlateBlock(MOBS, RAVAGESTONE_PROPERTIES()));
     public static final RegistryObject<Block> RAVAGESTONE_WALL = BLOCKS.register("ravagestone_wall", () -> new WallBlock(RAVAGESTONE_PROPERTIES()));
@@ -92,10 +94,10 @@ public class BlockRegistry {
     public static final RegistryObject<Block> GLOOMSTONE_BRICKS_SLAB = BLOCKS.register("gloomstone_bricks_slab", () -> new SlabBlock(GLOOMSTONE_PROPERTIES()));
     public static final RegistryObject<Block> GLOOMSTONE_TILES_SLAB = BLOCKS.register("gloomstone_tiles_slab", () -> new SlabBlock(GLOOMSTONE_PROPERTIES()));
 
-    public static final RegistryObject<Block> GLOOMSTONE_STAIRS = BLOCKS.register("gloomstone_stairs", () -> new StairsBlock(GLOOMSTONE.get().defaultBlockState(), GLOOMSTONE_PROPERTIES()));
-    public static final RegistryObject<Block> POLISHED_GLOOMSTONE_STAIRS = BLOCKS.register("polished_gloomstone_stairs", () -> new StairsBlock(POLISHED_GLOOMSTONE.get().defaultBlockState(), GLOOMSTONE_PROPERTIES()));
-    public static final RegistryObject<Block> GLOOMSTONE_BRICKS_STAIRS = BLOCKS.register("gloomstone_bricks_stairs", () -> new StairsBlock(GLOOMSTONE_BRICKS.get().defaultBlockState(), GLOOMSTONE_PROPERTIES()));
-    public static final RegistryObject<Block> GLOOMSTONE_TILES_STAIRS = BLOCKS.register("gloomstone_tiles_stairs", () -> new StairsBlock(GLOOMSTONE_TILES.get().defaultBlockState(), GLOOMSTONE_PROPERTIES()));
+    public static final RegistryObject<Block> GLOOMSTONE_STAIRS = BLOCKS.register("gloomstone_stairs", () -> new StairBlock(GLOOMSTONE.get().defaultBlockState(), GLOOMSTONE_PROPERTIES()));
+    public static final RegistryObject<Block> POLISHED_GLOOMSTONE_STAIRS = BLOCKS.register("polished_gloomstone_stairs", () -> new StairBlock(POLISHED_GLOOMSTONE.get().defaultBlockState(), GLOOMSTONE_PROPERTIES()));
+    public static final RegistryObject<Block> GLOOMSTONE_BRICKS_STAIRS = BLOCKS.register("gloomstone_bricks_stairs", () -> new StairBlock(GLOOMSTONE_BRICKS.get().defaultBlockState(), GLOOMSTONE_PROPERTIES()));
+    public static final RegistryObject<Block> GLOOMSTONE_TILES_STAIRS = BLOCKS.register("gloomstone_tiles_stairs", () -> new StairBlock(GLOOMSTONE_TILES.get().defaultBlockState(), GLOOMSTONE_PROPERTIES()));
 
     public static final RegistryObject<Block> GLOOMSTONE_PRESSURE_PLATE = BLOCKS.register("gloomstone_pressure_plate", () -> new PressurePlateBlock(MOBS, GLOOMSTONE_PROPERTIES()));
     public static final RegistryObject<Block> GLOOMSTONE_WALL = BLOCKS.register("gloomstone_wall", () -> new WallBlock(GLOOMSTONE_PROPERTIES()));
@@ -109,13 +111,13 @@ public class BlockRegistry {
         @SubscribeEvent
         public static void setRenderLayers(FMLClientSetupEvent event) {
             Set<RegistryObject<Block>> blocks = new HashSet<>(BLOCKS.getEntries());
-            OmnisHelper.takeAll(blocks, b -> b.get() instanceof TorchBlock).forEach(ClientRegistry::setCutout);
-            OmnisHelper.takeAll(blocks, b -> b.get() instanceof TrapDoorBlock).forEach(ClientRegistry::setCutout);
-            OmnisHelper.takeAll(blocks, b -> b.get() instanceof DoorBlock).forEach(ClientRegistry::setCutout);
-            OmnisHelper.takeAll(blocks, b -> b.get() instanceof SaplingBlock).forEach(ClientRegistry::setCutout);
-            OmnisHelper.takeAll(blocks, b -> b.get() instanceof LeavesBlock).forEach(ClientRegistry::setCutout);
-            OmnisHelper.takeAll(blocks, b -> b.get() instanceof BushBlock).forEach(ClientRegistry::setCutout);
-            OmnisHelper.takeAll(blocks, b -> b.get() instanceof LanternBlock).forEach(ClientRegistry::setCutout);
+            OmnisHelper.takeAll(blocks, b -> b.get() instanceof TorchBlock).forEach(ClientOnly::setCutout);
+            OmnisHelper.takeAll(blocks, b -> b.get() instanceof TrapDoorBlock).forEach(ClientOnly::setCutout);
+            OmnisHelper.takeAll(blocks, b -> b.get() instanceof DoorBlock).forEach(ClientOnly::setCutout);
+            OmnisHelper.takeAll(blocks, b -> b.get() instanceof SaplingBlock).forEach(ClientOnly::setCutout);
+            OmnisHelper.takeAll(blocks, b -> b.get() instanceof LeavesBlock).forEach(ClientOnly::setCutout);
+            OmnisHelper.takeAll(blocks, b -> b.get() instanceof BushBlock).forEach(ClientOnly::setCutout);
+            OmnisHelper.takeAll(blocks, b -> b.get() instanceof LanternBlock).forEach(ClientOnly::setCutout);
         }
 
         public static void setCutout(RegistryObject<Block> b) {

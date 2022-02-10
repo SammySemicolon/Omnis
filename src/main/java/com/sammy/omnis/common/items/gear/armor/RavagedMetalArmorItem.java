@@ -1,4 +1,4 @@
-package com.sammy.omnis.common.items.equipment.armor;
+package com.sammy.omnis.common.items.gear.armor;
 
 import com.google.common.collect.ImmutableMultimap;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -8,7 +8,7 @@ import static com.sammy.omnis.core.registry.item.ArmorTierRegistry.ArmorTierEnum
 
 public class RavagedMetalArmorItem extends OmnisArmorItem {
     public RavagedMetalArmorItem(EquipmentSlot slot, Item.Properties builder) {
-        super(RAVAGED_ARMOR, slot, builder, new ImmutableMultimap.Builder<>());
+        super(RAVAGED_ARMOR, slot, builder);
     }
 
     public String getTexture() {

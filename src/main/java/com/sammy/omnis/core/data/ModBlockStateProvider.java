@@ -5,13 +5,14 @@ import com.sammy.omnis.OmnisMod;
 import com.sammy.omnis.common.blocks.VexwartBlock;
 import com.sammy.omnis.common.blocks.surge.SurgeBlock;
 import com.sammy.omnis.common.blocks.surge.SurgeJetBlock;
-import net.minecraft.block.*;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.state.properties.AttachFace;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.Direction;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.AttachFace;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -25,8 +26,8 @@ import java.util.function.Function;
 
 import static com.sammy.omnis.OmnisHelper.prefix;
 import static com.sammy.omnis.core.registry.block.BlockRegistry.BLOCKS;
-import static net.minecraft.state.properties.DoubleBlockHalf.LOWER;
-import static net.minecraft.state.properties.DoubleBlockHalf.UPPER;
+import static net.minecraft.world.level.block.state.properties.DoubleBlockHalf.LOWER;
+import static net.minecraft.world.level.block.state.properties.DoubleBlockHalf.UPPER;
 
 public class ModBlockStateProvider extends net.minecraftforge.client.model.generators.BlockStateProvider
 {
@@ -52,7 +53,7 @@ public class ModBlockStateProvider extends net.minecraftforge.client.model.gener
         OmnisHelper.takeAll(blocks, b -> b.get() instanceof SurgeBlock).forEach(this::surgeBlock);
         OmnisHelper.takeAll(blocks, b -> b.get() instanceof VexwartBlock).forEach(this::vexwartBlock);
         OmnisHelper.takeAll(blocks, b -> b.get() instanceof GrassBlock).forEach(this::grassBlock);
-        OmnisHelper.takeAll(blocks, b -> b.get() instanceof StairsBlock).forEach(this::stairsBlock);
+        OmnisHelper.takeAll(blocks, b -> b.get() instanceof StairBlock).forEach(this::stairsBlock);
         OmnisHelper.takeAll(blocks, b -> b.get() instanceof RotatedPillarBlock).forEach(this::logBlock);
         OmnisHelper.takeAll(blocks, b -> b.get() instanceof WallBlock).forEach(this::wallBlock);
         OmnisHelper.takeAll(blocks, b -> b.get() instanceof FenceBlock).forEach(this::fenceBlock);
@@ -60,7 +61,7 @@ public class ModBlockStateProvider extends net.minecraftforge.client.model.gener
         OmnisHelper.takeAll(blocks, b -> b.get() instanceof DoorBlock).forEach(this::doorBlock);
         OmnisHelper.takeAll(blocks, b -> b.get() instanceof TrapDoorBlock).forEach(this::trapdoorBlock);
         OmnisHelper.takeAll(blocks, b -> b.get() instanceof PressurePlateBlock).forEach(this::pressurePlateBlock);
-        OmnisHelper.takeAll(blocks, b -> b.get() instanceof AbstractButtonBlock).forEach(this::buttonBlock);
+        OmnisHelper.takeAll(blocks, b -> b.get() instanceof ButtonBlock).forEach(this::buttonBlock);
         OmnisHelper.takeAll(blocks, b -> b.get() instanceof DoublePlantBlock).forEach(this::tallPlantBlock);
         OmnisHelper.takeAll(blocks, b -> b.get() instanceof BushBlock).forEach(this::plantBlock);
         OmnisHelper.takeAll(blocks, b -> b.get() instanceof LanternBlock).forEach(this::lanternBlock);
@@ -165,7 +166,7 @@ public class ModBlockStateProvider extends net.minecraftforge.client.model.gener
     {
         String name = Registry.BLOCK.getKey(blockRegistryObject.get()).getPath();
         String baseName = name.substring(0, name.length() - 7);
-        stairsBlock((StairsBlock) blockRegistryObject.get(), prefix("block/" + baseName));
+        stairsBlock((StairBlock) blockRegistryObject.get(), prefix("block/" + baseName));
     }
     
     public void pressurePlateBlock(RegistryObject<Block> blockRegistryObject)

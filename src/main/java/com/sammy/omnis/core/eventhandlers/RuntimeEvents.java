@@ -74,23 +74,31 @@ public class RuntimeEvents {
 
     @SubscribeEvent
     public static void triggerOnHurtEvents(LivingHurtEvent event) {
-        if (event.getSource().isMagicDamage()) {
-            LivingEntity target = event.getEntityLiving();
-            float amount = event.getAmount();
-            if (event.getSource().getTrueSource() instanceof LivingEntity) {
-                LivingEntity attacker = (LivingEntity) event.getSource().getTrueSource();
-                ItemStack stack = attacker.getHeldItemMainhand();
-                Item item = stack.getItem();
-                if (item instanceof IHurtEventItem) {
-                    IHurtEventItem eventItem = (IHurtEventItem) item;
-                    eventItem.hurtEvent(event, attacker, target, stack);
-                }
-                float proficiency = (float) attacker.getAttributeValue(AttributeRegistry.MAGIC_PROFICIENCY.get());
-                amount *= (1 * Math.exp(0.075f * proficiency));
+        LivingEntity target = event.getEntityLiving();
+        if (event.getSource().getTrueSource() instanceof LivingEntity) {
+            LivingEntity attacker = (LivingEntity) event.getSource().getTrueSource();
+            ItemStack stack = attacker.getHeldItemMainhand();
+            Item item = stack.getItem();
+            if (item instanceof IHurtEventItem) {
+                IHurtEventItem eventItem = (IHurtEventItem) item;
+                eventItem.hurtEvent(event, attacker, target, stack);
             }
-            float resistance = (float) target.getAttributeValue(AttributeRegistry.MAGIC_RESISTANCE.get());
-            amount *= (1 * Math.exp(-0.15f * resistance));
-            event.setAmount(amount);
+            if (event.getSource().isMagicDamage()) {
+                if (attacker.getAttributeManager().hasAttributeInstance(AttributeRegistry.MAGIC_PROFICIENCY.get())) {
+                    float proficiency = (float) attacker.getAttributeValue(AttributeRegistry.MAGIC_PROFICIENCY.get());
+                    if (proficiency != 0) {
+                        event.setAmount((float) (event.getAmount() * (1 * Math.exp(0.075f * proficiency))));
+                    }
+                }
+            }
+        }
+        if (event.getSource().isMagicDamage()) {
+            if (target.getAttributeManager().hasAttributeInstance(AttributeRegistry.MAGIC_RESISTANCE.get())) {
+                float resistance = (float) target.getAttributeValue(AttributeRegistry.MAGIC_RESISTANCE.get());
+                if (resistance != 0) {
+                    event.setAmount((float) (event.getAmount() * (1 * Math.exp(-0.15f * resistance))));
+                }
+            }
         }
     }
 

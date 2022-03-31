@@ -1,11 +1,21 @@
 package com.sammy.omnis.common.items.gear.armor;
 
 import com.google.common.collect.ImmutableMultimap;
+import com.sammy.omnis.client.model.HauntedArmorModel;
+import com.sammy.omnis.core.registry.item.ItemRegistry;
 import com.sammy.omnis.core.registry.misc.AttributeRegistry;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.IItemRenderProperties;
 
 import java.util.UUID;
 
@@ -27,25 +37,25 @@ public class HauntedSteelArmorItem extends OmnisArmorItem {
 
 
     public String getTexture() {
-        return "haunted_steel";
+        return "haunted";
     }
 
-//    @OnlyIn(Dist.CLIENT)
-//    @Override
-//    public void initializeClient(java.util.function.Consumer<IItemRenderProperties> consumer) {
-//        consumer.accept(new IItemRenderProperties() {
-//            @Override
-//            public SoulStainedSteelArmorModel getArmorModel(LivingEntity entity, ItemStack itemStack, EquipmentSlot armorSlot, HumanoidModel _default) {
-//                float pticks = Minecraft.getInstance().getFrameTime();
-//                float f = Mth.rotLerp(pticks, entity.yBodyRotO, entity.yBodyRot);
-//                float f1 = Mth.rotLerp(pticks, entity.yHeadRotO, entity.yHeadRot);
-//                float netHeadYaw = f1 - f;
-//                float netHeadPitch = Mth.lerp(pticks, entity.xRotO, entity.getXRot());
-//                ItemRegistry.ClientOnly.SOUL_STAINED_ARMOR.slot = slot;
-//                ItemRegistry.ClientOnly.SOUL_STAINED_ARMOR.copyFromDefault(_default);
-//                ItemRegistry.ClientOnly.SOUL_STAINED_ARMOR.setupAnim(entity, entity.animationPosition, entity.animationSpeed, entity.tickCount + pticks, netHeadYaw, netHeadPitch);
-//                return ItemRegistry.ClientOnly.SOUL_STAINED_ARMOR;
-//            }
-//        });
-//    }
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public void initializeClient(java.util.function.Consumer<IItemRenderProperties> consumer) {
+        consumer.accept(new IItemRenderProperties() {
+            @Override
+            public HauntedArmorModel getArmorModel(LivingEntity entity, ItemStack itemStack, EquipmentSlot armorSlot, HumanoidModel _default) {
+                float pticks = Minecraft.getInstance().getFrameTime();
+                float f = Mth.rotLerp(pticks, entity.yBodyRotO, entity.yBodyRot);
+                float f1 = Mth.rotLerp(pticks, entity.yHeadRotO, entity.yHeadRot);
+                float netHeadYaw = f1 - f;
+                float netHeadPitch = Mth.lerp(pticks, entity.xRotO, entity.getXRot());
+                ItemRegistry.ClientOnly.HAUNTED_ARMOR.slot = slot;
+                ItemRegistry.ClientOnly.HAUNTED_ARMOR.copyFromDefault(_default);
+                ItemRegistry.ClientOnly.HAUNTED_ARMOR.setupAnim(entity, entity.animationPosition, entity.animationSpeed, entity.tickCount + pticks, netHeadYaw, netHeadPitch);
+                return ItemRegistry.ClientOnly.HAUNTED_ARMOR;
+            }
+        });
+    }
 }

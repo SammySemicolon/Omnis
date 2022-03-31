@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "omnis:ravagestone"
+            "items": [
+              "omnis:ravagestone"
+            ]
           }
         ]
       }

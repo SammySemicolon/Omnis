@@ -31,23 +31,23 @@ public class BlockRegistry {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
 
     public static SimpleBlockProperties HAUNTED_STEEL_BLOCK_PROPERTIES() {
-        return new SimpleBlockProperties(Material.METAL, MaterialColor.COLOR_BLUE).sound(SoundRegistry.HAUNTED_STEEL).strength(50f, 3600f).requiresCorrectToolForDrops();
+        return new SimpleBlockProperties(Material.METAL, MaterialColor.COLOR_BLUE).needsPickaxe().sound(SoundRegistry.HAUNTED_STEEL).strength(50f, 3600f).requiresCorrectToolForDrops();
     }
 
     public static SimpleBlockProperties RAVAGED_METAL_BLOCK_PROPERTIES() {
-        return new SimpleBlockProperties(Material.METAL, MaterialColor.COLOR_BLUE).sound(SoundRegistry.RAVAGED_METAL).strength(25f, 3600f).requiresCorrectToolForDrops();
+        return new SimpleBlockProperties(Material.METAL, MaterialColor.COLOR_BLUE).needsPickaxe().sound(SoundRegistry.RAVAGED_METAL).strength(25f, 3600f).requiresCorrectToolForDrops();
     }
 
     public static SimpleBlockProperties VEXWART_PROPERTIES() {
-        return new SimpleBlockProperties(Material.GRASS, MaterialColor.COLOR_BLUE).strength(1.0F).sound(SoundType.WART_BLOCK);
+        return new SimpleBlockProperties(Material.GRASS, MaterialColor.COLOR_BLUE).needsHoe().strength(1.0F).sound(SoundType.WART_BLOCK);
     }
 
     public static SimpleBlockProperties RAVAGESTONE_PROPERTIES() {
-        return new SimpleBlockProperties(Material.STONE, MaterialColor.TERRACOTTA_ORANGE).sound(SoundRegistry.RAVAGESTONE).strength(1.25f, 9f).requiresCorrectToolForDrops();
+        return new SimpleBlockProperties(Material.STONE, MaterialColor.TERRACOTTA_ORANGE).needsPickaxe().sound(SoundRegistry.RAVAGESTONE).strength(1.25f, 9f).requiresCorrectToolForDrops();
     }
 
     public static SimpleBlockProperties GLOOMSTONE_PROPERTIES() {
-        return new SimpleBlockProperties(Material.STONE, MaterialColor.TERRACOTTA_BLUE).sound(SoundRegistry.GLOOMSTONE).strength(1.25f, 9f).requiresCorrectToolForDrops();
+        return new SimpleBlockProperties(Material.STONE, MaterialColor.TERRACOTTA_BLUE).needsPickaxe().sound(SoundRegistry.GLOOMSTONE).strength(1.25f, 9f).requiresCorrectToolForDrops();
     }
 
 

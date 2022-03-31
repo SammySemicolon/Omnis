@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "omnis:ravaged_metal"
+            "items": [
+              "omnis:ravaged_metal"
+            ]
           }
         ]
       }

@@ -2,6 +2,7 @@ package com.sammy.omnis.core.data;
 
 import com.sammy.omnis.OmnisMod;
 import com.sammy.omnis.core.registry.block.BlockRegistry;
+import com.sammy.omnis.core.systems.block.SimpleBlockProperties;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.tags.BlockTags;
@@ -51,6 +52,31 @@ public class ModBlockTagProvider extends BlockTagsProvider
         tag(WOODEN_SLABS).add(getModBlocks(b -> b.getRegistryName().getPath().endsWith("_planks_slab")));
         tag(WOODEN_TRAPDOORS).add(getModBlocks(b -> b.getRegistryName().getPath().endsWith("_trapdoor")));
         tag(WOODEN_PRESSURE_PLATES).add(getModBlocks(b -> b.getRegistryName().getPath().endsWith("_planks_pressure_plate")));
+
+        for (Block block : getModBlocks(b -> b.properties instanceof SimpleBlockProperties)) {
+            SimpleBlockProperties properties = (SimpleBlockProperties) block.properties;
+            if (properties.needsPickaxe) {
+                tag(MINEABLE_WITH_PICKAXE).add(block);
+            }
+            if (properties.needsShovel) {
+                tag(MINEABLE_WITH_SHOVEL).add(block);
+            }
+            if (properties.needsAxe) {
+                tag(MINEABLE_WITH_AXE).add(block);
+            }
+            if (properties.needsHoe) {
+                tag(MINEABLE_WITH_HOE).add(block);
+            }
+            if (properties.needsStone) {
+                tag(NEEDS_STONE_TOOL).add(block);
+            }
+            if (properties.needsIron) {
+                tag(NEEDS_IRON_TOOL).add(block);
+            }
+            if (properties.needsDiamond) {
+                tag(NEEDS_DIAMOND_TOOL).add(block);
+            }
+        }
     }
 
     @Override

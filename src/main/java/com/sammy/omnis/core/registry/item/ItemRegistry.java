@@ -1,18 +1,31 @@
 package com.sammy.omnis.core.registry.item;
 
+import com.sammy.omnis.OmnisMod;
+import com.sammy.omnis.client.model.HauntedArmorModel;
+import com.sammy.omnis.client.model.RavagedArmorModel;
 import com.sammy.omnis.common.items.gear.armor.HauntedSteelArmorItem;
 import com.sammy.omnis.common.items.gear.armor.RavagedMetalArmorItem;
 import com.sammy.omnis.common.items.gear.*;
 import com.sammy.omnis.common.items.gear.loot.*;
 import com.sammy.omnis.core.registry.block.BlockRegistry;
 import com.sammy.omnis.core.registry.item.tabs.OmnisTab;
+import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tiers;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.ColorHandlerEvent;
+import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.awt.*;
+import java.util.HashSet;
+import java.util.Set;
 
 import static com.sammy.omnis.OmnisMod.MODID;
 import static com.sammy.omnis.core.registry.item.ItemTierRegistry.ItemTierEnum.HAUNTED_ITEM;
@@ -123,4 +136,23 @@ public class ItemRegistry {
     public static final RegistryObject<Item> GLOOMSTONE_WALL = ITEMS.register("gloomstone_wall", () -> new BlockItem(BlockRegistry.GLOOMSTONE_WALL.get(), DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> GLOOMSTONE_BRICKS_WALL = ITEMS.register("gloomstone_bricks_wall", () -> new BlockItem(BlockRegistry.GLOOMSTONE_BRICKS_WALL.get(), DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> GLOOMSTONE_TILES_WALL = ITEMS.register("gloomstone_tiles_wall", () -> new BlockItem(BlockRegistry.GLOOMSTONE_TILES_WALL.get(), DEFAULT_PROPERTIES()));
+
+    @Mod.EventBusSubscriber(modid = OmnisMod.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+    public static class ClientOnly {
+
+        public static RavagedArmorModel RAVAGED_ARMOR;
+        public static HauntedArmorModel HAUNTED_ARMOR;
+
+        @SubscribeEvent
+        public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
+            event.registerLayerDefinition(RavagedArmorModel.LAYER, RavagedArmorModel::createBodyLayer);
+            event.registerLayerDefinition(HauntedArmorModel.LAYER, HauntedArmorModel::createBodyLayer);
+        }
+
+        @SubscribeEvent
+        public static void registerLayers(EntityRenderersEvent.AddLayers event) {
+            RAVAGED_ARMOR = new RavagedArmorModel(event.getEntityModels().bakeLayer(RavagedArmorModel.LAYER));
+            HAUNTED_ARMOR = new HauntedArmorModel(event.getEntityModels().bakeLayer(HauntedArmorModel.LAYER));
+        }
+    }
 }

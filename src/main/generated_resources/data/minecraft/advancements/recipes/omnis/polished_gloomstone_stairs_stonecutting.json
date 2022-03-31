@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "omnis:polished_gloomstone"
+            "items": [
+              "omnis:polished_gloomstone"
+            ]
           }
         ]
       }

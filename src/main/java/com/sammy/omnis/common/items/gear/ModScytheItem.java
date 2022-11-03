@@ -1,5 +1,6 @@
 package com.sammy.omnis.common.items.gear;
 
+import net.minecraft.world.damagesource.EntityDamageSource;
 import team.lodestar.lodestone.systems.item.IEventResponderItem;
 import com.sammy.omnis.core.systems.item.ITooltipItem;
 import net.minecraft.sounds.SoundEvents;
@@ -20,11 +21,10 @@ import team.lodestar.lodestone.systems.item.ModCombatItem;
 
 import java.util.List;
 
-public class ModScytheItem extends ModCombatItem implements ITooltipItem, IEventResponderItem
-{
+public class ModScytheItem extends ModCombatItem implements ITooltipItem, IEventResponderItem {
     public final float areaDamage;
-    public ModScytheItem(Tier material, float damage, float speed, float areaDamage, Properties properties)
-    {
+
+    public ModScytheItem(Tier material, float damage, float speed, float areaDamage, Properties properties) {
         super(material, damage + 3, speed - 2.4f, properties);
         this.areaDamage = areaDamage;
     }
@@ -32,32 +32,32 @@ public class ModScytheItem extends ModCombatItem implements ITooltipItem, IEvent
     @Override
     public void hurtEvent(LivingHurtEvent event, LivingEntity attacker, LivingEntity target, ItemStack stack) {
         float damage = 1.0f + event.getAmount() * (areaDamage + EnchantmentHelper.getSweepingDamageRatio(attacker));
+        if (event.getSource().getMsgId().equals("scythe_sweep")) {
+            return;
+        }
         target.level.getEntities(attacker, target.getBoundingBox().inflate(1)).forEach(e ->
         {
-            if (e instanceof LivingEntity)
-            {
+            if (e instanceof LivingEntity) {
+                e.hurt(new EntityDamageSource("scythe_sweep", attacker), damage);
                 e.hurt(DamageSource.mobAttack(attacker), damage);
                 ((LivingEntity) e).knockback(0.4F, Mth.sin(attacker.getYRot() * ((float) Math.PI / 180F)), (-Mth.cos(attacker.getYRot() * ((float) Math.PI / 180F))));
             }
         });
-        if (attacker instanceof Player player)
-        {
+        if (attacker instanceof Player player) {
             player.sweepAttack();
         }
-        attacker.level.playSound(null, attacker.getX(), attacker.getY(), attacker.getZ(), SoundEvents.PLAYER_ATTACK_SWEEP, attacker.getSoundSource(), 1,1);
+        attacker.level.playSound(null, attacker.getX(), attacker.getY(), attacker.getZ(), SoundEvents.PLAYER_ATTACK_SWEEP, attacker.getSoundSource(), 1, 1);
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void addSneakTooltip(List<Component> tooltip)
-    {
+    public void addSneakTooltip(List<Component> tooltip) {
         tooltip.add(new TranslatableComponent("omnis.tooltip.sweeping_detailed").withStyle(ChatFormatting.BLUE));
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void addDefaultTooltip(List<Component> tooltip)
-    {
+    public void addDefaultTooltip(List<Component> tooltip) {
         tooltip.add(new TranslatableComponent("omnis.tooltip.sweeping").withStyle(ChatFormatting.BLUE));
     }
 }

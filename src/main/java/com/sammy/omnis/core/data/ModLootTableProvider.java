@@ -74,6 +74,8 @@ public class ModLootTableProvider extends LootTableProvider
         Set<RegistryObject<Block>> blocks = new HashSet<>(BLOCKS.getEntries());
         takeAll(blocks, b -> b.get().properties instanceof LodestoneBlockProperties && ((LodestoneBlockProperties) b.get().properties).getThrowawayData().hasCustomLoot);
 
+        takeAll(blocks, b -> b.get() instanceof VexwartBlock).forEach(b -> add(b.get(), createVexwartDrop(b.get())));
+
         takeAll(blocks, b -> b.get() instanceof SaplingBlock).forEach(b -> add(b.get(), createSingleItemTable(b.get().asItem())));
         takeAll(blocks, b -> b.get() instanceof DoublePlantBlock).forEach(b -> add(b.get(), createSingleItemTableWithSilkTouchOrShears(b.get(), b.get().asItem())));
         takeAll(blocks, b -> b.get() instanceof BushBlock).forEach(b -> add(b.get(), createSingleItemTableWithSilkTouchOrShears(b.get(), b.get().asItem())));
@@ -81,8 +83,6 @@ public class ModLootTableProvider extends LootTableProvider
         takeAll(blocks, b -> b.get() instanceof GrassBlock).forEach(b -> add(b.get(), createSingleItemTableWithSilkTouch(b.get(), Items.DIRT)));
         takeAll(blocks, b -> b.get() instanceof SlabBlock).forEach(b -> add(b.get(), createSlabItemTable(b.get())));
         takeAll(blocks, b -> b.get() instanceof DoorBlock).forEach(b -> add(b.get(), createDoorTable(b.get())));
-
-        takeAll(blocks, b -> b.get() instanceof VexwartBlock).forEach(b -> add(b.get(), createVexwartDrop(b.get())));
 
         takeAll(blocks, b -> true).forEach(b -> add(b.get(), createSingleItemTable(b.get().asItem())));
 
@@ -102,13 +102,12 @@ public class ModLootTableProvider extends LootTableProvider
     }
 
     protected static LootTable.Builder createVexwartDrop(Block block) {
-        LootPool.Builder wartPool = LootPool.lootPool().when(ExplosionCondition.survivesExplosion()).add(LootItem.lootTableItem(ItemRegistry.VEXWART.get().asItem()))
-                .when(InvertedLootItemCondition.invert(
-                        LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(VexwartBlock.AGE, 3))));
-        LootPool.Builder tearPool = LootPool.lootPool().when(ExplosionCondition.survivesExplosion()).add(LootItem.lootTableItem(ItemRegistry.TEAR_OF_VEX.get().asItem()))
-                .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))
-                .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(VexwartBlock.AGE, 3)));
-
+        LootPool.Builder tearPool = LootPool.lootPool().when(ExplosionCondition.survivesExplosion()).add(LootItem.lootTableItem(ItemRegistry.TEAR_OF_VEX.get())
+                .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(VexwartBlock.AGE, 3)))
+                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))));
+        LootPool.Builder wartPool = LootPool.lootPool().when(ExplosionCondition.survivesExplosion()).add(LootItem.lootTableItem(ItemRegistry.VEXWART.get())
+                .when(InvertedLootItemCondition.invert(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(VexwartBlock.AGE, 3))))
+                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))));
         return LootTable.lootTable()
                 .withPool(wartPool)
                 .withPool(tearPool);

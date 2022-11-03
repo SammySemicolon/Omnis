@@ -1,7 +1,7 @@
 package com.sammy.omnis.core.eventhandlers;
 
 import com.sammy.omnis.core.registry.item.ItemRegistry;
-import com.sammy.omnis.core.registry.misc.AttributeRegistry;
+import com.sammy.omnis.core.registry.AttributeRegistry;
 import team.lodestar.lodestone.systems.item.IEventResponderItem;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -53,29 +53,6 @@ public class RuntimeEvents {
             }
         }
     }
-
-    @SubscribeEvent
-    public static void triggerOnHurtEvents(LivingHurtEvent event) {
-        float amount = event.getAmount();
-        LivingEntity target = event.getEntityLiving();
-        if (event.getSource().getEntity() instanceof LivingEntity attacker) {
-            ItemStack stack = attacker.getMainHandItem();
-            Item item = stack.getItem();
-            if (item instanceof IEventResponderItem eventItem) {
-                eventItem.hurtEvent(event, attacker, target, stack);
-            }
-            if (event.getSource().isMagic()) {
-                float proficiency = (float) attacker.getAttributeValue(AttributeRegistry.MAGIC_PROFICIENCY.get());
-                amount *= 1 * Math.exp(0.075f * proficiency);
-            }
-        }
-        if (event.getSource().isMagic()) {
-            float resistance = (float) target.getAttributeValue(AttributeRegistry.MAGIC_RESISTANCE.get());
-            amount *= 1 * Math.exp(-0.15f * resistance);
-        }
-        event.setAmount(amount);
-    }
-
 
     @SubscribeEvent
     public static void giveEnemiesSpecialWeapons(EntityJoinWorldEvent event) {

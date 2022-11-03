@@ -104,10 +104,10 @@ public class ModLootTableProvider extends LootTableProvider
     protected static LootTable.Builder createVexwartDrop(Block block) {
         LootPool.Builder wartPool = LootPool.lootPool().when(ExplosionCondition.survivesExplosion()).add(LootItem.lootTableItem(ItemRegistry.VEXWART.get().asItem()))
                 .when(InvertedLootItemCondition.invert(
-                        LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(VexwartBlock.AGE, 5))));
+                        LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(VexwartBlock.AGE, 3))));
         LootPool.Builder tearPool = LootPool.lootPool().when(ExplosionCondition.survivesExplosion()).add(LootItem.lootTableItem(ItemRegistry.TEAR_OF_VEX.get().asItem()))
                 .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))
-                .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(VexwartBlock.AGE, 5)));
+                .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(VexwartBlock.AGE, 3)));
 
         return LootTable.lootTable()
                 .withPool(wartPool)

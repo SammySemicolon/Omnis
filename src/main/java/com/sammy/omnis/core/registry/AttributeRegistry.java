@@ -1,4 +1,4 @@
-package com.sammy.omnis.core.registry.misc;
+package com.sammy.omnis.core.registry;
 
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.RangedAttribute;
@@ -15,15 +15,9 @@ import static com.sammy.omnis.OmnisMod.OMNIS;
 public class AttributeRegistry {
     public static final DeferredRegister<Attribute> ATTRIBUTES = DeferredRegister.create(ForgeRegistries.ATTRIBUTES, OMNIS);
 
-    public static final RegistryObject<Attribute> MAGIC_RESISTANCE = ATTRIBUTES.register("magic_resistance", ()->new RangedAttribute("attribute.name.omnis.magic_resistance", 0.0D, 0.0D, 2048.0D));
-    public static final RegistryObject<Attribute> MAGIC_PROFICIENCY = ATTRIBUTES.register("magic_proficiency", ()->new RangedAttribute("attribute.name.omnis.magic_proficiency", 0.0D, 0.0D, 2048.0D));
-
-
     @SubscribeEvent
     public static void modifyEntityAttributes(EntityAttributeModificationEvent event) {
         event.getTypes().forEach(e -> {
-            event.add(e, AttributeRegistry.MAGIC_RESISTANCE.get());
-            event.add(e, AttributeRegistry.MAGIC_PROFICIENCY.get());
         });
     }
 }

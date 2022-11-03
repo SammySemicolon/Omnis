@@ -16,10 +16,10 @@ import static com.sammy.omnis.core.registry.block.BlockRegistry.BLOCKS;
 import static com.sammy.omnis.core.registry.block.TileEntityRegistry.TILE_ENTITIES;
 import static com.sammy.omnis.core.registry.item.EnchantmentRegistry.ENCHANTMENTS;
 import static com.sammy.omnis.core.registry.item.ItemRegistry.ITEMS;
-import static com.sammy.omnis.core.registry.misc.AttributeRegistry.ATTRIBUTES;
+import static com.sammy.omnis.core.registry.AttributeRegistry.ATTRIBUTES;
 import static com.sammy.omnis.core.registry.ParticleRegistry.PARTICLES;
 import static com.sammy.omnis.core.registry.SoundRegistry.SOUNDS;
-import static com.sammy.omnis.core.registry.misc.LootModifierRegistry.*;
+import static com.sammy.omnis.core.registry.LootModifierRegistry.*;
 import static com.sammy.omnis.core.registry.effects.EffectRegistry.EFFECTS;
 import static com.sammy.omnis.core.registry.effects.PotionRegistry.POTIONS;
 

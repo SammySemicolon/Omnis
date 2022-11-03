@@ -3,7 +3,7 @@ package com.sammy.omnis.common.items.gear.armor;
 import com.google.common.collect.ImmutableMultimap;
 import com.sammy.omnis.client.model.HauntedArmorModel;
 import com.sammy.omnis.core.registry.item.ItemRegistry;
-import com.sammy.omnis.core.registry.misc.AttributeRegistry;
+import com.sammy.omnis.core.registry.AttributeRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.util.Mth;
@@ -16,6 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.IItemRenderProperties;
+import team.lodestar.lodestone.setup.LodestoneAttributeRegistry;
 
 import java.util.UUID;
 
@@ -31,7 +32,7 @@ public class HauntedSteelArmorItem extends OmnisArmorItem {
     public ImmutableMultimap.Builder<Attribute, AttributeModifier> createExtraAttributes(EquipmentSlot slot) {
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = new ImmutableMultimap.Builder<>();
         UUID uuid = ARMOR_MODIFIER_UUID_PER_SLOT[slot.getIndex()];
-        builder.put(AttributeRegistry.MAGIC_RESISTANCE.get(), new AttributeModifier(uuid, "Magic Resistance", 1f, AttributeModifier.Operation.ADDITION));
+        builder.put(LodestoneAttributeRegistry.MAGIC_RESISTANCE.get(), new AttributeModifier(uuid, "Magic Resistance", 1f, AttributeModifier.Operation.ADDITION));
         return builder;
     }
 

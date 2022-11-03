@@ -1,4 +1,4 @@
-package com.sammy.omnis.core.registry.misc;
+package com.sammy.omnis.core.registry;
 
 import com.sammy.omnis.OmnisMod;
 import com.sammy.omnis.common.loot.OmnisLootModifier;

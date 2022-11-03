@@ -6,16 +6,14 @@ import com.sammy.omnis.core.registry.item.ItemRegistry;
 import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.EntityTypePredicate;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
-import net.minecraftforge.common.loot.LootTableIdCondition;
 
-import static com.sammy.omnis.core.registry.misc.LootModifierRegistry.*;
+import static com.sammy.omnis.core.registry.LootModifierRegistry.*;
 
 public class ModLootProvider extends GlobalLootModifierProvider {
     public ModLootProvider(DataGenerator gen) {

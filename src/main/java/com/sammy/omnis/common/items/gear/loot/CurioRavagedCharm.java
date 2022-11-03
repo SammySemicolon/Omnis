@@ -3,7 +3,6 @@ package com.sammy.omnis.common.items.gear.loot;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.sammy.omnis.core.registry.SoundRegistry;
-import com.sammy.omnis.core.registry.misc.AttributeRegistry;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;

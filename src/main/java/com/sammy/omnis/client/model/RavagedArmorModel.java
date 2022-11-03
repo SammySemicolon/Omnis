@@ -4,15 +4,16 @@ package com.sammy.omnis.client.model;
 // Paste this class into your mod and generate all required imports
 
 
-import com.sammy.omnis.OmnisHelper;
+import com.sammy.omnis.OmnisMod;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import team.lodestar.lodestone.systems.model.LodestoneArmorModel;
 
-public class RavagedArmorModel extends ArmorModel {
-	public static ModelLayerLocation LAYER = new ModelLayerLocation(OmnisHelper.prefix("textures/armor/ravaged"), "main");
+public class RavagedArmorModel extends LodestoneArmorModel {
+	public static ModelLayerLocation LAYER = new ModelLayerLocation(OmnisMod.omnisPath("textures/armor/ravaged"), "main");
 
 	public RavagedArmorModel(ModelPart root) {
 		super(root);

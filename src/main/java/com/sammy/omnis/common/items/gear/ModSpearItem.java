@@ -1,7 +1,7 @@
 package com.sammy.omnis.common.items.gear;
 
 import com.sammy.omnis.core.registry.SoundRegistry;
-import com.sammy.omnis.core.systems.item.IHurtEventItem;
+import team.lodestar.lodestone.systems.item.IEventResponderItem;
 import com.sammy.omnis.core.systems.item.ITooltipItem;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Tier;
@@ -12,10 +12,11 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import team.lodestar.lodestone.systems.item.ModCombatItem;
 
 import java.util.List;
 
-public class ModSpearItem extends ModCombatItem implements ITooltipItem, IHurtEventItem {
+public class ModSpearItem extends ModCombatItem implements ITooltipItem, IEventResponderItem {
     public float distanceDamage;
 
     public ModSpearItem(Tier material, float damage, float speed, float distanceDamage, Properties properties) {

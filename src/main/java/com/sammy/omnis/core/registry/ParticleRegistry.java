@@ -12,7 +12,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ParticleRegistry
 {
-    public static DeferredRegister<ParticleType<?>> PARTICLES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, OmnisMod.MODID);
+    public static DeferredRegister<ParticleType<?>> PARTICLES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, OmnisMod.OMNIS);
     
 //    public static RegistryObject<WispParticleType>
 //            WISP_PARTICLE = PARTICLES.register("wisp_particle", WispParticleType::new);

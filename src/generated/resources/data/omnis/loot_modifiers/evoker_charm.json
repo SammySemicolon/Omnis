@@ -1,0 +1,16 @@
+{
+  "conditions": [
+    {
+      "condition": "minecraft:entity_properties",
+      "predicate": {
+        "type": "minecraft:evoker"
+      },
+      "entity": "this"
+    }
+  ],
+  "itemChance": 0.25,
+  "itemCount": 1,
+  "extraItemCount": 0,
+  "item": "omnis:evoker_charm",
+  "type": "omnis:add_items"
+}

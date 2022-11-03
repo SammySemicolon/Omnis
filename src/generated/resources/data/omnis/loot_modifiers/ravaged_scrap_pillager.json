@@ -1,0 +1,16 @@
+{
+  "conditions": [
+    {
+      "condition": "minecraft:entity_properties",
+      "predicate": {
+        "type": "minecraft:pillager"
+      },
+      "entity": "this"
+    }
+  ],
+  "itemChance": 0.5,
+  "itemCount": 1,
+  "extraItemCount": 2,
+  "item": "omnis:ravaged_scrap",
+  "type": "omnis:add_items"
+}

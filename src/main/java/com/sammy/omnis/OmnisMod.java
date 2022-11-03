@@ -3,17 +3,15 @@ package com.sammy.omnis;
 import com.sammy.omnis.core.data.*;
 import com.sammy.omnis.core.registry.EntityRegistry;
 import net.minecraft.data.tags.BlockTagsProvider;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import static com.sammy.omnis.OmnisMod.MODID;
+import static com.sammy.omnis.OmnisMod.OMNIS;
 import static com.sammy.omnis.core.registry.block.BlockRegistry.BLOCKS;
 import static com.sammy.omnis.core.registry.block.TileEntityRegistry.TILE_ENTITIES;
 import static com.sammy.omnis.core.registry.item.EnchantmentRegistry.ENCHANTMENTS;
@@ -25,10 +23,9 @@ import static com.sammy.omnis.core.registry.misc.LootModifierRegistry.*;
 import static com.sammy.omnis.core.registry.effects.EffectRegistry.EFFECTS;
 import static com.sammy.omnis.core.registry.effects.PotionRegistry.POTIONS;
 
-@Mod(MODID)
-public class OmnisMod
-{
-    public static final String MODID = "omnis";
+@Mod(OMNIS)
+public class OmnisMod {
+    public static final String OMNIS = "omnis";
     public static final Logger LOGGER = LogManager.getLogger();
 
     public OmnisMod() {
@@ -39,15 +36,19 @@ public class OmnisMod
         ITEMS.register(modBus);
         TILE_ENTITIES.register(modBus);
         EntityRegistry.ENTITY_TYPES.register(modBus);
-        GLM.register(modBus);
+        LOOT_MODIFIERS.register(modBus);
         POTIONS.register(modBus);
         EFFECTS.register(modBus);
         PARTICLES.register(modBus);
         SOUNDS.register(modBus);
         modBus.addListener(this::gatherData);
     }
-    public void gatherData(GatherDataEvent evt)
-    {
+
+    public static ResourceLocation omnisPath(String path) {
+        return new ResourceLocation(OMNIS, path);
+    }
+
+    public void gatherData(GatherDataEvent evt) {
         BlockTagsProvider provider = new ModBlockTagProvider(evt.getGenerator(), evt.getExistingFileHelper());
         evt.getGenerator().addProvider(new ModBlockStateProvider(evt.getGenerator(), evt.getExistingFileHelper()));
         evt.getGenerator().addProvider(new ModItemModelProvider(evt.getGenerator(), evt.getExistingFileHelper()));
@@ -55,7 +56,7 @@ public class OmnisMod
         evt.getGenerator().addProvider(provider);
         evt.getGenerator().addProvider(new ModLootTableProvider(evt.getGenerator()));
         evt.getGenerator().addProvider(new ModLootProvider(evt.getGenerator()));
-        evt.getGenerator().addProvider(new ModItemTagProvider(evt.getGenerator(),provider, evt.getExistingFileHelper()));
+        evt.getGenerator().addProvider(new ModItemTagProvider(evt.getGenerator(), provider, evt.getExistingFileHelper()));
         evt.getGenerator().addProvider(new ModRecipeProvider(evt.getGenerator()));
     }
 }

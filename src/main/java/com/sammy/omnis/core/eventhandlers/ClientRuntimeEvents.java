@@ -7,13 +7,10 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT)
-public class ClientRuntimeEvents
-{
+public class ClientRuntimeEvents {
     @SubscribeEvent
-    public static void tooltipsEvent(ItemTooltipEvent event)
-    {
-        if (event.getItemStack().getItem() instanceof ITooltipItem tooltipItem)
-        {
+    public static void tooltipsEvent(ItemTooltipEvent event) {
+        if (event.getItemStack().getItem() instanceof ITooltipItem tooltipItem) {
             tooltipItem.addTooltip(event.getToolTip());
         }
     }

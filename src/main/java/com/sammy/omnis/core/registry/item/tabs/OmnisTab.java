@@ -12,7 +12,7 @@ public class OmnisTab extends CreativeModeTab
     public static final OmnisTab INSTANCE = new OmnisTab();
 
     public OmnisTab() {
-        super(OmnisMod.MODID);
+        super(OmnisMod.OMNIS);
     }
     
     @Nonnull

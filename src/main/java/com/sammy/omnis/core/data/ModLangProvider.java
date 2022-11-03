@@ -1,6 +1,5 @@
 package com.sammy.omnis.core.data;
 
-import com.sammy.omnis.OmnisHelper;
 import com.sammy.omnis.core.registry.block.BlockRegistry;
 import com.sammy.omnis.core.registry.item.ItemRegistry;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -13,12 +12,13 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.level.block.WallTorchBlock;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.registries.RegistryObject;
+import team.lodestar.lodestone.helpers.DataHelper;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import static com.sammy.omnis.core.registry.SoundRegistry.SOUNDS;
-import static com.sammy.omnis.OmnisMod.MODID;
+import static com.sammy.omnis.OmnisMod.OMNIS;
 import static com.sammy.omnis.core.registry.effects.EffectRegistry.EFFECTS;
 import static com.sammy.omnis.core.registry.item.EnchantmentRegistry.ENCHANTMENTS;
 
@@ -27,7 +27,7 @@ public class ModLangProvider extends LanguageProvider
 {
     public ModLangProvider(DataGenerator gen)
     {
-        super(gen, MODID, "en_us");
+        super(gen, OMNIS, "en_us");
     }
     
     @Override
@@ -38,34 +38,34 @@ public class ModLangProvider extends LanguageProvider
         Set<RegistryObject<SoundEvent>> sounds = new HashSet<>(SOUNDS.getEntries());
         Set<RegistryObject<Enchantment>> enchantments = new HashSet<>(ENCHANTMENTS.getEntries());
         Set<RegistryObject<MobEffect>> effects = new HashSet<>(EFFECTS.getEntries());
-        OmnisHelper.takeAll(items, i -> i.get() instanceof BlockItem);
-        OmnisHelper.takeAll(blocks, i -> i.get() instanceof WallTorchBlock);
+        DataHelper.takeAll(items, i -> i.get() instanceof BlockItem);
+        DataHelper.takeAll(blocks, i -> i.get() instanceof WallTorchBlock);
         blocks.forEach(b -> {
-            String name = b.get().getDescriptionId().replaceFirst("block." + MODID + ".", "");
-            name = OmnisHelper.toTitleCase(specialBlockNameChanges(name), "_");
+            String name = b.get().getDescriptionId().replaceFirst("block." + OMNIS + ".", "");
+            name = DataHelper.toTitleCase(specialBlockNameChanges(name), "_");
             add(b.get().getDescriptionId(), name);
         });
         
         items.forEach(i -> {
             if (!(i.get() instanceof BlockItem))
             {
-                String name = i.get().getDescriptionId().replaceFirst("item." + MODID + ".", "");
-                name = OmnisHelper.toTitleCase(specialBlockNameChanges(name), "_");
+                String name = i.get().getDescriptionId().replaceFirst("item." + OMNIS + ".", "");
+                name = DataHelper.toTitleCase(specialBlockNameChanges(name), "_");
                 add(i.get().getDescriptionId(), name);
             }
         });
 
         sounds.forEach(s -> {
-            String name = OmnisHelper.toTitleCase(s.getId().getPath(), "_");
-            add(MODID + ".subtitle." + s.getId().getPath(), name);
+            String name = DataHelper.toTitleCase(s.getId().getPath(), "_");
+            add(OMNIS + ".subtitle." + s.getId().getPath(), name);
         });
         enchantments.forEach(e -> {
-            String name = OmnisHelper.toTitleCase(e.getId().getPath(), "_");
+            String name = DataHelper.toTitleCase(e.getId().getPath(), "_");
             add(e.get().getDescriptionId(), name);
         });
         effects.forEach(e -> {
-            String name = OmnisHelper.toTitleCase(e.getId().getPath(), "_");
-            add("effect." + MODID + "." + e.get().getRegistryName().getPath(), name);
+            String name = DataHelper.toTitleCase(e.getId().getPath(), "_");
+            add("effect." + OMNIS + "." + e.get().getRegistryName().getPath(), name);
         });
 
         addTooltip("ravage", "Ravage");
@@ -99,7 +99,7 @@ public class ModLangProvider extends LanguageProvider
         add("attribute.name.omnis.magic_resistance", "Magic Resistance");
         add("attribute.name.omnis.magic_proficiency", "Magic Proficiency");
 
-        add("itemGroup." + MODID, "Omnis");
+        add("itemGroup." + OMNIS, "Omnis");
     }
 
     @Override

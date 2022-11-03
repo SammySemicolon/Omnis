@@ -1,6 +1,6 @@
 package com.sammy.omnis.common.items.gear;
 
-import com.sammy.omnis.core.systems.item.IHurtEventItem;
+import team.lodestar.lodestone.systems.item.IEventResponderItem;
 import com.sammy.omnis.core.systems.item.ITooltipItem;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -16,10 +16,11 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import team.lodestar.lodestone.systems.item.ModCombatItem;
 
 import java.util.List;
 
-public class ModScytheItem extends ModCombatItem implements ITooltipItem, IHurtEventItem
+public class ModScytheItem extends ModCombatItem implements ITooltipItem, IEventResponderItem
 {
     public final float areaDamage;
     public ModScytheItem(Tier material, float damage, float speed, float areaDamage, Properties properties)

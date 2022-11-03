@@ -2,9 +2,8 @@ package com.sammy.omnis.common.items.gear;
 
 import com.sammy.omnis.core.registry.SoundRegistry;
 import com.sammy.omnis.core.registry.effects.EffectRegistry;
-import com.sammy.omnis.core.systems.item.IHurtEventItem;
+import team.lodestar.lodestone.systems.item.IEventResponderItem;
 import com.sammy.omnis.core.systems.item.ITooltipItem;
-import com.sammy.omnis.common.items.basic.ModAxeItem;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Tier;
@@ -14,11 +13,11 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import team.lodestar.lodestone.systems.item.tools.LodestoneAxeItem;
 
 import java.util.List;
 
-
-public class ModGreataxeItem extends ModAxeItem implements ITooltipItem, IHurtEventItem {
+public class ModGreataxeItem extends LodestoneAxeItem implements ITooltipItem, IEventResponderItem {
     public final int stunnedAmplifier;
 
     public ModGreataxeItem(Tier material, int damage, float speed, int stunnedAmplifier, Properties properties) {

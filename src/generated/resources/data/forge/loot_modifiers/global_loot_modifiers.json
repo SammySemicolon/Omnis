@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "entries": [
+    "omnis:ravaged_scrap_vindicator",
+    "omnis:evoker_charm",
+    "omnis:ravaged_scrap_ravager",
+    "omnis:ravaged_scrap_pillager",
+    "omnis:tear_of_vex"
+  ]
+}

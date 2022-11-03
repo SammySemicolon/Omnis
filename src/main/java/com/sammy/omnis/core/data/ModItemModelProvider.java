@@ -1,6 +1,5 @@
 package com.sammy.omnis.core.data;
 
-import com.sammy.omnis.common.items.gear.ModCombatItem;
 import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -9,21 +8,22 @@ import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
+import team.lodestar.lodestone.systems.item.ModCombatItem;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.sammy.omnis.OmnisHelper.prefix;
-import static com.sammy.omnis.OmnisHelper.takeAll;
-import static com.sammy.omnis.OmnisMod.MODID;
+import static com.sammy.omnis.OmnisMod.omnisPath;
+import static com.sammy.omnis.OmnisMod.OMNIS;
 import static com.sammy.omnis.core.registry.item.ItemRegistry.ITEMS;
 import static com.sammy.omnis.core.registry.item.ItemRegistry.VEXWART;
+import static team.lodestar.lodestone.helpers.DataHelper.takeAll;
 
 public class ModItemModelProvider extends net.minecraftforge.client.model.generators.ItemModelProvider
 {
     public ModItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper)
     {
-        super(generator, MODID, existingFileHelper);
+        super(generator, OMNIS, existingFileHelper);
     }
     
     @Override
@@ -57,54 +57,54 @@ public class ModItemModelProvider extends net.minecraftforge.client.model.genera
     private void handheldItem(RegistryObject<Item> i)
     {
         String name = Registry.ITEM.getKey(i.get()).getPath();
-        withExistingParent(name, HANDHELD).texture("layer0", prefix("item/" + name));
+        withExistingParent(name, HANDHELD).texture("layer0", omnisPath("item/" + name));
     }
     
     private void generatedItem(RegistryObject<Item> i)
     {
         String name = Registry.ITEM.getKey(i.get()).getPath();
-        withExistingParent(name, GENERATED).texture("layer0", prefix("item/" + name));
+        withExistingParent(name, GENERATED).texture("layer0", omnisPath("item/" + name));
     }
     private void blockGeneratedItem(RegistryObject<Item> i)
     {
         String name = Registry.ITEM.getKey(i.get()).getPath();
-        withExistingParent(name, GENERATED).texture("layer0", prefix("block/" + name));
+        withExistingParent(name, GENERATED).texture("layer0", omnisPath("block/" + name));
     }
     private void essencePipeItem(RegistryObject<Item> i)
     {
-        getBuilder("spirit_pipe").parent(new ModelFile.UncheckedModelFile(prefix("block/" + "spirit_pipe_core")));
+        getBuilder("spirit_pipe").parent(new ModelFile.UncheckedModelFile(omnisPath("block/" + "spirit_pipe_core")));
     }
     private void blockItem(RegistryObject<Item> i)
     {
         String name = Registry.ITEM.getKey(i.get()).getPath();
-        getBuilder(name).parent(new ModelFile.UncheckedModelFile(prefix("block/" + name)));
+        getBuilder(name).parent(new ModelFile.UncheckedModelFile(omnisPath("block/" + name)));
     }
     private void trapdoorBlockItem(RegistryObject<Item> i)
     {
         String name = Registry.ITEM.getKey(i.get()).getPath();
-        getBuilder(name).parent(new ModelFile.UncheckedModelFile(prefix("block/" + name + "_bottom")));
+        getBuilder(name).parent(new ModelFile.UncheckedModelFile(omnisPath("block/" + name + "_bottom")));
     }
     private void fenceBlockItem(RegistryObject<Item> i)
     {
         String name = Registry.ITEM.getKey(i.get()).getPath();
         String baseName = name.substring(0, name.length() - 6);
-        fenceInventory(name, prefix("block/" + baseName));
+        fenceInventory(name, omnisPath("block/" + baseName));
     }
     private void wallBlockItem(RegistryObject<Item> i)
     {
         String name = Registry.ITEM.getKey(i.get()).getPath();
         String baseName = name.substring(0, name.length() - 5);
-        wallInventory(name, prefix("block/" + baseName));
+        wallInventory(name, omnisPath("block/" + baseName));
     }
     private void pressurePlateBlockItem(RegistryObject<Item> i)
     {
         String name = Registry.ITEM.getKey(i.get()).getPath();
-        getBuilder(name).parent(new ModelFile.UncheckedModelFile(prefix("block/" + name + "_up")));
+        getBuilder(name).parent(new ModelFile.UncheckedModelFile(omnisPath("block/" + name + "_up")));
     }
     private void buttonBlockItem(RegistryObject<Item> i)
     {
         String name = Registry.ITEM.getKey(i.get()).getPath();
-        getBuilder(name).parent(new ModelFile.UncheckedModelFile(prefix("block/" + name + "_inventory")));
+        getBuilder(name).parent(new ModelFile.UncheckedModelFile(omnisPath("block/" + name + "_inventory")));
     }
     @Override
     public String getName()

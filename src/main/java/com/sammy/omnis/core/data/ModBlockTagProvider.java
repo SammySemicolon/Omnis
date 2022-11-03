@@ -2,12 +2,13 @@ package com.sammy.omnis.core.data;
 
 import com.sammy.omnis.OmnisMod;
 import com.sammy.omnis.core.registry.block.BlockRegistry;
-import com.sammy.omnis.core.systems.block.SimpleBlockProperties;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraft.world.level.block.*;
+import team.lodestar.lodestone.systems.block.LodestoneBlockProperties;
+import team.lodestar.lodestone.systems.block.LodestoneThrowawayBlockData;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
@@ -17,18 +18,14 @@ import java.util.function.Predicate;
 
 import static com.sammy.omnis.core.registry.block.BlockRegistry.BLOCKS;
 import static net.minecraft.tags.BlockTags.*;
-import static net.minecraftforge.common.Tags.Blocks.DIRT;
 
-public class ModBlockTagProvider extends BlockTagsProvider
-{
-    public ModBlockTagProvider(DataGenerator generatorIn, ExistingFileHelper existingFileHelper)
-    {
-        super(generatorIn, OmnisMod.MODID, existingFileHelper);
+public class ModBlockTagProvider extends BlockTagsProvider {
+    public ModBlockTagProvider(DataGenerator generatorIn, ExistingFileHelper existingFileHelper) {
+        super(generatorIn, OmnisMod.OMNIS, existingFileHelper);
     }
 
     @Override
-    protected void addTags()
-    {
+    protected void addTags() {
         tag(BEACON_BASE_BLOCKS).add(BlockRegistry.RAVAGED_METAL_BLOCK.get(), BlockRegistry.HAUNTED_STEEL_BLOCK.get());
 
         tag(BlockTags.SLABS).add(getModBlocks(b -> b instanceof SlabBlock));
@@ -53,41 +50,40 @@ public class ModBlockTagProvider extends BlockTagsProvider
         tag(WOODEN_TRAPDOORS).add(getModBlocks(b -> b.getRegistryName().getPath().endsWith("_trapdoor")));
         tag(WOODEN_PRESSURE_PLATES).add(getModBlocks(b -> b.getRegistryName().getPath().endsWith("_planks_pressure_plate")));
 
-        for (Block block : getModBlocks(b -> b.properties instanceof SimpleBlockProperties)) {
-            SimpleBlockProperties properties = (SimpleBlockProperties) block.properties;
-            if (properties.needsPickaxe) {
+        for (Block block : getModBlocks(b -> b.properties instanceof LodestoneBlockProperties)) {
+            LodestoneBlockProperties properties = (LodestoneBlockProperties) block.properties;
+            LodestoneThrowawayBlockData data = properties.getThrowawayData();
+            if (data.needsPickaxe) {
                 tag(MINEABLE_WITH_PICKAXE).add(block);
             }
-            if (properties.needsShovel) {
+            if (data.needsShovel) {
                 tag(MINEABLE_WITH_SHOVEL).add(block);
             }
-            if (properties.needsAxe) {
+            if (data.needsAxe) {
                 tag(MINEABLE_WITH_AXE).add(block);
             }
-            if (properties.needsHoe) {
+            if (data.needsHoe) {
                 tag(MINEABLE_WITH_HOE).add(block);
             }
-            if (properties.needsStone) {
+            if (data.needsStone) {
                 tag(NEEDS_STONE_TOOL).add(block);
             }
-            if (properties.needsIron) {
+            if (data.needsIron) {
                 tag(NEEDS_IRON_TOOL).add(block);
             }
-            if (properties.needsDiamond) {
+            if (data.needsDiamond) {
                 tag(NEEDS_DIAMOND_TOOL).add(block);
             }
         }
     }
 
     @Override
-    public String getName()
-    {
+    public String getName() {
         return "Block Tags";
     }
 
     @Nonnull
-    private Block[] getModBlocks(Predicate<Block> predicate)
-    {
+    private Block[] getModBlocks(Predicate<Block> predicate) {
         List<Block> ret = new ArrayList<>(Collections.emptyList());
         BLOCKS.getEntries().stream().filter(b -> predicate.test(b.get())).forEach(b -> ret.add(b.get()));
         return ret.toArray(new Block[0]);

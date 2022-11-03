@@ -13,12 +13,12 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import static com.sammy.omnis.OmnisMod.MODID;
+import static com.sammy.omnis.OmnisMod.OMNIS;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class PotionRegistry
 {
-    public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(ForgeRegistries.POTIONS, MODID);
+    public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(ForgeRegistries.POTIONS, OMNIS);
 
     public static final RegistryObject<Potion> MAGIC_PROFICIENCY = POTIONS.register("magic_proficiency", () -> new Potion("magic_proficiency", new MobEffectInstance(EffectRegistry.MAGIC_PROFICIENCY.get(), 3600)));
     public static final RegistryObject<Potion> LONG_MAGIC_PROFICIENCY = POTIONS.register("long_magic_proficiency", () -> new Potion("long_magic_proficiency", new MobEffectInstance(EffectRegistry.MAGIC_PROFICIENCY.get(), 9600)));

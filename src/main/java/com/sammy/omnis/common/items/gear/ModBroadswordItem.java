@@ -1,10 +1,8 @@
 package com.sammy.omnis.common.items.gear;
 
 import com.sammy.omnis.core.registry.SoundRegistry;
-import com.sammy.omnis.core.registry.effects.EffectRegistry;
-import com.sammy.omnis.core.systems.item.IHurtEventItem;
+import team.lodestar.lodestone.systems.item.IEventResponderItem;
 import com.sammy.omnis.core.systems.item.ITooltipItem;
-import com.sammy.omnis.common.items.basic.ModSwordItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,10 +12,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import team.lodestar.lodestone.systems.item.tools.LodestoneSwordItem;
 
 import java.util.List;
 
-public class ModBroadswordItem extends ModSwordItem implements ITooltipItem, IHurtEventItem {
+public class ModBroadswordItem extends LodestoneSwordItem implements ITooltipItem, IEventResponderItem {
     public final float extraDamage;
 
     public ModBroadswordItem(Tier material, int attackDamage, float attackSpeed, float extraDamage, Properties properties) {

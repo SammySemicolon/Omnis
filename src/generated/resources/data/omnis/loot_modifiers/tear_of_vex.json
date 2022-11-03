@@ -1,0 +1,16 @@
+{
+  "conditions": [
+    {
+      "condition": "minecraft:entity_properties",
+      "predicate": {
+        "type": "minecraft:vex"
+      },
+      "entity": "this"
+    }
+  ],
+  "itemChance": 0.1,
+  "itemCount": 1,
+  "extraItemCount": 1,
+  "item": "omnis:tear_of_vex",
+  "type": "omnis:add_items"
+}

@@ -1,12 +1,10 @@
 package com.sammy.omnis.core.registry.block;
 
-import com.sammy.omnis.OmnisHelper;
 import com.sammy.omnis.OmnisMod;
 import com.sammy.omnis.common.blocks.VexwartBlock;
 import com.sammy.omnis.common.blocks.surge.SurgeBlock;
 import com.sammy.omnis.common.blocks.surge.SurgeJetBlock;
 import com.sammy.omnis.core.registry.SoundRegistry;
-import com.sammy.omnis.core.systems.block.SimpleBlockProperties;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.*;
@@ -20,34 +18,36 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import team.lodestar.lodestone.helpers.DataHelper;
+import team.lodestar.lodestone.systems.block.LodestoneBlockProperties;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.sammy.omnis.OmnisMod.MODID;
+import static com.sammy.omnis.OmnisMod.OMNIS;
 import static net.minecraft.world.level.block.PressurePlateBlock.Sensitivity.MOBS;
 
 public class BlockRegistry {
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, OMNIS);
 
-    public static SimpleBlockProperties HAUNTED_STEEL_BLOCK_PROPERTIES() {
-        return new SimpleBlockProperties(Material.METAL, MaterialColor.COLOR_BLUE).needsPickaxe().sound(SoundRegistry.HAUNTED_STEEL).strength(50f, 3600f).requiresCorrectToolForDrops();
+    public static LodestoneBlockProperties HAUNTED_STEEL_BLOCK_PROPERTIES() {
+        return new LodestoneBlockProperties(Material.METAL, MaterialColor.COLOR_BLUE).needsPickaxe().sound(SoundRegistry.HAUNTED_STEEL).strength(50f, 3600f).requiresCorrectToolForDrops();
     }
 
-    public static SimpleBlockProperties RAVAGED_METAL_BLOCK_PROPERTIES() {
-        return new SimpleBlockProperties(Material.METAL, MaterialColor.COLOR_BLUE).needsPickaxe().sound(SoundRegistry.RAVAGED_METAL).strength(25f, 3600f).requiresCorrectToolForDrops();
+    public static LodestoneBlockProperties RAVAGED_METAL_BLOCK_PROPERTIES() {
+        return new LodestoneBlockProperties(Material.METAL, MaterialColor.COLOR_BLUE).needsPickaxe().sound(SoundRegistry.RAVAGED_METAL).strength(25f, 3600f).requiresCorrectToolForDrops();
     }
 
-    public static SimpleBlockProperties VEXWART_PROPERTIES() {
-        return new SimpleBlockProperties(Material.GRASS, MaterialColor.COLOR_BLUE).needsHoe().strength(1.0F).sound(SoundType.WART_BLOCK);
+    public static LodestoneBlockProperties VEXWART_PROPERTIES() {
+        return new LodestoneBlockProperties(Material.GRASS, MaterialColor.COLOR_BLUE).needsHoe().strength(1.0F).sound(SoundType.WART_BLOCK);
     }
 
-    public static SimpleBlockProperties RAVAGESTONE_PROPERTIES() {
-        return new SimpleBlockProperties(Material.STONE, MaterialColor.TERRACOTTA_ORANGE).needsPickaxe().sound(SoundRegistry.RAVAGESTONE).strength(1.25f, 9f).requiresCorrectToolForDrops();
+    public static LodestoneBlockProperties RAVAGESTONE_PROPERTIES() {
+        return new LodestoneBlockProperties(Material.STONE, MaterialColor.TERRACOTTA_ORANGE).needsPickaxe().sound(SoundRegistry.RAVAGESTONE).strength(1.25f, 9f).requiresCorrectToolForDrops();
     }
 
-    public static SimpleBlockProperties GLOOMSTONE_PROPERTIES() {
-        return new SimpleBlockProperties(Material.STONE, MaterialColor.TERRACOTTA_BLUE).needsPickaxe().sound(SoundRegistry.GLOOMSTONE).strength(1.25f, 9f).requiresCorrectToolForDrops();
+    public static LodestoneBlockProperties GLOOMSTONE_PROPERTIES() {
+        return new LodestoneBlockProperties(Material.STONE, MaterialColor.TERRACOTTA_BLUE).needsPickaxe().sound(SoundRegistry.GLOOMSTONE).strength(1.25f, 9f).requiresCorrectToolForDrops();
     }
 
 
@@ -105,19 +105,19 @@ public class BlockRegistry {
     public static final RegistryObject<Block> GLOOMSTONE_TILES_WALL = BLOCKS.register("gloomstone_tiles_wall", () -> new WallBlock(GLOOMSTONE_PROPERTIES()));
 
 
-    @Mod.EventBusSubscriber(modid = OmnisMod.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+    @Mod.EventBusSubscriber(modid = OmnisMod.OMNIS, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class ClientOnly {
 
         @SubscribeEvent
         public static void setRenderLayers(FMLClientSetupEvent event) {
             Set<RegistryObject<Block>> blocks = new HashSet<>(BLOCKS.getEntries());
-            OmnisHelper.takeAll(blocks, b -> b.get() instanceof TorchBlock).forEach(ClientOnly::setCutout);
-            OmnisHelper.takeAll(blocks, b -> b.get() instanceof TrapDoorBlock).forEach(ClientOnly::setCutout);
-            OmnisHelper.takeAll(blocks, b -> b.get() instanceof DoorBlock).forEach(ClientOnly::setCutout);
-            OmnisHelper.takeAll(blocks, b -> b.get() instanceof SaplingBlock).forEach(ClientOnly::setCutout);
-            OmnisHelper.takeAll(blocks, b -> b.get() instanceof LeavesBlock).forEach(ClientOnly::setCutout);
-            OmnisHelper.takeAll(blocks, b -> b.get() instanceof BushBlock).forEach(ClientOnly::setCutout);
-            OmnisHelper.takeAll(blocks, b -> b.get() instanceof LanternBlock).forEach(ClientOnly::setCutout);
+            DataHelper.takeAll(blocks, b -> b.get() instanceof TorchBlock).forEach(ClientOnly::setCutout);
+            DataHelper.takeAll(blocks, b -> b.get() instanceof TrapDoorBlock).forEach(ClientOnly::setCutout);
+            DataHelper.takeAll(blocks, b -> b.get() instanceof DoorBlock).forEach(ClientOnly::setCutout);
+            DataHelper.takeAll(blocks, b -> b.get() instanceof SaplingBlock).forEach(ClientOnly::setCutout);
+            DataHelper.takeAll(blocks, b -> b.get() instanceof LeavesBlock).forEach(ClientOnly::setCutout);
+            DataHelper.takeAll(blocks, b -> b.get() instanceof BushBlock).forEach(ClientOnly::setCutout);
+            DataHelper.takeAll(blocks, b -> b.get() instanceof LanternBlock).forEach(ClientOnly::setCutout);
         }
 
         public static void setCutout(RegistryObject<Block> b) {

@@ -3,48 +3,46 @@ package com.sammy.omnis.core.data;
 import com.sammy.omnis.OmnisMod;
 import com.sammy.omnis.common.loot.OmnisLootModifier;
 import com.sammy.omnis.core.registry.item.ItemRegistry;
-import com.sammy.omnis.core.registry.misc.LootModifierRegistry;
+import net.minecraft.advancements.critereon.EntityPredicate;
+import net.minecraft.advancements.critereon.EntityTypePredicate;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
+import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootTableIdCondition;
 
-import static com.sammy.omnis.core.registry.misc.LootModifierRegistry.EVOKER_CHARM;
-import static com.sammy.omnis.core.registry.misc.LootModifierRegistry.TEAR_OF_VEX;
+import static com.sammy.omnis.core.registry.misc.LootModifierRegistry.*;
 
-public class ModLootProvider extends GlobalLootModifierProvider
-{
-    public ModLootProvider(DataGenerator gen)
-    {
-        super(gen, OmnisMod.MODID);
+public class ModLootProvider extends GlobalLootModifierProvider {
+    public ModLootProvider(DataGenerator gen) {
+        super(gen, OmnisMod.OMNIS);
     }
 
     @Override
-    protected void start()
-    {
-        add("tear_of_vex", TEAR_OF_VEX.get(), new OmnisLootModifier(
-                new LootItemCondition[] { LootTableIdCondition.builder(new ResourceLocation("entities/vex")).build() }, 0.1f,1,1, ItemRegistry.TEAR_OF_VEX.get()
+    protected void start() {
+        GlobalLootModifierSerializer<OmnisLootModifier> lootModifier = OMNIS_LOOT_MODIFIER.get();
+        add("tear_of_vex", lootModifier, new OmnisLootModifier(
+                new LootItemCondition[]{entityTypeCondition(EntityType.VEX)}, 0.1f, 1, 1, ItemRegistry.TEAR_OF_VEX.get()
         ));
-        add("evoker_charm", EVOKER_CHARM.get(), new OmnisLootModifier(
-                new LootItemCondition[] { LootTableIdCondition.builder(new ResourceLocation("entities/evoker")).build() }, 0.25f,1,0, ItemRegistry.EVOKER_CHARM.get()
+        add("evoker_charm", lootModifier, new OmnisLootModifier(
+                new LootItemCondition[]{entityTypeCondition(EntityType.EVOKER)}, 0.25f, 1, 0, ItemRegistry.EVOKER_CHARM.get()
         ));
-        add("ravaged_scrap_ravager", LootModifierRegistry.RAVAGED_SCRAP_RAVAGER.get(), new OmnisLootModifier(
-                new LootItemCondition[] { LootTableIdCondition.builder(new ResourceLocation("entities/ravager")).build() }, 1,2,8, ItemRegistry.RAVAGED_SCRAP.get()
+        add("ravaged_scrap_ravager", lootModifier, new OmnisLootModifier(
+                new LootItemCondition[]{entityTypeCondition(EntityType.RAVAGER)}, 1, 4, 4, ItemRegistry.RAVAGED_SCRAP.get()
         ));
-        add("ravaged_scrap_pillager", LootModifierRegistry.RAVAGED_SCRAP_PILLAGER.get(), new OmnisLootModifier(
-                new LootItemCondition[] { LootTableIdCondition.builder(new ResourceLocation("entities/pillager")).build() }, 0.5f,1,2, ItemRegistry.RAVAGED_SCRAP.get()
+        add("ravaged_scrap_pillager", lootModifier, new OmnisLootModifier(
+                new LootItemCondition[]{entityTypeCondition(EntityType.PILLAGER)}, 0.5f, 1, 2, ItemRegistry.RAVAGED_SCRAP.get()
         ));
-        add("ravaged_scrap_vindicator", LootModifierRegistry.RAVAGED_SCRAP_VINDICATOR.get(), new OmnisLootModifier(
-                new LootItemCondition[] { LootTableIdCondition.builder(new ResourceLocation("entities/vindicator")).build() }, 0.75f,1,3, ItemRegistry.RAVAGED_SCRAP.get()
+        add("ravaged_scrap_vindicator", lootModifier, new OmnisLootModifier(
+                new LootItemCondition[]{entityTypeCondition(EntityType.VINDICATOR)}, 0.75f, 1, 3, ItemRegistry.RAVAGED_SCRAP.get()
         ));
+    }
 
-        add("ravaged_scrap_griefer", LootModifierRegistry.RAVAGED_SCRAP_GRIEFER.get(), new OmnisLootModifier(
-                new LootItemCondition[] { LootTableIdCondition.builder(new ResourceLocation("savageandravage", "entities/griefer")).build() }, 0.75f,1,2, ItemRegistry.RAVAGED_SCRAP.get()
-        ));
-        add("ravaged_scrap_executioner", LootModifierRegistry.RAVAGED_SCRAP_EXECUTIONER.get(), new OmnisLootModifier(
-                new LootItemCondition[] { LootTableIdCondition.builder(new ResourceLocation("savageandravage", "entities/executioner")).build() }, 1,1,3, ItemRegistry.RAVAGED_SCRAP.get()
-        ));
-
+    public static LootItemCondition entityTypeCondition(EntityType<?> entityType) {
+        return LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().entityType(EntityTypePredicate.of(entityType))).build();
     }
 }

@@ -1,0 +1,16 @@
+{
+  "conditions": [
+    {
+      "condition": "minecraft:entity_properties",
+      "predicate": {
+        "type": "minecraft:vindicator"
+      },
+      "entity": "this"
+    }
+  ],
+  "itemChance": 0.75,
+  "itemCount": 1,
+  "extraItemCount": 3,
+  "item": "omnis:ravaged_scrap",
+  "type": "omnis:add_items"
+}

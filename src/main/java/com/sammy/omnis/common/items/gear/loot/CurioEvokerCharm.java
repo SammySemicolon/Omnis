@@ -2,7 +2,6 @@ package com.sammy.omnis.common.items.gear.loot;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.sammy.omnis.core.registry.AttributeRegistry;
 import com.sammy.omnis.core.registry.SoundRegistry;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
@@ -13,7 +12,7 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.UUID;
 
-import team.lodestar.lodestone.setup.LodestoneAttributeRegistry;
+import team.lodestar.lodestone.registry.common.*;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 public class CurioEvokerCharm extends Item implements ICurioItem {

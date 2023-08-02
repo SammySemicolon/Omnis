@@ -4,7 +4,6 @@ import com.sammy.omnis.core.registry.SoundRegistry;
 import team.lodestar.lodestone.systems.item.IEventResponderItem;
 import com.sammy.omnis.core.systems.item.ITooltipItem;
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.ItemStack;
@@ -35,12 +34,12 @@ public class ModBroadswordItem extends LodestoneSwordItem implements ITooltipIte
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addSneakTooltip(List<Component> tooltip) {
-        tooltip.add(new TranslatableComponent("omnis.tooltip.crushing_detailed").withStyle(ChatFormatting.BLUE));
+        tooltip.add(Component.translatable("omnis.tooltip.crushing_detailed").withStyle(ChatFormatting.BLUE));
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addDefaultTooltip(List<Component> tooltip) {
-        tooltip.add(new TranslatableComponent("omnis.tooltip.crushing").withStyle(ChatFormatting.BLUE));
+        tooltip.add(Component.translatable("omnis.tooltip.crushing").withStyle(ChatFormatting.BLUE));
     }
 }

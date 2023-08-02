@@ -3,7 +3,6 @@ package com.sammy.omnis.common.items.gear.armor;
 import com.google.common.collect.ImmutableMultimap;
 import com.sammy.omnis.client.model.HauntedArmorModel;
 import com.sammy.omnis.core.registry.item.ItemRegistry;
-import com.sammy.omnis.core.registry.AttributeRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.util.Mth;
@@ -15,8 +14,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.IItemRenderProperties;
-import team.lodestar.lodestone.setup.LodestoneAttributeRegistry;
+import net.minecraftforge.client.extensions.common.*;
+import team.lodestar.lodestone.registry.common.*;
 
 import java.util.UUID;
 
@@ -43,10 +42,10 @@ public class HauntedSteelArmorItem extends OmnisArmorItem {
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void initializeClient(java.util.function.Consumer<IItemRenderProperties> consumer) {
-        consumer.accept(new IItemRenderProperties() {
+    public void initializeClient(java.util.function.Consumer<IClientItemExtensions> consumer) {
+        consumer.accept(new IClientItemExtensions() {
             @Override
-            public HauntedArmorModel getArmorModel(LivingEntity entity, ItemStack itemStack, EquipmentSlot armorSlot, HumanoidModel _default) {
+            public HauntedArmorModel getHumanoidArmorModel(LivingEntity entity, ItemStack itemStack, EquipmentSlot armorSlot, HumanoidModel _default) {
                 float pticks = Minecraft.getInstance().getFrameTime();
                 float f = Mth.rotLerp(pticks, entity.yBodyRotO, entity.yBodyRot);
                 float f1 = Mth.rotLerp(pticks, entity.yHeadRotO, entity.yHeadRot);

@@ -3,7 +3,6 @@ package com.sammy.omnis.common.items.gear.loot;
 import com.sammy.omnis.core.registry.SoundRegistry;
 import com.sammy.omnis.core.systems.item.ITooltipItem;
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -38,11 +37,11 @@ public class SpellBladeItem extends LodestoneSwordItem implements ITooltipItem, 
 
     @Override
     public void addSneakTooltip(List<Component> tooltip) {
-        tooltip.add(new TranslatableComponent("omnis.tooltip.arcane_detailed").withStyle(ChatFormatting.BLUE));
+        tooltip.add(Component.translatable("omnis.tooltip.arcane_detailed").withStyle(ChatFormatting.BLUE));
     }
 
     @Override
     public void addDefaultTooltip(List<Component> tooltip) {
-        tooltip.add(new TranslatableComponent("omnis.tooltip.arcane").withStyle(ChatFormatting.BLUE));
+        tooltip.add(Component.translatable("omnis.tooltip.arcane").withStyle(ChatFormatting.BLUE));
     }
 }

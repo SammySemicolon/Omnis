@@ -4,7 +4,6 @@ import com.sammy.omnis.core.registry.effects.EffectRegistry;
 import team.lodestar.lodestone.systems.item.IEventResponderItem;
 import com.sammy.omnis.core.systems.item.ITooltipItem;
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -40,11 +39,11 @@ public class VindicatorAxeItem extends LodestoneAxeItem implements ITooltipItem,
 
     @Override
     public void addSneakTooltip(List<Component> tooltip) {
-        tooltip.add(new TranslatableComponent("omnis.tooltip.ravage_detailed").withStyle(ChatFormatting.BLUE));
+        tooltip.add(Component.translatable("omnis.tooltip.ravage_detailed").withStyle(ChatFormatting.BLUE));
     }
 
     @Override
     public void addDefaultTooltip(List<Component> tooltip) {
-        tooltip.add(new TranslatableComponent("omnis.tooltip.ravage").withStyle(ChatFormatting.BLUE));
+        tooltip.add(Component.translatable("omnis.tooltip.ravage").withStyle(ChatFormatting.BLUE));
     }
 }

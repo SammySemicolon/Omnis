@@ -12,7 +12,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.util.Mth;
 import net.minecraft.network.chat.Component;
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -52,12 +51,12 @@ public class ModScytheItem extends ModCombatItem implements ITooltipItem, IEvent
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addSneakTooltip(List<Component> tooltip) {
-        tooltip.add(new TranslatableComponent("omnis.tooltip.sweeping_detailed").withStyle(ChatFormatting.BLUE));
+        tooltip.add(Component.translatable("omnis.tooltip.sweeping_detailed").withStyle(ChatFormatting.BLUE));
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addDefaultTooltip(List<Component> tooltip) {
-        tooltip.add(new TranslatableComponent("omnis.tooltip.sweeping").withStyle(ChatFormatting.BLUE));
+        tooltip.add(Component.translatable("omnis.tooltip.sweeping").withStyle(ChatFormatting.BLUE));
     }
 }

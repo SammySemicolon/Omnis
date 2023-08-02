@@ -1,16 +1,15 @@
 {
+  "type": "omnis:add_items",
   "conditions": [
     {
       "condition": "minecraft:entity_properties",
       "predicate": {
-        "type": "minecraft:ravager"
+        "type": "minecraft:evoker"
       },
       "entity": "this"
     }
   ],
-  "itemChance": 1.0,
-  "itemCount": 4,
-  "extraItemCount": 4,
   "item": "omnis:ravaged_scrap",
-  "type": "omnis:add_items"
+  "min": 4,
+  "max": 8
 }

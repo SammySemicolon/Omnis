@@ -8,7 +8,6 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.network.chat.Component;
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -37,12 +36,12 @@ public class ModSpearItem extends ModCombatItem implements ITooltipItem, IEventR
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addSneakTooltip(List<Component> tooltip) {
-        tooltip.add(new TranslatableComponent("omnis.tooltip.outlying_detailed").withStyle(ChatFormatting.BLUE));
+        tooltip.add(Component.translatable("omnis.tooltip.outlying_detailed").withStyle(ChatFormatting.BLUE));
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addDefaultTooltip(List<Component> tooltip) {
-        tooltip.add(new TranslatableComponent("omnis.tooltip.outlying").withStyle(ChatFormatting.BLUE));
+        tooltip.add(Component.translatable("omnis.tooltip.outlying").withStyle(ChatFormatting.BLUE));
     }
 }

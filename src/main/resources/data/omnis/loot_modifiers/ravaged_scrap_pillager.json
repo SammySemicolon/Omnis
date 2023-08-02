@@ -1,16 +1,19 @@
 {
+  "type": "omnis:add_items",
   "conditions": [
     {
       "condition": "minecraft:entity_properties",
       "predicate": {
-        "type": "minecraft:pillager"
+        "type": "minecraft:evoker"
       },
       "entity": "this"
+    },
+    {
+      "condition": "minecraft:random_chance",
+      "chance" : 0.5
     }
   ],
-  "itemChance": 0.5,
-  "itemCount": 1,
-  "extraItemCount": 2,
   "item": "omnis:ravaged_scrap",
-  "type": "omnis:add_items"
+  "min": 1,
+  "max": 2
 }

@@ -10,7 +10,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.network.chat.Component;
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import team.lodestar.lodestone.systems.item.ModCombatItem;
@@ -37,12 +36,12 @@ public class ModHammerItem extends ModCombatItem implements ITooltipItem, IEvent
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addSneakTooltip(List<Component> tooltip) {
-        tooltip.add(new TranslatableComponent("omnis.tooltip.staggering_detailed").withStyle(ChatFormatting.BLUE));
+        tooltip.add(Component.translatable("omnis.tooltip.staggering_detailed").withStyle(ChatFormatting.BLUE));
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addDefaultTooltip(List<Component> tooltip) {
-        tooltip.add(new TranslatableComponent("omnis.tooltip.staggering").withStyle(ChatFormatting.BLUE));
+        tooltip.add(Component.translatable("omnis.tooltip.staggering").withStyle(ChatFormatting.BLUE));
     }
 }

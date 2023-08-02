@@ -40,9 +40,6 @@ public class ItemRegistry {
         return new Item.Properties().stacksTo(1);
     }
 
-    public static final RegistryObject<Item> INFERNAL_SURGE_BLOCK = ITEMS.register("infernal_surge_block", () -> new BlockItem(BlockRegistry.INFERNAL_SURGE_BLOCK.get(), DEFAULT_PROPERTIES()));
-    public static final RegistryObject<Item> AQUATIC_SURGE_BLOCK = ITEMS.register("aquatic_surge_block", () -> new BlockItem(BlockRegistry.AQUATIC_SURGE_BLOCK.get(), DEFAULT_PROPERTIES()));
-
     public static final RegistryObject<Item> RAVAGED_SCRAP = ITEMS.register("ravaged_scrap", () -> new Item(DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> RAVAGED_METAL = ITEMS.register("ravaged_metal", () -> new Item(DEFAULT_PROPERTIES()));
     public static final RegistryObject<Item> RAVAGED_METAL_BLOCK = ITEMS.register("ravaged_metal_block", () -> new BlockItem(BlockRegistry.RAVAGED_METAL_BLOCK.get(), DEFAULT_PROPERTIES()));

@@ -1,7 +1,8 @@
 package com.sammy.omnis.core.eventhandlers;
 
 import com.sammy.omnis.core.registry.item.ItemRegistry;
-import com.sammy.omnis.core.registry.AttributeRegistry;
+import net.minecraftforge.event.entity.*;
+import net.minecraftforge.event.entity.living.*;
 import team.lodestar.lodestone.systems.item.IEventResponderItem;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -15,9 +16,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.BasicItemListing;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.living.PotionEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.event.village.WandererTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -42,9 +40,9 @@ public class RuntimeEvents {
     }
 
     @SubscribeEvent
-    public static void ankhCharmEffect(PotionEvent.PotionAddedEvent event) {
-        if (CurioHelper.hasCurioEquipped(event.getEntityLiving(), ItemRegistry.ANKH_CHARM.get())) {
-            MobEffectInstance instance = event.getPotionEffect();
+    public static void ankhCharmEffect(MobEffectEvent.Added event) {
+        if (CurioHelper.hasCurioEquipped(event.getEntity(), ItemRegistry.ANKH_CHARM.get())) {
+            MobEffectInstance instance = event.getEffectInstance();
             if (instance.getEffect().isBeneficial()) {
                 instance.duration *= 1.5f;
             }
@@ -55,8 +53,8 @@ public class RuntimeEvents {
     }
 
     @SubscribeEvent
-    public static void giveEnemiesSpecialWeapons(EntityJoinWorldEvent event) {
-        if (event.getWorld() instanceof ServerLevel level) {
+    public static void giveEnemiesSpecialWeapons(EntityJoinLevelEvent event) {
+        if (event.getLevel() instanceof ServerLevel level) {
             if (event.getEntity() instanceof Vex vexEntity) {
                 if (level.random.nextFloat() < 0.1f) {
                     vexEntity.setItemSlot(EquipmentSlot.MAINHAND, ItemRegistry.SPELL_BLADE.get().getDefaultInstance());

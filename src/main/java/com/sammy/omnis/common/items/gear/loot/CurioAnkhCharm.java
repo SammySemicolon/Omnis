@@ -4,7 +4,6 @@ import com.sammy.omnis.core.registry.SoundRegistry;
 import com.sammy.omnis.core.systems.item.ITooltipItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
@@ -34,12 +33,12 @@ public class CurioAnkhCharm extends Item implements ICurioItem, ITooltipItem {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addSneakTooltip(List<Component> tooltip) {
-        tooltip.add(new TranslatableComponent("omnis.tooltip.curative_detailed").withStyle(ChatFormatting.BLUE));
+        tooltip.add(Component.translatable("omnis.tooltip.curative_detailed").withStyle(ChatFormatting.BLUE));
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addDefaultTooltip(List<Component> tooltip) {
-        tooltip.add(new TranslatableComponent("omnis.tooltip.curative").withStyle(ChatFormatting.BLUE));
+        tooltip.add(Component.translatable("omnis.tooltip.curative").withStyle(ChatFormatting.BLUE));
     }
 }

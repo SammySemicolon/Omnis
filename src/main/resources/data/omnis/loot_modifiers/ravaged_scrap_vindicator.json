@@ -1,0 +1,19 @@
+{
+  "type": "omnis:add_items",
+  "conditions": [
+    {
+      "condition": "minecraft:entity_properties",
+      "predicate": {
+        "type": "minecraft:evoker"
+      },
+      "entity": "this"
+    },
+    {
+      "condition": "minecraft:random_chance",
+      "chance" : 0.1
+    }
+  ],
+  "item": "omnis:tear_of_vex",
+  "min": 1,
+  "max": 2
+}

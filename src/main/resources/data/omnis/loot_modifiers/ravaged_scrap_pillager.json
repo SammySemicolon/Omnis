@@ -4,7 +4,7 @@
     {
       "condition": "minecraft:entity_properties",
       "predicate": {
-        "type": "minecraft:evoker"
+        "type": "minecraft:pillager"
       },
       "entity": "this"
     },

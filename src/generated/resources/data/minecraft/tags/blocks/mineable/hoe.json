@@ -1,7 +1,6 @@
 {
-  "replace": false,
   "values": [
-    "omnis:vexwart_block",
-    "omnis:vexwart"
+    "omnis:vexwart",
+    "omnis:vexwart_block"
   ]
 }

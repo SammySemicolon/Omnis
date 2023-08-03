@@ -1,6 +1,9 @@
 package com.sammy.omnis;
 
+import com.sammy.omnis.data.*;
+import net.minecraft.data.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.data.event.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -28,9 +31,19 @@ public class OmnisMod {
         POTIONS.register(modBus);
         EFFECTS.register(modBus);
         SOUNDS.register(modBus);
+
+        modBus.addListener(DataOnly::gatherData);
     }
 
     public static ResourceLocation omnisPath(String path) {
         return new ResourceLocation(OMNIS, path);
     }
+
+    public static class DataOnly {
+        public static void gatherData(GatherDataEvent event) {
+            DataGenerator generator = event.getGenerator();
+            generator.addProvider(event.includeServer(), new OmnisBlockTags(generator, event.getExistingFileHelper()));
+        }
+    }
+
 }
